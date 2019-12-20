@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xmu.discount.mapper.GrouponRuleMapper">
+
+    <select id="getGrouponRuleByGoodsId" resultType="com.xmu.discount.domain.GrouponRulePo" parameterType="Integer">
+        select * from oomall_groupon_rule where goods_id=#{id} and is_deleted!=true;
+    </select>
+
+    <insert id="insertGrouponRule" useGeneratedKeys="true" keyProperty="id" parameterType="com.xmu.discount.domain.GrouponRulePo">
+        insert into oomall_groupon_rule(start_time,end_time,status,groupon_level_strategy,goods_id,gmt_create,gmt_modified,is_deleted)
+            values(#{startTime},#{endTime},#{statusCode},#{grouponLevelStrategy},#{goodsId},#{gmtCreate},#{gmtModified},#{beDeleted});
+    </insert>
+
+    <select id="getGrouponRuleById" resultType="com.xmu.discount.domain.GrouponRulePo" parameterType="Integer">
+        select * from oomall_groupon_rule where id=#{id} and is_deleted!=true;
+    </select>
+
+    <select id="adminGetGrouponRuleById" resultType="com.xmu.discount.domain.GrouponRulePo" parameterType="Integer">
+        select * from oomall_groupon_rule where id=#{id} and is_deleted!=true;
+    </select>
+
+    <update id="updateGrouponRule" parameterType="com.xmu.discount.domain.GrouponRulePo"  >
+        update oomall_groupon_rule
+        <trim prefix="set" suffixOverrides=",">
+            <if test="startTime!=null">start_time=#{startTime},</if>
+            <if test="endTime!=null">end_time=#{endTime},</if>
+            <if test="statusCode!=null">status=#{statusCode},</if>
+            <if test="grouponLevelStrategy!=null">groupon_level_strategy=#{grouponLevelStrategy},</if>
+            <if test="goodsId!=null">goods_id=#{goodsId},</if>
+            <if test="gmtModified!=null">gmt_modified=#{gmtModified},</if>
+        </trim>
+        where id=#{id} and is_deleted!=true;
+    </update>
+
+    <update id="deleteGrouponRule">
+        update oomall_groupon_rule set is_deleted=true and gmt_modified=#{time}
+        where id=#{id} and is_deleted!=true;
+    </update>
+
+    <update id="downGrouponRuleById">
+        update oomall_groupon_rule set status=false and gmt_modified=#{time}
+        where id=#{id} and is_deleted!=true;
+    </update>
+
+    <select id="customerGetGrouponRule" resultType="com.xmu.discount.domain.GrouponRulePo">
+        select * from oomall_groupon_rule where is_deleted!=true and status = true;
+    </select>
+
+    <select id="adminGetGrouponRule" resultType="com.xmu.discount.domain.GrouponRulePo">
+        select * from oomall_groupon_rule;
+    </select>
+
+    <select id="checkFinishedGrouponRule" resultType="com.xmu.discount.domain.GrouponRulePo">
+        select * from oomall_groupon_rule
+        where end_time >= #{param1} and end_time &lt;= #{param2} and is_deleted != true and status = true;
+    </select>
+
+</mapper>
