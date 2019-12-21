@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8070
 
 spring:
   datasource:
@@ -7,6 +7,8 @@ spring:
     password: 991002
     url: jdbc:mysql://localhost:3306/oomall?serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: discountService
 
 mybatis:
   #domain对象的包
@@ -22,3 +24,13 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
   params:
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://172.81.212.62:7001/eureka/
+  instance:
+    prefer-ip-address: true
+ribbon:
+  eureka:
+    enabled: true
