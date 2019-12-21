@@ -15,19 +15,15 @@ public class PageUtil {
      * @param objects
      * @return
      */
-    public List<Object> pageStart(Integer page, Integer limit, List<Object> objects) {
+    public static List<Object> pageStart(Integer page, Integer limit, List<Object> objects) {
         /**
          * 从数据库查找的对象list为空
          */
         if (objects.size()==0) {
             return new ArrayList<Object>();
         }
-
-        /**
-         * 返回null是参数错误
-         */
         if (page>getMaxPageNum(objects,limit)) {
-            return null;
+            return new ArrayList<Object>();
         }else if (page<getMaxPageNum(objects,limit)) {
             List<Object> objects1 = objects.subList((page - 1) * limit, page * limit);
             return objects1;
@@ -41,7 +37,7 @@ public class PageUtil {
         return null;
     }
 
-    public int getMaxPageNum(List<Object> objects, Integer limit) {
+    public static int getMaxPageNum(List<Object> objects, Integer limit) {
         if (objects.size()%limit!=0) {
             return objects.size()/limit+1;
         }

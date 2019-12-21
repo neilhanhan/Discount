@@ -58,6 +58,9 @@ public class DiscountController {
     @GetMapping("/admin/couponRules")
     public Object adminGetAllCouponRulePos(@RequestParam("page") Integer page, @RequestParam("limit") Integer limit) {
         List<CouponRulePo> couponRulePos = couponRuleService.adminGetAllCouponRulePos(page, limit);
+        if (couponRulePos.size()==0) {
+            return ResponseUtil.checkCouponRuleFail();
+        }
         return ResponseUtil.ok(couponRulePos);
     }
 
@@ -67,6 +70,9 @@ public class DiscountController {
     @GetMapping("/couponRules")
     public Object userGetAllCouponRulePos(@RequestParam("page") Integer page, @RequestParam("limit") Integer limit) {
         List<CouponRulePo> couponRulePos = couponRuleService.userGetAllCouponRulePos(page, limit);
+        if (couponRulePos.size()==0) {
+            return ResponseUtil.checkCouponRuleFail();
+        }
         return ResponseUtil.ok(couponRulePos);
     }
 

@@ -34,6 +34,9 @@ public class PresaleRuleServiceImpl implements PresaleRuleService {
     @Override
     public List<PresaleRuleVo> adminGetPresaleRule(Integer page, Integer limit) {
         List<PresaleRule> presaleRuleList = presaleRuleDao.adminGetPresaleRule(page, limit);
+        if (presaleRuleList.size()==0) {
+            return new ArrayList<PresaleRuleVo>();
+        }
         Page<PresaleRuleVo> presaleRuleVoList = new Page<PresaleRuleVo>();
 
         for (PresaleRule presaleRule : presaleRuleList) {
@@ -61,6 +64,9 @@ public class PresaleRuleServiceImpl implements PresaleRuleService {
     @Override
     public List<PresaleRuleVo> customerGetPresaleRule(Integer page, Integer limit) {
         List<PresaleRule> presaleRuleList = presaleRuleDao.customerGetPresaleRule(page, limit);
+        if (presaleRuleList.size()==0) {
+            return new ArrayList<PresaleRuleVo>();
+        }
         Page<PresaleRuleVo> presaleRuleVoList = new Page<PresaleRuleVo>();
 
         for (PresaleRule presaleRule : presaleRuleList) {
@@ -136,6 +142,9 @@ public class PresaleRuleServiceImpl implements PresaleRuleService {
          * 获得List<PresaleRule>和GoodsPo对象
          */
         List<PresaleRule> presaleRules = presaleRuleDao.findPresaleRulesByGoodsId(goodsId, page, limit);
+        if (presaleRules.size()==0) {
+            return new ArrayList<PresaleRuleVo>();
+        }
         String str = JacksonUtil.toJson(goodsInfoService.getGoodsById(goodsId));
         Map map = (Map) JSON.parse(str);
         String data = map.get("data").toString();

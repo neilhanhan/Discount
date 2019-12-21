@@ -1,12 +1,15 @@
 package com.xmu.discount.dao;
 
 import com.github.pagehelper.PageHelper;
+import com.xmu.discount.domain.CouponRulePo;
 import com.xmu.discount.domain.PresaleRule;
 import com.xmu.discount.mapper.PresaleRuleMapper;
+import com.xmu.discount.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,15 +26,43 @@ public class PresaleRuleDao {
     }
 
     public List<PresaleRule> adminGetPresaleRule(Integer page, Integer limit) {
-        PageHelper.startPage(page, limit);
-        List<PresaleRule> presaleRuleList = presaleRuleMapper.adminGetPresaleRule();
-        return presaleRuleList;
+        List<PresaleRule> presaleRules = presaleRuleMapper.adminGetPresaleRule();
+        if(presaleRules.size()==0) {
+            return presaleRules;
+        }
+        List<Object> presaleRuleObjects = new ArrayList<>(presaleRules.size());
+        for (PresaleRule presaleRule : presaleRules) {
+            presaleRuleObjects.add(presaleRule);
+        }
+        presaleRuleObjects=PageUtil.pageStart(page, limit,presaleRuleObjects);
+        presaleRules.clear();
+        if (presaleRuleObjects.size()==0) {
+            return presaleRules;
+        }
+        for (Object presaleRuleObject : presaleRuleObjects) {
+            presaleRules.add((PresaleRule)presaleRuleObject);
+        }
+        return presaleRules;
     }
 
     public List<PresaleRule> customerGetPresaleRule(Integer page, Integer limit) {
-        PageHelper.startPage(page, limit);
-        List<PresaleRule> presaleRuleList = presaleRuleMapper.customerGetPresaleRule();
-        return presaleRuleList;
+        List<PresaleRule> presaleRules = presaleRuleMapper.customerGetPresaleRule();
+        if(presaleRules.size()==0) {
+            return presaleRules;
+        }
+        List<Object> presaleRuleObjects = new ArrayList<>(presaleRules.size());
+        for (PresaleRule presaleRule : presaleRules) {
+            presaleRuleObjects.add(presaleRule);
+        }
+        presaleRuleObjects=PageUtil.pageStart(page, limit,presaleRuleObjects);
+        presaleRules.clear();
+        if (presaleRuleObjects.size()==0) {
+            return presaleRules;
+        }
+        for (Object presaleRuleObject : presaleRuleObjects) {
+            presaleRules.add((PresaleRule)presaleRuleObject);
+        }
+        return presaleRules;
     }
 
     public PresaleRule getPresaleRuleById(Integer id) {
@@ -57,8 +88,22 @@ public class PresaleRuleDao {
     }
 
     public List<PresaleRule> findPresaleRulesByGoodsId(Integer goodsId, Integer page, Integer limit) {
-        PageHelper.startPage(page, limit);
         List<PresaleRule> presaleRulesByGoodsId = presaleRuleMapper.findPresaleRulesByGoodsId(goodsId);
+        if (presaleRulesByGoodsId.size()==0) {
+            return new ArrayList<PresaleRule>();
+        }
+        List<Object> presaleRuleObjects = new ArrayList<>(presaleRulesByGoodsId.size());
+        for (PresaleRule presaleRule: presaleRulesByGoodsId) {
+            presaleRuleObjects.add(presaleRule);
+        }
+        presaleRuleObjects=PageUtil.pageStart(page, limit,presaleRuleObjects);
+        presaleRulesByGoodsId.clear();
+        if (presaleRuleObjects.size()==0) {
+            return presaleRulesByGoodsId;
+        }
+        for (Object presaleRuleObject : presaleRuleObjects) {
+            presaleRulesByGoodsId.add((PresaleRule)presaleRuleObject);
+        }
         return presaleRulesByGoodsId;
     }
 
