@@ -13,7 +13,7 @@ import java.util.List;
  * @author Liu Wenhan & Zhang Bingyuan
  */
 @RestController
-@RequestMapping(value = "/presale", produces = "application/json;charset=UTF-8", consumes = "application/json;charset=UTF-8")
+@RequestMapping(value = "/discountService", produces = "application/json;charset=UTF-8", consumes = "application/json;charset=UTF-8")
 public class PresaleRuleController {
 
     @Autowired
@@ -31,7 +31,10 @@ public class PresaleRuleController {
         if(presaleRuleService.downPresaleRuleById(id)){
             return ResponseUtil.ok();
         }else {
-            return ResponseUtil.fail();//是否应有对应的错误码
+            /**
+             * 下架失败的错误码缺失
+             */
+            return ResponseUtil.fail();
         }
     }
 
@@ -61,7 +64,7 @@ public class PresaleRuleController {
     @DeleteMapping("/presaleRules/{id}")
     public Object deletePresaleRule(@PathVariable Integer id){
         if(id==null){
-            return ResponseUtil.badArgument();
+            return ResponseUtil.invaildParameter();
         }
         else if(presaleRuleService.deletePresaleRule(id)){
             return ResponseUtil.ok();
@@ -80,7 +83,7 @@ public class PresaleRuleController {
     @GetMapping("/presaleRules/{id}")
     public Object getPresaleRuleById(@PathVariable Integer id){
         if(id==null){
-            return ResponseUtil.badArgument();
+            return ResponseUtil.invaildParameter();
         }
         PresaleRuleVo presaleRuleVo = presaleRuleService.getPresaleRuleById(id);
         return ResponseUtil.ok(presaleRuleVo);

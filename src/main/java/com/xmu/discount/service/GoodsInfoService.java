@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @author Liuwenhan
  */
 @Component
-@FeignClient(value = "/goodsInfoService")
+@FeignClient(value = "goodsInfoService")
 public interface GoodsInfoService {
 
     /**

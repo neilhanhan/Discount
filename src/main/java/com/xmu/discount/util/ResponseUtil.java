@@ -92,7 +92,6 @@ public class ResponseUtil {
             data.put("limit", pagedList.size());
             data.put("pages", 1);
         }
-
         return ok(data);
     }
 
@@ -109,16 +108,9 @@ public class ResponseUtil {
         obj.put("errmsg", errmsg);
         return obj;
     }
+
     public static Object invaildParameter(){
         return fail(580,"参数不合法");
-    }
-
-    public static Object badArgument() {
-        return fail(401, "参数不对");
-    }
-
-    public static Object badArgumentValue() {
-        return fail(402, "参数值不对");
     }
 
     public static Object grouponRuleUnknown() {

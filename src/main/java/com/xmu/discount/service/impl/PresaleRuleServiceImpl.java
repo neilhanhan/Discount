@@ -8,7 +8,6 @@ import com.xmu.discount.domain.Goods;
 import com.xmu.discount.domain.GoodsPo;
 import com.xmu.discount.domain.PresaleRule;
 import com.xmu.discount.service.GoodsInfoService;
-import com.xmu.discount.service.OrderService;
 import com.xmu.discount.service.PresaleRuleService;
 import com.xmu.discount.util.JacksonUtil;
 import com.xmu.discount.vo.PresaleRuleVo;
@@ -26,8 +25,8 @@ import java.util.Map;
 public class PresaleRuleServiceImpl implements PresaleRuleService {
     @Autowired
     PresaleRuleDao presaleRuleDao;
-    @Autowired
-    OrderService orderService;
+//    @Autowired
+//    OrderService orderService;
     @Autowired
     GoodsInfoService goodsInfoService;
 
@@ -204,7 +203,7 @@ public class PresaleRuleServiceImpl implements PresaleRuleService {
     @Override
     public Boolean downPresaleRuleById(Integer id) {
         PresaleRule presaleRule = presaleRuleDao.getPresaleRuleById(id);
-        orderService.refundOfPresaleRule(presaleRule);
+//        orderService.refundOfPresaleRule(presaleRule);
         return presaleRuleDao.downPresaleRuleById(id);
     }
 

@@ -54,5 +54,9 @@
         select * from oomall_groupon_rule
         where end_time >= #{param1} and end_time &lt;= #{param2} and is_deleted != true and status = true;
     </select>
+    <select id="getGrouponRuleOnshelve" resultType="com.xmu.discount.domain.GrouponRulePo">
+        select * from oomall_groupon_rule
+        where goods_id = #{goodsId} and status = true and is_deleted != true;
+    </select>
 
 </mapper>

@@ -2,7 +2,6 @@ package com.xmu.discount.mapper;
 
 import com.xmu.discount.domain.GrouponRulePo;
 import org.apache.ibatis.annotations.Mapper;
-
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -85,4 +84,10 @@ public interface GrouponRuleMapper {
      * @return List<GrouponRulePo>
      */
     List<GrouponRulePo> checkFinishedGrouponRule(LocalDateTime today, LocalDateTime yesterday);
+
+    /**
+     * @param goodsId
+     * @return
+     */
+    GrouponRulePo getGrouponRuleOnshelve(Integer goodsId);
 }

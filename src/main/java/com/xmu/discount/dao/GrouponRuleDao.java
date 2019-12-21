@@ -94,4 +94,20 @@ public class GrouponRuleDao {
         }
         return grouponRuleList;
     }
+
+    public GrouponRule getGrouponRuleOnshelve(Integer goodsId) {
+        GrouponRulePo grouponRulePo = grouponRuleMapper.getGrouponRuleOnshelve(goodsId);
+        GrouponRule grouponRule = new GrouponRule();
+        List<GrouponRule.Strategy> strategy = JacksonUtil.getGrouponRuleStrategy(grouponRulePo.getGrouponLevelStrategy());
+        grouponRule.setId(grouponRulePo.getId());
+        grouponRule.setGoodsId(grouponRulePo.getGoodsId());
+        grouponRule.setStartTime(grouponRulePo.getStartTime());
+        grouponRule.setEndTime(grouponRulePo.getEndTime());
+        grouponRule.setStrategyList(strategy);
+        grouponRule.setGmtModified(grouponRulePo.getGmtModified());
+        grouponRule.setGmtCreate(grouponRulePo.getGmtCreate());
+        grouponRule.setBeDeleted(grouponRulePo.getBeDeleted());
+        grouponRule.setStatusCode(grouponRulePo.getStatusCode());
+        return grouponRule;
+    }
 }

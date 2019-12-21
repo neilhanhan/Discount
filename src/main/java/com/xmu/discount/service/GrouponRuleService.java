@@ -1,5 +1,6 @@
 package com.xmu.discount.service;
 
+import com.xmu.discount.domain.GrouponRule;
 import com.xmu.discount.domain.GrouponRulePo;
 import com.xmu.discount.vo.GrouponRuleVo;
 import java.util.List;
@@ -82,4 +83,6 @@ public interface GrouponRuleService {
      * 检查完成的团购活动
      */
     void checkFinishedGrouponRule();
+
+    GrouponRule getGrouponRuleOnshelve(Integer goodsId);
 }

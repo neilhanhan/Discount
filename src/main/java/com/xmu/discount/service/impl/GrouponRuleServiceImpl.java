@@ -199,4 +199,9 @@ public class GrouponRuleServiceImpl implements GrouponRuleService {
 //        }
     }
 
+    @Override
+    public GrouponRule getGrouponRuleOnshelve(Integer goodsId) {
+        return grouponRuleDao.getGrouponRuleOnshelve(goodsId);
+    }
+
 }

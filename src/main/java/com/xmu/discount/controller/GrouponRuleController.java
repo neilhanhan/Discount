@@ -1,5 +1,6 @@
 package com.xmu.discount.controller;
 
+import com.xmu.discount.domain.GrouponRule;
 import com.xmu.discount.domain.GrouponRulePo;
 import com.xmu.discount.service.GrouponRuleService;
 import com.xmu.discount.util.ResponseUtil;
@@ -16,7 +17,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/discountService", produces = "application/json;charset=UTF-8", consumes = "application/json;charset=UTF-8")
-
 public class GrouponRuleController {
 
     @Autowired
@@ -32,10 +32,16 @@ public class GrouponRuleController {
      */
     @PostMapping("/grouponRules/{id}/invalid")
     public Object downGrouponRuleById(@PathVariable Integer id){
-        if(grouponRuleService.downGrouponRuleById(id)){
+        if(id<0){
+            return ResponseUtil.invaildParameter();
+        }else if(grouponRuleService.downGrouponRuleById(id)){
             return ResponseUtil.ok();
         }else {
+            /**
+             * 是否应该有状态码是下架操作失败的？
+             */
             return ResponseUtil.fail();
+
         }
     }
 
@@ -54,17 +60,16 @@ public class GrouponRuleController {
                                           @RequestParam(defaultValue = "1") Integer page,
                                           @RequestParam(defaultValue = "10") Integer limit)
     {
-        if(goodsId==null||goodsId<0){
-            return ResponseUtil.badArgumentValue();
-        }
-        if(page<=0||limit<0){
+        if(goodsId<0||page<=0||limit<0){
             return ResponseUtil.invaildParameter();
         }
-        List<GrouponRuleVo> grouponRuleVoList = grouponRuleService.getGrouponRuleByGoodsId(goodsId,page,limit);
-        if(grouponRuleVoList == null){
-            return ResponseUtil.grouponRuleUnknown();
+        else {
+            List<GrouponRuleVo> grouponRuleVoList = grouponRuleService.getGrouponRuleByGoodsId(goodsId, page, limit);
+            if (grouponRuleVoList == null) {
+                return ResponseUtil.grouponRuleUnknown();
+            }
+            return ResponseUtil.okList(grouponRuleVoList);
         }
-        return ResponseUtil.okList(grouponRuleVoList);
     }
 
     /**
@@ -100,7 +105,7 @@ public class GrouponRuleController {
     @GetMapping("/grouponRules/{id}")
     public Object getGrouponRuleById(@PathVariable Integer id){
         if (id == null) {
-            return ResponseUtil.badArgument();
+            return ResponseUtil.invaildParameter();
         }
         GrouponRuleVo grouponRuleVo = grouponRuleService.getGrouponRuleById(id);
         return ResponseUtil.ok(grouponRuleVo);
@@ -117,7 +122,7 @@ public class GrouponRuleController {
     @GetMapping("/admin/grouponRules/{id}")
     public Object adminGetGrouponRuleById(@PathVariable Integer id){
         if (id == null) {
-            return ResponseUtil.badArgument();
+            return ResponseUtil.invaildParameter();
         }
         GrouponRuleVo grouponRuleVo = grouponRuleService.adminGetGrouponRuleById(id);
         return ResponseUtil.ok(grouponRuleVo);
@@ -136,7 +141,7 @@ public class GrouponRuleController {
     public Object updateGrouponRule(@PathVariable Integer id,
                                     @RequestBody GrouponRulePo grouponRulePo){
         if(id==null){
-            return ResponseUtil.badArgument();
+            return ResponseUtil.invaildParameter();
         }
         grouponRulePo.setGmtModified(LocalDateTime.now());
         grouponRulePo.setId(id);
@@ -159,7 +164,7 @@ public class GrouponRuleController {
     @DeleteMapping("/grouponRules/{id}")
     public Object deleteGrouponRuleById(@PathVariable Integer id){
         if(id == null){
-            return ResponseUtil.badArgument();
+            return ResponseUtil.invaildParameter();
         }
         else if(grouponRuleService.deleteGrouponRule(id)) {
             return ResponseUtil.ok();
@@ -199,5 +204,15 @@ public class GrouponRuleController {
                                        @RequestParam(defaultValue = "10") Integer limit){
         List<GrouponRuleVo> grouponRuleVoList = grouponRuleService.adminGetGrouponRule(page,limit);
         return ResponseUtil.okList(grouponRuleVoList);
+    }
+
+    /**
+     * 给Goods模块调用的接口
+     * @param goodsId
+     * @return GrouponRule
+     */
+    @GetMapping("/grouponRule")
+    public GrouponRule getGrouponRuleOnshelve(@RequestParam("id") Integer goodsId){
+        return grouponRuleService.getGrouponRuleOnshelve(goodsId);
     }
 }
