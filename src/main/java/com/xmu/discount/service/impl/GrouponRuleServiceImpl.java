@@ -1,15 +1,22 @@
 package com.xmu.discount.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.Page;
 import com.xmu.discount.dao.GrouponRuleDao;
+import com.xmu.discount.domain.Goods;
+import com.xmu.discount.domain.GoodsPo;
 import com.xmu.discount.domain.GrouponRule;
 import com.xmu.discount.domain.GrouponRulePo;
 import com.xmu.discount.service.GrouponRuleService;
+import com.xmu.discount.service.RemoteService;
+import com.xmu.discount.util.JacksonUtil;
 import com.xmu.discount.vo.GrouponRuleVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -24,22 +31,30 @@ public class GrouponRuleServiceImpl implements GrouponRuleService {
 //    @Autowired
 //    public OrderService orderService;
 
-//    @Autowired
-//    public GoodsService goodsService;
+    @Autowired
+    public RemoteService remoteService;
 
     @Override
     public List<GrouponRuleVo> getGrouponRuleByGoodsId(Integer id, Integer page, Integer limit){
         List<GrouponRulePo> grouponRuleList = grouponRuleDao.getGrouponRuleByGoodsId(id,page,limit);
         Page<GrouponRuleVo> grouponList = new Page<GrouponRuleVo>();
         for (GrouponRulePo grouponRulePo : grouponRuleList) {
-//            Integer goodsId = grouponRulePo.getGoodsId();
-//            GoodsPo goods = goodsService.getGoodsById(goodsId);
-//            if (goods == null){
-//                continue;
-//              }
+            Integer goodsId = grouponRulePo.getGoodsId();
+            String str = JacksonUtil.toJson(remoteService.getGoodsById(goodsId));
+            Map map = (Map) JSON.parse(str);
+            String data = map.get("data").toString();
+            GoodsPo goodsPo=new GoodsPo();
+            try{
+                goodsPo=(GoodsPo) new ObjectMapper().readValue(data,Goods.class);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            if (goodsPo == null){
+                continue;
+              }
             GrouponRuleVo grouponRuleVo = new GrouponRuleVo();
             grouponRuleVo.setGrouponRulePo(grouponRulePo);
-//            grouponRuleVo.setGoodsPo(goods);
+            grouponRuleVo.setGoodsPo(goodsPo);
             grouponList.add(grouponRuleVo);
         }
         return grouponList;
@@ -54,9 +69,17 @@ public class GrouponRuleServiceImpl implements GrouponRuleService {
     public GrouponRuleVo getGrouponRuleById(Integer id){
         GrouponRulePo grouponRulePo = grouponRuleDao.getGrouponRuleById(id);
         GrouponRuleVo grouponRuleVo = new GrouponRuleVo();
-//        Integer GoodsId = grouponRulePo.getGoodsId();
-//        GoodsPo goods = goodsService.getGoodsById(goodsId);
-//        grouponRuleVo.setGoodsPo(goods);
+        Integer goodsId = grouponRulePo.getGoodsId();
+        String str = JacksonUtil.toJson(remoteService.getGoodsById(goodsId));
+        Map map = (Map) JSON.parse(str);
+        String data = map.get("data").toString();
+        GoodsPo goodsPo=new GoodsPo();
+        try{
+            goodsPo=(GoodsPo) new ObjectMapper().readValue(data,Goods.class);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        grouponRuleVo.setGoodsPo(goodsPo);
         grouponRuleVo.setGrouponRulePo(grouponRulePo);
         return grouponRuleVo;
     }
@@ -65,9 +88,17 @@ public class GrouponRuleServiceImpl implements GrouponRuleService {
     public GrouponRuleVo adminGetGrouponRuleById(Integer id) {
         GrouponRulePo grouponRulePo = grouponRuleDao.adminGetGrouponRuleById(id);
         GrouponRuleVo grouponRuleVo = new GrouponRuleVo();
-//        Integer GoodsId = grouponRulePo.getGoodsId();
-//        GoodsPo goods = goodsService.getGoodsById(goodsId);
-//        grouponRuleVo.setGoodsPo(goods);
+        Integer goodsId = grouponRulePo.getGoodsId();
+        String str = JacksonUtil.toJson(remoteService.getGoodsById(goodsId));
+        Map map = (Map) JSON.parse(str);
+        String data = map.get("data").toString();
+        GoodsPo goodsPo=new GoodsPo();
+        try{
+            goodsPo=(GoodsPo) new ObjectMapper().readValue(data,Goods.class);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        grouponRuleVo.setGoodsPo(goodsPo);
         grouponRuleVo.setGrouponRulePo(grouponRulePo);
         return grouponRuleVo;
     }
@@ -88,13 +119,21 @@ public class GrouponRuleServiceImpl implements GrouponRuleService {
         Page<GrouponRuleVo> grouponList = new Page<GrouponRuleVo>();
 
         for (GrouponRulePo grouponRulePo : grouponRuleList) {
-//            Integer goodsId = grouponRulePo.getGoodsId();
-//            GoodsPo goods = goodsService.getGoodsById(goodsId);
-//            if (goods == null)
-//                continue;
+            Integer goodsId = grouponRulePo.getGoodsId();
+            String str = JacksonUtil.toJson(remoteService.getGoodsById(goodsId));
+            Map map = (Map) JSON.parse(str);
+            String data = map.get("data").toString();
+            GoodsPo goodsPo=new GoodsPo();
+            try{
+                goodsPo=(GoodsPo) new ObjectMapper().readValue(data,Goods.class);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            if (goodsPo == null)
+                continue;
             GrouponRuleVo grouponRuleVo = new GrouponRuleVo();
             grouponRuleVo.setGrouponRulePo(grouponRulePo);
-//            grouponRuleVo.setGoodsPo(goods);
+            grouponRuleVo.setGoodsPo(goodsPo);
             grouponList.add(grouponRuleVo);
         }
         return grouponList;
@@ -106,13 +145,22 @@ public class GrouponRuleServiceImpl implements GrouponRuleService {
         Page<GrouponRuleVo> grouponList = new Page<GrouponRuleVo>();
 
         for (GrouponRulePo grouponRulePo : grouponRuleList) {
-//            Integer goodsId = grouponRulePo.getGoodsId();
-//            GoodsPo goods = goodsService.getGoodsById(goodsId);
-//            if (goods == null)
-//                continue;
+            Integer goodsId = grouponRulePo.getGoodsId();
+            String str = JacksonUtil.toJson(remoteService.getGoodsById(goodsId));
+            Map map = (Map) JSON.parse(str);
+            String data = map.get("data").toString();
+            GoodsPo goodsPo=new GoodsPo();
+            try{
+                goodsPo=(GoodsPo) new ObjectMapper().readValue(data,Goods.class);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            if (goodsPo == null) {
+                continue;
+            }
             GrouponRuleVo grouponRuleVo = new GrouponRuleVo();
             grouponRuleVo.setGrouponRulePo(grouponRulePo);
-//            grouponRuleVo.setGoodsPo(goods);
+            grouponRuleVo.setGoodsPo(goodsPo);
             grouponList.add(grouponRuleVo);
         }
         return grouponList;
