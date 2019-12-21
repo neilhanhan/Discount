@@ -10,40 +10,36 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @author Liu Wenhan & Zhang Bingyuan
+ * @author Liuwenhan & Zhang Bingyuan
  */
 @RestController
-@RequestMapping(value = "/discountService", produces = "application/json;charset=UTF-8", consumes = "application/json;charset=UTF-8")
+@RequestMapping(value = "/discountService")
 public class PresaleRuleController {
 
     @Autowired
     PresaleRuleService presaleRuleService;
 
-
     /**
-     * 下架预售规则
+     * 1下架预售规则
      *
      * @param id 预售规则ID
-     * @return 无
+     * @return Object
      */
     @PostMapping("/presaleRules/{id}/invalid")
     public Object downPresaleRuleById(@PathVariable Integer id){
-        if(presaleRuleService.downPresaleRuleById(id)){
-            return ResponseUtil.ok();
+        if(id<0){
+            return ResponseUtil.invaildParameter();
         }else {
-            /**
-             * 下架失败的错误码缺失
-             */
-            return ResponseUtil.fail();
+            return presaleRuleService.downPresaleRuleById(id);
         }
     }
 
     /**
-     * 管理员查看预售商品列表
+     * 2管理员查看预售商品列表
      *
      * @param page 页数
      * @param limit 分页大小
-     * @return List<PresaleRuleVo>
+     * @return Object
      */
     @GetMapping("/admin/presaleGoods")
     public Object adminGetPresaleGoods(@RequestParam(defaultValue = "1") Integer page,
@@ -51,59 +47,54 @@ public class PresaleRuleController {
         if(page<=0||limit<0){
             return ResponseUtil.invaildParameter();
         }
-        List<PresaleRuleVo> presaleRuleVoList = presaleRuleService.adminGetPresaleRule(page, limit);
-        return ResponseUtil.okList(presaleRuleVoList);
+        return presaleRuleService.adminGetPresaleRule(page, limit);
     }
 
     /**
-     * 删除预售信息
+     * 3删除预售信息
      *
      * @param id 预售规则ID
-     * @return 无
+     * @return Object
      */
     @DeleteMapping("/presaleRules/{id}")
     public Object deletePresaleRule(@PathVariable Integer id){
-        if(id==null){
+        if(id<0){
             return ResponseUtil.invaildParameter();
-        }
-        else if(presaleRuleService.deletePresaleRule(id)){
-            return ResponseUtil.ok();
-        }
-        else{
-            return ResponseUtil.presaleDeleteFail();
+        }else {
+            return presaleRuleService.deletePresaleRule(id);
         }
     }
 
     /**
-     * 用户查看预售信息详情
+     * 4用户查看预售信息详情
      *
      * @param id 预售规则ID
-     * @return PresaleRuleVo
+     * @return Object
      */
     @GetMapping("/presaleRules/{id}")
     public Object getPresaleRuleById(@PathVariable Integer id){
-        if(id==null){
+        if(id<0){
             return ResponseUtil.invaildParameter();
+        }else {
+            return presaleRuleService.getPresaleRuleById(id);
         }
-        PresaleRuleVo presaleRuleVo = presaleRuleService.getPresaleRuleById(id);
-        return ResponseUtil.ok(presaleRuleVo);
     }
 
     /**
-     * 用户查看预售商品列表（已上架）
+     * 5用户查看预售商品列表（已上架）
      *
      * @param page 页数
      * @param limit 分页大小
-     * @return List<PresaleRuleVo>
+     * @return Object
      */
     @GetMapping("/presaleGoods")
     public Object customerGetPresaleGoods(@RequestParam(defaultValue = "1") Integer page,
                                           @RequestParam(defaultValue = "10") Integer limit){
         if(page<=0||limit<0){
             return ResponseUtil.invaildParameter();
+        }else {
+            return presaleRuleService.customerGetPresaleRule(page, limit);
         }
-        List<PresaleRuleVo> presaleRuleVoList = presaleRuleService.customerGetPresaleRule(page, limit);
-        return ResponseUtil.okList(presaleRuleVoList);
     }
 
     /**

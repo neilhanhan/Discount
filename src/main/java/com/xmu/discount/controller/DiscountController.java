@@ -9,22 +9,13 @@ import com.xmu.discount.service.CouponService;
 import com.xmu.discount.service.GrouponRuleService;
 import com.xmu.discount.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 /**
- * @author Liuwenhan
+ * @author Zhang Bingyuan
  */
-
-@Component
-@EnableScheduling
-@EnableAsync
 @RestController
 @RequestMapping(value = "/discountService", produces = "application/json;charset=UTF-8", consumes = "application/json;charset=UTF-8")
 public class DiscountController {
@@ -36,17 +27,7 @@ public class DiscountController {
     @Autowired
     public CouponRuleService couponRuleService;
 
-    /**
-     *
-     * 定时任务：每天晚上12点检查前一天完成的团购活动并退款
-     *
-     * @throws InterruptedException
-     */
-    @Async
-    @Scheduled(cron = "0 0 0 1/1 * ?")
-    public void checkFinishedGrouponRule() throws InterruptedException{
-        grouponRuleService.checkFinishedGrouponRule();
-    }
+
 
     /**
      * 管理员查看部分优惠券规则列表

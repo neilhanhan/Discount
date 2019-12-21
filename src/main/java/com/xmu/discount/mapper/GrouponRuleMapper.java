@@ -30,13 +30,15 @@ public interface GrouponRuleMapper {
 
     /**
      * 用户获取团购规则详细信息
+     *
      * @param id
      * @return GrouponRulePo
      */
     GrouponRulePo getGrouponRuleById(Integer id);
 
     /**
-     * 用户获取团购规则详细信息
+     * 管理员获取团购规则详细信息
+     *
      * @param id
      * @return GrouponRulePo
      */

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 /**
  * @Author Zhang BingYuan
  * @Date 2019/12/18 20:52
+ * 可以删除掉的无用类
  */
 @Repository
 public class GoodsDao {
@@ -18,5 +19,4 @@ public class GoodsDao {
         GoodsPo goodsPoById = goodsMapper.findGoodsPoById(goodsId);
         return goodsPoById;
     }
-
 }

@@ -109,54 +109,8 @@ public class ResponseUtil {
         return obj;
     }
 
-    public static Object invaildParameter(){
-        return fail(580,"参数不合法");
+    public static Object invaildParameter(){return fail(580,"参数不合法");
     }
-
-    public static Object grouponRuleUnknown() {
-        return fail(720, "该团购规则是无效团购规则（不在数据库里的或者逻辑删除）");
-    }
-
-    public static Object grouponUpdateFail() {
-        return fail(721, "团购规则修改失败");
-    }
-
-    public static Object grouponInsertFail() {
-        return fail(722, "团购规则添加失败");
-    }
-
-    public static Object grouponDeleteFail() {
-        return fail(723, "团购规则删除失败");
-    }
-
-    public static Object joinGrouponFail() {
-        return fail(724, "无法参与团购(未开始或下架）");
-    }
-
-    public static Object presaleRuleUnknown() {
-        return fail(730, "无效预售规则（不存在或失效）");
-    }
-
-    public static Object presaleUpdateFail() {
-        return fail(731, "预售规则修改失败");
-    }
-
-    public static Object presaleInsertFail() {
-        return fail(732, "团购规则添加失败");
-    }
-
-    public static Object presaleDeleteFail() {
-        return fail(733, "预售规则删除失败");
-    }
-
-    public static Object joinPresaleFail() {
-        return fail(734, "预售商品无法购买");
-    }
-
-    public static Object payoutPresaleFail() {
-        return fail(735, "支付预售尾款失败");
-    }
-
     public static Object invaildCouponRuleFail() {
         return fail(710, "该优惠券规则是无效优惠券规则（不在数据库里的或者逻辑删除）");
     }
@@ -187,5 +141,45 @@ public class ResponseUtil {
 
     public static Object checkCouponRuleFail(){
         return  fail(717,"查看优惠券规则失败");
+    }
+
+    public static Object grouponRuleUnknown() { return fail(720, "该团购规则是无效团购规则（不在数据库里的或者逻辑删除）"); }
+
+    public static Object grouponUpdateFail() {
+        return fail(721, "团购规则修改失败");
+    }
+
+    public static Object grouponInsertFail() { return fail(722, "团购规则添加失败"); }
+
+    public static Object grouponDeleteFail() {
+        return fail(723, "团购规则删除失败");
+    }
+
+    public static Object joinGrouponFail() {
+        return fail(724, "无法参与团购(未开始或下架）");
+    }
+
+    public static Object presaleRuleUnknown() {
+        return fail(730, "无效预售规则（不存在或失效）");
+    }
+
+    public static Object presaleUpdateFail() {
+        return fail(731, "预售规则修改失败");
+    }
+
+    public static Object presaleInsertFail() {
+        return fail(732, "预售规则添加失败");
+    }
+
+    public static Object presaleDeleteFail() {
+        return fail(733, "预售规则删除失败");
+    }
+
+    public static Object joinPresaleFail() {
+        return fail(734, "预售商品无法购买");
+    }
+
+    public static Object payoutPresaleFail() {
+        return fail(735, "支付预售尾款失败");
     }
 }

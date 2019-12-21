@@ -11,34 +11,41 @@ import java.util.List;
 public interface PresaleRuleService {
 
     /**
+     * 下架预售规则
+     * @param id 预售规则Id
+     * @return Object
+     */
+    Object downPresaleRuleById(Integer id);
+
+    /**
      * 管理员获取预售规则
      * @param page 页数
      * @param limit 分页大小
-     * @return List<PresaleRuleVo>
+     * @return Object
      */
-    List<PresaleRuleVo> adminGetPresaleRule(Integer page, Integer limit);
+    Object adminGetPresaleRule(Integer page, Integer limit);
 
     /**
      * 用户获取预售规则
      * @param page 页数
      * @param limit 分页大小
-     * @return ist<PresaleRuleVo>
+     * @return Object
      */
-    List<PresaleRuleVo> customerGetPresaleRule(Integer page, Integer limit);
+    Object customerGetPresaleRule(Integer page, Integer limit);
 
     /**
      * 删除预售规则
      * @param id 预售规则ID
      * @return Boolean
      */
-    boolean deletePresaleRule(Integer id);
+    Object deletePresaleRule(Integer id);
 
     /**
      * 获取团购规则
      * @param id 预售规则ID
      * @return PresaleRuleVo
      */
-    PresaleRuleVo getPresaleRuleById(Integer id);
+    Object getPresaleRuleById(Integer id);
 
     /**
      * 数据库中增加一个PresaleRule
@@ -73,11 +80,4 @@ public interface PresaleRuleService {
      * @return
      */
     public PresaleRuleVo findPresaleRuleVoById(Integer id);
-
-    /**
-     * 下架预售规则
-     * @param id 预售规则Id
-     * @return Boolean
-     */
-    Boolean downPresaleRuleById(Integer id);
 }

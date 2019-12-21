@@ -2,7 +2,6 @@ package com.xmu.discount.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.pagehelper.Page;
 import com.xmu.discount.dao.PresaleRuleDao;
 import com.xmu.discount.domain.Goods;
 import com.xmu.discount.domain.GoodsPo;
@@ -25,93 +24,43 @@ import java.util.Map;
 public class PresaleRuleServiceImpl implements PresaleRuleService {
     @Autowired
     PresaleRuleDao presaleRuleDao;
-//    @Autowired
-//    OrderService orderService;
+
     @Autowired
-    GoodsService goodsInfoService;
+    GoodsService goodsService;
 
     @Override
-    public List<PresaleRuleVo> adminGetPresaleRule(Integer page, Integer limit) {
-        List<PresaleRule> presaleRuleList = presaleRuleDao.adminGetPresaleRule(page, limit);
-        if (presaleRuleList.size()==0) {
-            return new ArrayList<PresaleRuleVo>();
-        }
-        Page<PresaleRuleVo> presaleRuleVoList = new Page<PresaleRuleVo>();
-
-        for (PresaleRule presaleRule : presaleRuleList) {
-            Integer goodsId = presaleRule.getGoodsId();
-            String str = JacksonUtil.toJson(goodsInfoService.getGoodsById(goodsId));
-            Map map = (Map) JSON.parse(str);
-            String data = map.get("data").toString();
-            GoodsPo goodsPo=new GoodsPo();
-            try{
-                goodsPo=(GoodsPo) new ObjectMapper().readValue(data, Goods.class);
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-            if (goodsPo == null) {
-                continue;
-            }
-            PresaleRuleVo presaleRuleVo = new PresaleRuleVo();
-            presaleRuleVo.setPresaleRule(presaleRule);
-            presaleRuleVo.setGoodsPo(goodsPo);
-            presaleRuleVoList.add(presaleRuleVo);
-        }
-        return presaleRuleVoList;
+    public Object adminGetPresaleRule(Integer page, Integer limit) {
+        return presaleRuleDao.adminGetPresaleRule(page,limit);
     }
 
     @Override
-    public List<PresaleRuleVo> customerGetPresaleRule(Integer page, Integer limit) {
-        List<PresaleRule> presaleRuleList = presaleRuleDao.customerGetPresaleRule(page, limit);
-        if (presaleRuleList.size()==0) {
-            return new ArrayList<PresaleRuleVo>();
-        }
-        Page<PresaleRuleVo> presaleRuleVoList = new Page<PresaleRuleVo>();
-
-        for (PresaleRule presaleRule : presaleRuleList) {
-            Integer goodsId = presaleRule.getGoodsId();
-            String str = JacksonUtil.toJson(goodsInfoService.getGoodsById(goodsId));
-            Map map = (Map) JSON.parse(str);
-            String data = map.get("data").toString();
-            GoodsPo goodsPo=new GoodsPo();
-            try{
-                goodsPo=(GoodsPo) new ObjectMapper().readValue(data, Goods.class);
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-            if (goodsPo == null) {
-                continue;
-            }
-            PresaleRuleVo presaleRuleVo = new PresaleRuleVo();
-            presaleRuleVo.setPresaleRule(presaleRule);
-            presaleRuleVo.setGoodsPo(goodsPo);
-            presaleRuleVoList.add(presaleRuleVo);
-        }
-        return presaleRuleVoList;
+    public Object customerGetPresaleRule(Integer page, Integer limit) {
+        return presaleRuleDao.customerGetPresaleRule(page,limit);
     }
 
     @Override
-    public boolean deletePresaleRule(Integer id) {
+    public Object deletePresaleRule(Integer id) {
         return presaleRuleDao.deletePresaleRule(id);
     }
 
     @Override
-    public PresaleRuleVo getPresaleRuleById(Integer id) {
-        PresaleRule presaleRule = presaleRuleDao.getPresaleRuleById(id);
-        PresaleRuleVo presaleRuleVo = new PresaleRuleVo();
-        Integer goodsId = presaleRule.getGoodsId();
-        String str = JacksonUtil.toJson(goodsInfoService.getGoodsById(goodsId));
-        Map map = (Map) JSON.parse(str);
-        String data = map.get("data").toString();
-        GoodsPo goodsPo=new GoodsPo();
-        try{
-            goodsPo=(GoodsPo) new ObjectMapper().readValue(data, Goods.class);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        presaleRuleVo.setGoodsPo(goodsPo);
-        presaleRuleVo.setPresaleRule(presaleRule);
-        return presaleRuleVo;
+    public Object getPresaleRuleById(Integer id) {
+        return presaleRuleDao.getPresaleRuleById(id);
+//        PresaleRule presaleRule = presaleRuleDao.getPresaleRuleById(id);
+//        PresaleRuleVo presaleRuleVo = new PresaleRuleVo();
+//        Integer goodsId = presaleRule.getGoodsId();
+//        String str = JacksonUtil.toJson(goodsService.getGoodsById(goodsId));
+//        Map map = (Map) JSON.parse(str);
+//        String data = map.get("data").toString();
+//        GoodsPo goodsPo=new GoodsPo();
+//        try{
+//            goodsPo=(GoodsPo) new ObjectMapper().readValue(data, Goods.class);
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }
+//        presaleRuleVo.setGoodsPo(goodsPo);
+//        presaleRuleVo.setPresaleRule(presaleRule);
+//        return presaleRuleVo;
     }
 
 
@@ -144,7 +93,7 @@ public class PresaleRuleServiceImpl implements PresaleRuleService {
         if (presaleRules.size()==0) {
             return new ArrayList<PresaleRuleVo>();
         }
-        String str = JacksonUtil.toJson(goodsInfoService.getGoodsById(goodsId));
+        String str = JacksonUtil.toJson(goodsService.getGoodsById(goodsId));
         Map map = (Map) JSON.parse(str);
         String data = map.get("data").toString();
         GoodsPo goodsPo=new GoodsPo();
@@ -187,7 +136,7 @@ public class PresaleRuleServiceImpl implements PresaleRuleService {
         PresaleRuleVo presaleRuleVo = new PresaleRuleVo();
         PresaleRule presaleRuleById = presaleRuleDao.findPresaleRuleById(id);
         Integer goodsId = presaleRuleById.getGoodsId();
-        String str = JacksonUtil.toJson(goodsInfoService.getGoodsById(goodsId));
+        String str = JacksonUtil.toJson(goodsService.getGoodsById(goodsId));
         Map map = (Map) JSON.parse(str);
         String data = map.get("data").toString();
         GoodsPo goodsPo=new GoodsPo();
@@ -210,9 +159,7 @@ public class PresaleRuleServiceImpl implements PresaleRuleService {
      * @return Boolean
      */
     @Override
-    public Boolean downPresaleRuleById(Integer id) {
-        PresaleRule presaleRule = presaleRuleDao.getPresaleRuleById(id);
-//        orderService.refundOfPresaleRule(presaleRule);
+    public Object downPresaleRuleById(Integer id) {
         return presaleRuleDao.downPresaleRuleById(id);
     }
 

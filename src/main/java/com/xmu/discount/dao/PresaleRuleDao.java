@@ -1,16 +1,24 @@
 package com.xmu.discount.dao;
 
-import com.github.pagehelper.PageHelper;
-import com.xmu.discount.domain.CouponRulePo;
+import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.xmu.discount.domain.Goods;
+import com.xmu.discount.domain.GoodsPo;
 import com.xmu.discount.domain.PresaleRule;
 import com.xmu.discount.mapper.PresaleRuleMapper;
+import com.xmu.discount.service.GoodsService;
+import com.xmu.discount.util.JacksonUtil;
+import com.xmu.discount.util.Packing;
 import com.xmu.discount.util.PageUtil;
+import com.xmu.discount.util.ResponseUtil;
+import com.xmu.discount.vo.PresaleRuleVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Liuwenhan
@@ -21,52 +29,109 @@ public class PresaleRuleDao {
     @Autowired
     PresaleRuleMapper presaleRuleMapper;
 
-    public boolean deletePresaleRule(Integer id) {
-        return presaleRuleMapper.deletePresaleRule(id);
+    @Autowired
+    GoodsService goodsService;
+
+//    @Autowired
+//    OrderService orderService;
+
+    public Object downPresaleRuleById(Integer id) {
+        LocalDateTime modifiedTime= LocalDateTime.now();
+        if(presaleRuleMapper.findPresaleRuleById(id) == null){
+            return ResponseUtil.presaleRuleUnknown();
+        }else if(presaleRuleMapper.downPresaleRuleById(id,modifiedTime)){
+//            orderService.refundOfPresaleRule(presaleRule);
+            return ResponseUtil.ok();
+        }else {
+            return ResponseUtil.fail(736,"预售活动下架失败");
+        }
     }
 
-    public List<PresaleRule> adminGetPresaleRule(Integer page, Integer limit) {
-        List<PresaleRule> presaleRules = presaleRuleMapper.adminGetPresaleRule();
-        if(presaleRules.size()==0) {
-            return presaleRules;
+    public Object deletePresaleRule(Integer id) {
+        if(presaleRuleMapper.deletePresaleRule(id)){
+            return ResponseUtil.ok();
+        }else {
+            return ResponseUtil.grouponDeleteFail();
         }
-        List<Object> presaleRuleObjects = new ArrayList<>(presaleRules.size());
-        for (PresaleRule presaleRule : presaleRules) {
-            presaleRuleObjects.add(presaleRule);
-        }
-        presaleRuleObjects=PageUtil.pageStart(page, limit,presaleRuleObjects);
-        presaleRules.clear();
-        if (presaleRuleObjects.size()==0) {
-            return presaleRules;
-        }
-        for (Object presaleRuleObject : presaleRuleObjects) {
-            presaleRules.add((PresaleRule)presaleRuleObject);
-        }
-        return presaleRules;
     }
 
-    public List<PresaleRule> customerGetPresaleRule(Integer page, Integer limit) {
-        List<PresaleRule> presaleRules = presaleRuleMapper.customerGetPresaleRule();
-        if(presaleRules.size()==0) {
-            return presaleRules;
+    public Object adminGetPresaleRule(Integer page, Integer limit) {
+        List<PresaleRule> presaleRuleList = presaleRuleMapper.adminGetPresaleRule();
+        if (presaleRuleList.size()==0) {
+            return ResponseUtil.presaleRuleUnknown();
         }
-        List<Object> presaleRuleObjects = new ArrayList<>(presaleRules.size());
-        for (PresaleRule presaleRule : presaleRules) {
-            presaleRuleObjects.add(presaleRule);
+        List<PresaleRuleVo> presaleRuleVoList = Packing.presaleRulePacking(presaleRuleList);
+        int pagecount=presaleRuleVoList.size()/limit;
+        int remain=presaleRuleVoList.size()%limit;
+        if(remain>0){
+            pagecount++;
         }
-        presaleRuleObjects=PageUtil.pageStart(page, limit,presaleRuleObjects);
-        presaleRules.clear();
-        if (presaleRuleObjects.size()==0) {
-            return presaleRules;
+        if(page>pagecount) {
+            return ResponseUtil.invaildParameter();
         }
-        for (Object presaleRuleObject : presaleRuleObjects) {
-            presaleRules.add((PresaleRule)presaleRuleObject);
+        List<PresaleRuleVo> subList;
+        if(remain==0) {
+            subList=presaleRuleVoList.subList((page-1)*limit,page*limit);
         }
-        return presaleRules;
+        else{
+            if (page==pagecount){
+                subList=presaleRuleVoList.subList((page-1)*limit,presaleRuleVoList.size());
+            }else{
+                subList=presaleRuleVoList.subList((page-1)*limit,page*limit);
+            }
+        }
+        return ResponseUtil.ok(subList);
     }
 
-    public PresaleRule getPresaleRuleById(Integer id) {
-        return presaleRuleMapper.getPresaleRuleById(id);
+    public Object customerGetPresaleRule(Integer page, Integer limit) {
+        List<PresaleRule> presaleRuleList = presaleRuleMapper.customerGetPresaleRule();
+        if (presaleRuleList.size()==0) {
+            return ResponseUtil.presaleRuleUnknown();
+        }
+        List<PresaleRuleVo> presaleRuleVoList = Packing.presaleRulePacking(presaleRuleList);
+        int pagecount=presaleRuleVoList.size()/limit;
+        int remain=presaleRuleVoList.size()%limit;
+        if(remain>0){
+            pagecount++;
+        }
+        if(page>pagecount) {
+            return ResponseUtil.invaildParameter();
+        }
+        List<PresaleRuleVo> subList;
+        if(remain==0) {
+            subList=presaleRuleVoList.subList((page-1)*limit,page*limit);
+        }
+        else{
+            if (page==pagecount){
+                subList=presaleRuleVoList.subList((page-1)*limit,presaleRuleVoList.size());
+            }else{
+                subList=presaleRuleVoList.subList((page-1)*limit,page*limit);
+            }
+        }
+        return ResponseUtil.ok(subList);
+    }
+
+    public Object getPresaleRuleById(Integer id) {
+        PresaleRule presaleRule = presaleRuleMapper.getPresaleRuleById(id);
+        if(presaleRule == null){
+            return ResponseUtil.presaleRuleUnknown();
+        }else {
+            PresaleRuleVo presaleRuleVo = new PresaleRuleVo();
+            Integer goodsId = presaleRule.getGoodsId();
+            String str = JacksonUtil.toJson(goodsService.getGoodsById(goodsId));
+            Map map = (Map) JSON.parse(str);
+            String data = map.get("data").toString();
+            GoodsPo goodsPo=new GoodsPo();
+            try{
+                goodsPo=(GoodsPo) new ObjectMapper().readValue(data, Goods.class);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            presaleRuleVo.setGoodsPo(goodsPo);
+            presaleRuleVo.setPresaleRule(presaleRule);
+            return ResponseUtil.ok(presaleRuleVo);
+        }
+
     }
 
     /**
@@ -133,10 +198,5 @@ public class PresaleRuleDao {
     public PresaleRule findPresaleRuleById(Integer id) {
         PresaleRule presaleRule = presaleRuleMapper.findPresaleRuleById(id);
         return  presaleRule;
-    }
-
-    public Boolean downPresaleRuleById(Integer id) {
-        LocalDateTime modifiedTime= LocalDateTime.now();
-        return presaleRuleMapper.downPresaleRuleById(id,modifiedTime);
     }
 }
