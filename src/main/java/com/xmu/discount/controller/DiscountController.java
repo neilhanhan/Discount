@@ -161,7 +161,12 @@ public class DiscountController {
         return ResponseUtil.ok(availableCoupons);
     }
 
-
+    /**
+     * 下架优惠券规则
+     *
+     * @param id
+     * @return
+     */
     @PostMapping("/couponRules/{id}/invalid")
     public Object adminUnShelveCouponRules(@PathVariable Integer id) {
         Boolean bool = couponRuleService.adminUnShelveCouponRules(id);

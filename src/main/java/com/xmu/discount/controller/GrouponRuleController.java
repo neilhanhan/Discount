@@ -57,7 +57,13 @@ public class GrouponRuleController {
         if(goodsId==null||goodsId<0){
             return ResponseUtil.badArgumentValue();
         }
+        if(page<=0||limit<0){
+            return ResponseUtil.invaildParameter();
+        }
         List<GrouponRuleVo> grouponRuleVoList = grouponRuleService.getGrouponRuleByGoodsId(goodsId,page,limit);
+        if(grouponRuleVoList == null){
+            return ResponseUtil.grouponRuleUnknown();
+        }
         return ResponseUtil.okList(grouponRuleVoList);
     }
 
@@ -79,7 +85,7 @@ public class GrouponRuleController {
             return ResponseUtil.ok(grouponRulePo);
         }
         else{
-            return ResponseUtil.fail();
+            return ResponseUtil.grouponInsertFail();
         }
     }
 
@@ -138,7 +144,7 @@ public class GrouponRuleController {
             return ResponseUtil.ok(grouponRulePo);
         }
         else{
-            return ResponseUtil.fail();
+            return ResponseUtil.grouponUpdateFail();
         }
     }
 
@@ -159,7 +165,7 @@ public class GrouponRuleController {
             return ResponseUtil.ok();
         }
         else {
-            return ResponseUtil.fail();
+            return ResponseUtil.grouponDeleteFail();
         }
     }
 

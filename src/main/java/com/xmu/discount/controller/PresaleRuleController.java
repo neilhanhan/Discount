@@ -31,7 +31,7 @@ public class PresaleRuleController {
         if(presaleRuleService.downPresaleRuleById(id)){
             return ResponseUtil.ok();
         }else {
-            return ResponseUtil.fail();
+            return ResponseUtil.fail();//是否应有对应的错误码
         }
     }
 
@@ -45,6 +45,9 @@ public class PresaleRuleController {
     @GetMapping("/admin/presaleGoods")
     public Object adminGetPresaleGoods(@RequestParam(defaultValue = "1") Integer page,
                                        @RequestParam(defaultValue = "10") Integer limit){
+        if(page<=0||limit<0){
+            return ResponseUtil.invaildParameter();
+        }
         List<PresaleRuleVo> presaleRuleVoList = presaleRuleService.adminGetPresaleRule(page, limit);
         return ResponseUtil.okList(presaleRuleVoList);
     }
@@ -64,7 +67,7 @@ public class PresaleRuleController {
             return ResponseUtil.ok();
         }
         else{
-            return ResponseUtil.fail();
+            return ResponseUtil.presaleDeleteFail();
         }
     }
 
@@ -93,6 +96,9 @@ public class PresaleRuleController {
     @GetMapping("/presaleGoods")
     public Object customerGetPresaleGoods(@RequestParam(defaultValue = "1") Integer page,
                                           @RequestParam(defaultValue = "10") Integer limit){
+        if(page<=0||limit<0){
+            return ResponseUtil.invaildParameter();
+        }
         List<PresaleRuleVo> presaleRuleVoList = presaleRuleService.customerGetPresaleRule(page, limit);
         return ResponseUtil.okList(presaleRuleVoList);
     }
@@ -109,6 +115,9 @@ public class PresaleRuleController {
     public Object getPresaleRuleVoByInf(@RequestParam("goodsId") Integer goodsId,
                                         @RequestParam("page") Integer page,
                                         @RequestParam("limit") Integer limit) {
+        if(page<=0||limit<0){
+            return ResponseUtil.invaildParameter();
+        }
         List<PresaleRuleVo> presaleRuleVos = presaleRuleService.findPresaleRuleVosByGoodsId(goodsId, page, limit);
         return ResponseUtil.ok(presaleRuleVos);
     }

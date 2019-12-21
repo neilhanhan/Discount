@@ -109,6 +109,9 @@ public class ResponseUtil {
         obj.put("errmsg", errmsg);
         return obj;
     }
+    public static Object invaildParameter(){
+        return fail(580,"参数不合法");
+    }
 
     public static Object badArgument() {
         return fail(401, "参数不对");
@@ -118,32 +121,8 @@ public class ResponseUtil {
         return fail(402, "参数值不对");
     }
 
-    public static Object unlogin() {
-        return fail(501, "请登录");
-    }
-
-    public static Object serious() {
-        return fail(502, "系统内部错误");
-    }
-
-    public static Object unsupport() {
-        return fail(503, "业务不支持");
-    }
-
-    public static Object updatedDateExpired() {
-        return fail(504, "更新数据已经失效");
-    }
-
-    public static Object updatedDataFailed() {
-        return fail(505, "更新数据失败");
-    }
-
-    public static Object unauthz() {
-        return fail(506, "无操作权限");
-    }
-
     public static Object grouponRuleUnknown() {
-        return fail(720, "无效团购规则（不存在或失效）");
+        return fail(720, "该团购规则是无效团购规则（不在数据库里的或者逻辑删除）");
     }
 
     public static Object grouponUpdateFail() {
@@ -159,15 +138,15 @@ public class ResponseUtil {
     }
 
     public static Object joinGrouponFail() {
-        return fail(724, "无法参与团购");
+        return fail(724, "无法参与团购(未开始或下架）");
     }
 
     public static Object presaleRuleUnknown() {
-        return fail(730, "无效团购规则（不存在或失效）");
+        return fail(730, "无效预售规则（不存在或失效）");
     }
 
     public static Object presaleUpdateFail() {
-        return fail(731, "团购规则修改失败");
+        return fail(731, "预售规则修改失败");
     }
 
     public static Object presaleInsertFail() {
@@ -175,7 +154,7 @@ public class ResponseUtil {
     }
 
     public static Object presaleDeleteFail() {
-        return fail(733, "团购规则删除失败");
+        return fail(733, "预售规则删除失败");
     }
 
     public static Object joinPresaleFail() {
@@ -212,5 +191,9 @@ public class ResponseUtil {
 
     public static Object couponUseFail() {
         return fail(716, "该优惠券无法使用（存在数据库中，但是“不在使用时间内”等情形）");
+    }
+
+    public static Object checkCouponRuleFail(){
+        return  fail(717,"查看优惠券规则失败");
     }
 }
