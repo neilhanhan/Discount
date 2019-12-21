@@ -49,7 +49,7 @@ public class DiscountController {
     }
 
     /**
-     * 管理员查看部分优惠券列表
+     * 管理员查看部分优惠券规则列表
      *
      * @param page
      * @param limit
@@ -62,7 +62,7 @@ public class DiscountController {
     }
 
     /**
-     * 普通用户查看优惠券
+     * 普通用户查看优惠券规则
      */
     @GetMapping("/couponRules")
     public Object userGetAllCouponRulePos(@RequestParam("page") Integer page, @RequestParam("limit") Integer limit) {
@@ -158,6 +158,9 @@ public class DiscountController {
     @PostMapping("/coupons/availableCoupons")
     public Object getAvailableCoupons(@RequestBody List<CartItem> cartItemList) throws Exception {
         List<Coupon> availableCoupons = couponService.getAvailableCoupons(cartItemList);
+        if(availableCoupons.size()==0) {
+            return ResponseUtil.checkCouponRuleFail();
+        }
         return ResponseUtil.ok(availableCoupons);
     }
 
@@ -171,7 +174,7 @@ public class DiscountController {
     public Object adminUnShelveCouponRules(@PathVariable Integer id) {
         Boolean bool = couponRuleService.adminUnShelveCouponRules(id);
         if (!bool) {
-            return ResponseUtil.fail();
+            return ResponseUtil.invaildCouponFail();
         }
         return ResponseUtil.ok();
     }
