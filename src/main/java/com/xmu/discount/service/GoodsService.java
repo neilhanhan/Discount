@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  */
 @Component
 @FeignClient(value = "goodsInfoService")
-public interface GoodsInfoService {
+public interface GoodsService {
 
     /**
      * 通过Id获取goods

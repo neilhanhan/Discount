@@ -7,7 +7,7 @@ import com.xmu.discount.dao.PresaleRuleDao;
 import com.xmu.discount.domain.Goods;
 import com.xmu.discount.domain.GoodsPo;
 import com.xmu.discount.domain.PresaleRule;
-import com.xmu.discount.service.GoodsInfoService;
+import com.xmu.discount.service.GoodsService;
 import com.xmu.discount.service.PresaleRuleService;
 import com.xmu.discount.util.JacksonUtil;
 import com.xmu.discount.vo.PresaleRuleVo;
@@ -28,7 +28,7 @@ public class PresaleRuleServiceImpl implements PresaleRuleService {
 //    @Autowired
 //    OrderService orderService;
     @Autowired
-    GoodsInfoService goodsInfoService;
+    GoodsService goodsInfoService;
 
     @Override
     public List<PresaleRuleVo> adminGetPresaleRule(Integer page, Integer limit) {

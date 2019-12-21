@@ -8,7 +8,7 @@ import com.xmu.discount.domain.Goods;
 import com.xmu.discount.domain.GoodsPo;
 import com.xmu.discount.domain.GrouponRule;
 import com.xmu.discount.domain.GrouponRulePo;
-import com.xmu.discount.service.GoodsInfoService;
+import com.xmu.discount.service.GoodsService;
 import com.xmu.discount.service.GrouponRuleService;
 import com.xmu.discount.util.JacksonUtil;
 import com.xmu.discount.vo.GrouponRuleVo;
@@ -32,7 +32,7 @@ public class GrouponRuleServiceImpl implements GrouponRuleService {
 //    public OrderService orderService;
 
     @Autowired
-    public GoodsInfoService goodsInfoService;
+    public GoodsService goodsService;
 
     @Override
     public List<GrouponRuleVo> getGrouponRuleByGoodsId(Integer id, Integer page, Integer limit){
@@ -40,7 +40,7 @@ public class GrouponRuleServiceImpl implements GrouponRuleService {
         Page<GrouponRuleVo> grouponList = new Page<GrouponRuleVo>();
         for (GrouponRulePo grouponRulePo : grouponRuleList) {
             Integer goodsId = grouponRulePo.getGoodsId();
-            String str = JacksonUtil.toJson(goodsInfoService.getGoodsById(goodsId));
+            String str = JacksonUtil.toJson(goodsService.getGoodsById(goodsId));
             Map map = (Map) JSON.parse(str);
             String data = map.get("data").toString();
             GoodsPo goodsPo=new GoodsPo();
@@ -70,7 +70,7 @@ public class GrouponRuleServiceImpl implements GrouponRuleService {
         GrouponRulePo grouponRulePo = grouponRuleDao.getGrouponRuleById(id);
         GrouponRuleVo grouponRuleVo = new GrouponRuleVo();
         Integer goodsId = grouponRulePo.getGoodsId();
-        String str = JacksonUtil.toJson(goodsInfoService.getGoodsById(goodsId));
+        String str = JacksonUtil.toJson(goodsService.getGoodsById(goodsId));
         Map map = (Map) JSON.parse(str);
         String data = map.get("data").toString();
         GoodsPo goodsPo=new GoodsPo();
@@ -89,7 +89,7 @@ public class GrouponRuleServiceImpl implements GrouponRuleService {
         GrouponRulePo grouponRulePo = grouponRuleDao.adminGetGrouponRuleById(id);
         GrouponRuleVo grouponRuleVo = new GrouponRuleVo();
         Integer goodsId = grouponRulePo.getGoodsId();
-        String str = JacksonUtil.toJson(goodsInfoService.getGoodsById(goodsId));
+        String str = JacksonUtil.toJson(goodsService.getGoodsById(goodsId));
         Map map = (Map) JSON.parse(str);
         String data = map.get("data").toString();
         GoodsPo goodsPo=new GoodsPo();
@@ -120,7 +120,7 @@ public class GrouponRuleServiceImpl implements GrouponRuleService {
 
         for (GrouponRulePo grouponRulePo : grouponRuleList) {
             Integer goodsId = grouponRulePo.getGoodsId();
-            String str = JacksonUtil.toJson(goodsInfoService.getGoodsById(goodsId));
+            String str = JacksonUtil.toJson(goodsService.getGoodsById(goodsId));
             Map map = (Map) JSON.parse(str);
             String data = map.get("data").toString();
             GoodsPo goodsPo=new GoodsPo();
@@ -146,7 +146,7 @@ public class GrouponRuleServiceImpl implements GrouponRuleService {
 
         for (GrouponRulePo grouponRulePo : grouponRuleList) {
             Integer goodsId = grouponRulePo.getGoodsId();
-            String str = JacksonUtil.toJson(goodsInfoService.getGoodsById(goodsId));
+            String str = JacksonUtil.toJson(goodsService.getGoodsById(goodsId));
             Map map = (Map) JSON.parse(str);
             String data = map.get("data").toString();
             GoodsPo goodsPo=new GoodsPo();
