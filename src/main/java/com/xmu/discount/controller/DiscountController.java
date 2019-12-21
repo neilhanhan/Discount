@@ -57,6 +57,9 @@ public class DiscountController {
      */
     @GetMapping("/admin/couponRules")
     public Object adminGetAllCouponRulePos(@RequestParam("page") Integer page, @RequestParam("limit") Integer limit) {
+        if(page<=0||limit<0){
+            return ResponseUtil.invaildParameter();
+        }
         List<CouponRulePo> couponRulePos = couponRuleService.adminGetAllCouponRulePos(page, limit);
         if (couponRulePos.size()==0) {
             return ResponseUtil.checkCouponRuleFail();
@@ -69,6 +72,9 @@ public class DiscountController {
      */
     @GetMapping("/couponRules")
     public Object userGetAllCouponRulePos(@RequestParam("page") Integer page, @RequestParam("limit") Integer limit) {
+        if(page<=0||limit<0){
+            return ResponseUtil.invaildParameter();
+        }
         List<CouponRulePo> couponRulePos = couponRuleService.userGetAllCouponRulePos(page, limit);
         if (couponRulePos.size()==0) {
             return ResponseUtil.checkCouponRuleFail();
@@ -136,6 +142,9 @@ public class DiscountController {
      */
     @GetMapping("/coupons")
     public Object getAllCoupons(@RequestParam("page") Integer page, @RequestParam("limit") Integer limit, @RequestParam("showType") Integer showType) throws Exception {
+        if(page<=0||limit<0){
+            return ResponseUtil.invaildParameter();
+        }
         List<Coupon> coupons = couponService.getAllStatusCoupons(page, limit, showType);
         return ResponseUtil.ok(coupons);
     }

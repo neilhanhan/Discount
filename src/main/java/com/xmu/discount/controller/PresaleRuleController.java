@@ -146,6 +146,7 @@ public class PresaleRuleController {
      */
     @PutMapping("/presaleRules/{id}")
     public Object updatePresaleRuleById(@PathVariable Integer id, @RequestBody PresaleRule presaleRule) {
+
         PresaleRule presaleRule1 = presaleRuleService.updatePresaleRuleById(id, presaleRule);
         if (presaleRule1.equals(null)) {
             ResponseUtil.presaleUpdateFail();
