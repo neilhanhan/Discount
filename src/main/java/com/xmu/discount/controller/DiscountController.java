@@ -49,7 +49,7 @@ public class DiscountController {
     }
 
     /**
-     * 管理员查看部分优惠券列表
+     * 管理员查看部分优惠券规则列表
      *
      * @param page
      * @param limit
@@ -57,16 +57,28 @@ public class DiscountController {
      */
     @GetMapping("/admin/couponRules")
     public Object adminGetAllCouponRulePos(@RequestParam("page") Integer page, @RequestParam("limit") Integer limit) {
+        if(page<=0||limit<0){
+            return ResponseUtil.invaildParameter();
+        }
         List<CouponRulePo> couponRulePos = couponRuleService.adminGetAllCouponRulePos(page, limit);
+        if (couponRulePos.size()==0) {
+            return ResponseUtil.checkCouponRuleFail();
+        }
         return ResponseUtil.ok(couponRulePos);
     }
 
     /**
-     * 普通用户查看优惠券
+     * 普通用户查看优惠券规则
      */
     @GetMapping("/couponRules")
     public Object userGetAllCouponRulePos(@RequestParam("page") Integer page, @RequestParam("limit") Integer limit) {
+        if(page<=0||limit<0){
+            return ResponseUtil.invaildParameter();
+        }
         List<CouponRulePo> couponRulePos = couponRuleService.userGetAllCouponRulePos(page, limit);
+        if (couponRulePos.size()==0) {
+            return ResponseUtil.checkCouponRuleFail();
+        }
         return ResponseUtil.ok(couponRulePos);
     }
 
@@ -130,6 +142,9 @@ public class DiscountController {
      */
     @GetMapping("/coupons")
     public Object getAllCoupons(@RequestParam("page") Integer page, @RequestParam("limit") Integer limit, @RequestParam("showType") Integer showType) throws Exception {
+        if(page<=0||limit<0){
+            return ResponseUtil.invaildParameter();
+        }
         List<Coupon> coupons = couponService.getAllStatusCoupons(page, limit, showType);
         return ResponseUtil.ok(coupons);
     }
@@ -158,6 +173,9 @@ public class DiscountController {
     @PostMapping("/coupons/availableCoupons")
     public Object getAvailableCoupons(@RequestBody List<CartItem> cartItemList) throws Exception {
         List<Coupon> availableCoupons = couponService.getAvailableCoupons(cartItemList);
+        if(availableCoupons.size()==0) {
+            return ResponseUtil.checkCouponRuleFail();
+        }
         return ResponseUtil.ok(availableCoupons);
     }
 
@@ -171,7 +189,7 @@ public class DiscountController {
     public Object adminUnShelveCouponRules(@PathVariable Integer id) {
         Boolean bool = couponRuleService.adminUnShelveCouponRules(id);
         if (!bool) {
-            return ResponseUtil.fail();
+            return ResponseUtil.invaildCouponFail();
         }
         return ResponseUtil.ok();
     }

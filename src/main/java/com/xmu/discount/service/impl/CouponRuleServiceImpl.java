@@ -82,6 +82,9 @@ public class CouponRuleServiceImpl implements CouponRuleService {
     @Override
     public List<CouponRulePo> adminGetAllCouponRulePos(Integer page, Integer limit) {
         List<CouponRulePo> allCouponRulePos = couponRuleDao.adminGetAllCouponRulePos(page, limit);
+        if (allCouponRulePos.size()==0) {
+            return allCouponRulePos;
+        }
         for (CouponRulePo allCouponRulePo : allCouponRulePos) {
             allCouponRulePo.setBeDeleted(false);
         }
@@ -98,6 +101,9 @@ public class CouponRuleServiceImpl implements CouponRuleService {
     @Override
     public List<CouponRulePo> userGetAllCouponRulePos(Integer page, Integer limit) {
         List<CouponRulePo> allCouponRulePos = couponRuleDao.userGetAllCouponRulePos(page, limit);
+        if (allCouponRulePos.size()==0) {
+            return allCouponRulePos;
+        }
         for (CouponRulePo allCouponRulePo : allCouponRulePos) {
             allCouponRulePo.setBeDeleted(false);
         }

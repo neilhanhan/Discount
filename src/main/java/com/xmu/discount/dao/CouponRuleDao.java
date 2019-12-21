@@ -2,12 +2,16 @@ package com.xmu.discount.dao;
 
 import com.github.pagehelper.PageHelper;
 import com.xmu.discount.discountdo.CouponRuleDo;
+import com.xmu.discount.domain.CouponPo;
+import com.xmu.discount.domain.CouponRule;
 import com.xmu.discount.domain.CouponRulePo;
 import com.xmu.discount.mapper.CouponRuleMapper;
+import com.xmu.discount.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -113,8 +117,22 @@ public class CouponRuleDao {
      * @return
      */
     public List<CouponRulePo> adminGetAllCouponRulePos(Integer page, Integer limit) {
-        PageHelper.startPage(page, limit);
         List<CouponRulePo> couponRulePos = couponRuleMapper.adminGetAllCouponRulePos();
+        if (couponRulePos.size()==0) {
+            return couponRulePos;
+        }
+        List<Object> couponRulePoObjects = new ArrayList<>(couponRulePos.size());
+        for (CouponRulePo couponRulePo : couponRulePos) {
+            couponRulePoObjects.add(couponRulePo);
+        }
+        couponRulePoObjects=PageUtil.pageStart(page, limit,couponRulePoObjects);
+        couponRulePos.clear();
+        if (couponRulePoObjects.size()==0) {
+            return couponRulePos;
+        }
+        for (Object couponRulePoObject : couponRulePoObjects) {
+            couponRulePos.add((CouponRulePo)couponRulePoObject);
+        }
         return couponRulePos;
     }
 
@@ -125,15 +143,29 @@ public class CouponRuleDao {
      * @return
      */
     public List<CouponRulePo> userGetAllCouponRulePos(Integer page, Integer limit) {
-        PageHelper.startPage(page, limit);
         LocalDateTime localDateTime = LocalDateTime.now();
         List<CouponRulePo> couponRulePos = couponRuleMapper.userGetAllCouponRulePos();
+        if(couponRulePos.size()==0) {
+            return couponRulePos;
+        }
+        List<Object> couponRulePoObjects = new ArrayList<>(couponRulePos.size());
+        for (CouponRulePo couponRulePo : couponRulePos) {
+            couponRulePoObjects.add(couponRulePo);
+        }
+        couponRulePoObjects=PageUtil.pageStart(page, limit,couponRulePoObjects);
+        couponRulePos.clear();
+        if (couponRulePoObjects.size()==0) {
+            return couponRulePos;
+        }
+        for (Object couponRulePoObject : couponRulePoObjects) {
+            couponRulePos.add((CouponRulePo)couponRulePoObject);
+        }
 
         Iterator<CouponRulePo> iterator = couponRulePos.iterator();
         while(iterator.hasNext()){
             CouponRulePo couponRulePo = iterator.next();
             if (couponRulePo.getEndTime().isBefore(localDateTime) || couponRulePo.getBeginTime().isAfter(localDateTime)) {
-                iterator.remove();   //注意这个地方
+                iterator.remove();
             }
         }
         return couponRulePos;

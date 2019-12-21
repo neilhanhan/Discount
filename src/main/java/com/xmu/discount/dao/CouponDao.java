@@ -4,10 +4,12 @@ import com.github.pagehelper.PageHelper;
 import com.xmu.discount.domain.Coupon;
 import com.xmu.discount.domain.CouponPo;
 import com.xmu.discount.mapper.CouponMapper;
+import com.xmu.discount.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -78,8 +80,22 @@ public class CouponDao {
      * @return
      */
     public List<CouponPo> getAllStatusCouponPos(Integer page, Integer limit, Integer showType) {
-        PageHelper.startPage(page, limit);
         List<CouponPo> couponPos = couponMapper.getAllStatusCouponPos(showType);
+        if (couponPos.size()==0) {
+            return couponPos;
+        }
+        List<Object> couponPoObjects = new ArrayList<>(couponPos.size());
+        for (CouponPo couponPo : couponPos) {
+            couponPoObjects.add(couponPo);
+        }
+        couponPoObjects=PageUtil.pageStart(page, limit,couponPoObjects);
+        couponPos.clear();
+        if (couponPoObjects.size()==0) {
+            return couponPos;
+        }
+        for (Object couponPoObject : couponPoObjects) {
+            couponPos.add((CouponPo)couponPoObject);
+        }
         return couponPos;
     }
 

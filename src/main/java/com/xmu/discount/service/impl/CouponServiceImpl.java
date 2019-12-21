@@ -117,8 +117,10 @@ public class CouponServiceImpl implements CouponService {
          * 获得特定类型的couponPo
          */
         List<CouponPo> couponPos = couponDao.getAllStatusCouponPos(page, limit, showType);
+        if (couponPos.size()==0) {
+            return new ArrayList<Coupon>();
+        }
         List<CouponRulePo> couponRulePos = getCouponRulePosByCouponPos(couponPos);
-
         List<CouponRule> couponRules = new ArrayList<>();
         for (CouponRulePo couponRulePo : couponRulePos) {
             CouponRule couponRule = new CouponRule();
@@ -263,12 +265,10 @@ public class CouponServiceImpl implements CouponService {
         for (Integer couponRuleId : couponRuleIds) {
             couponRulePosByIds.add(couponRuleDao.findCouponRulePoById(couponRuleId));
         }
-
         /**
          * 存放id，couponRule
          */
         HashMap<Integer, CouponRule> hashMap = new HashMap<>(couponRulePosByIds.size());
-
         for (CouponPo couponPo : couponPos) {
             Coupon coupon = new Coupon();
             FatherChildUtil.fatherToChild(couponPo, coupon);
