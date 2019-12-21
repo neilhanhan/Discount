@@ -5,10 +5,18 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+/**
+ * @author Liuwenhan
+ */
 @Component
-@FeignClient(value = "goodsInfoService")
-public interface RemoteService {
+@FeignClient(value = "/goodsInfoService")
+public interface GoodsInfoService {
 
-    @GetMapping("goods/{id}")
+    /**
+     * 通过Id获取goods
+     * @param id
+     * @return
+     */
+    @GetMapping("/goods/{id}")
     public Object getGoodsById(@PathVariable("id") Integer id);
 }

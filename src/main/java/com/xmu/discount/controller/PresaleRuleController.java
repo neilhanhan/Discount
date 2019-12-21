@@ -114,7 +114,7 @@ public class PresaleRuleController {
     @GetMapping("/presaleRules")
     public Object getPresaleRuleVoByInf(@RequestParam("goodsId") Integer goodsId,
                                         @RequestParam("page") Integer page,
-                                        @RequestParam("limit") Integer limit) {
+                                        @RequestParam("limit") Integer limit){
         if(page<=0||limit<0){
             return ResponseUtil.invaildParameter();
         }
