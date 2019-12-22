@@ -1,7 +1,6 @@
 package com.xmu.discount.controller;
 
-import com.xmu.discount.domain.CouponPo;
-import com.xmu.discount.domain.CouponRulePo;
+import com.xmu.discount.domain.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 /**
  * @Author Zhang BingYuan
@@ -121,5 +121,26 @@ public class DiscountControllerTest {
     public void adminUnShelveCouponRules() {
         Object object = discountController.adminUnShelveCouponRules(253);
         System.out.println(object);
+    }
+
+    @Test
+    public void discountOrder() {
+        Order order = new Order();
+        ArrayList<OrderItem> orderItems =new ArrayList<>();
+        OrderItem orderItem = new OrderItem();
+        Product product =new Product();
+        Goods goods=new Goods();
+        goods.setId(1);
+        product.setGoods(goods);
+        orderItem.setProduct(product);
+        orderItems.add(orderItem);
+        order.setOrderItemList(orderItems);
+        order.setCouponId(42);
+        User user =new User();
+        user.setId(123);
+        order.setUser(user);
+
+        Object o = discountController.discountOrder(order);
+        System.out.println(o);
     }
 }

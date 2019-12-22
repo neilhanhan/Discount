@@ -33,7 +33,7 @@ public class DiscountController {
     public Object discountOrder(@RequestBody Order order){
         Integer couponId = order.getCouponId();
         List<OrderItem> orderItemList = order.getOrderItemList();
-        if(couponId==null){
+        if(couponId!=null){
             /**
              * 仅使用优惠券
              */

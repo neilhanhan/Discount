@@ -37,7 +37,7 @@ public interface CouponMapper {
      * @param id
      * @return
      */
-    public Coupon findCouponById(Integer id);
+    public CouponPo findCouponById(Integer id);
 
     /**
      * 获取所有特定类型的优惠券

@@ -36,9 +36,9 @@ public class CouponDao {
      * @param id
      * @return
      */
-    public Coupon findCouponById(Integer id) {
-        Coupon coupon = couponMapper.findCouponById(id);
-        return coupon;
+    public CouponPo findCouponById(Integer id) {
+        CouponPo couponPo = couponMapper.findCouponById(id);
+        return couponPo;
     }
 
     /**
