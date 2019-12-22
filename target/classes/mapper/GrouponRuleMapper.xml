@@ -12,7 +12,7 @@
     </insert>
 
     <select id="getGrouponRuleById" resultType="com.xmu.discount.domain.GrouponRulePo" parameterType="Integer">
-        select * from oomall_groupon_rule where id=#{id} and is_deleted!=true;
+        select * from oomall_groupon_rule where id=#{id} and is_deleted = false and status = true;
     </select>
 
     <select id="adminGetGrouponRuleById" resultType="com.xmu.discount.domain.GrouponRulePo" parameterType="Integer">

@@ -26,7 +26,7 @@
     </select>
 
     <select id="findPresaleRuleById" parameterType="Integer" resultMap="presaleRule">
-        select * from oomall_presale_rule where id=#{id} and is_deleted=0
+        select * from oomall_presale_rule where id=#{id} and is_deleted=0;
     </select>
 
     <update id="updatePresaleRuleById" parameterType="presaleRule">
@@ -56,7 +56,8 @@
     </update>
 
     <select id="adminGetPresaleRule" resultType="com.xmu.discount.domain.PresaleRule">
-        select * from oomall_presale_rule;
+        select * from oomall_presale_rule
+        where is_deleted!=true;
     </select>
 
     <select id="customerGetPresaleRule" resultType="com.xmu.discount.domain.PresaleRule">
