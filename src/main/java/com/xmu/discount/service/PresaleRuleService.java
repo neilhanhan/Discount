@@ -1,5 +1,7 @@
 package com.xmu.discount.service;
 
+import com.xmu.discount.domain.Order;
+import com.xmu.discount.domain.Payment;
 import com.xmu.discount.domain.PresaleRule;
 import com.xmu.discount.vo.PresaleRuleVo;
 
@@ -9,6 +11,21 @@ import java.util.List;
  * @author Liuwenhan
  */
 public interface PresaleRuleService {
+
+    /**
+     * 返回上架中的预售规则
+     * @param id GoodsId
+     * @return
+     */
+    PresaleRule getPresaleRuleByGoodsId(Integer id);
+
+    /**
+     * 为order创建定金和尾款的两个payment
+     * @param order
+     * @param presaleRule
+     * @return
+     */
+    List<Payment> presaleRulePayment(Order order, PresaleRule presaleRule);
 
     /**
      * 下架预售规则

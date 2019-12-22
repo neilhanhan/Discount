@@ -2,9 +2,7 @@ package com.xmu.discount.dao;
 
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.xmu.discount.domain.Goods;
-import com.xmu.discount.domain.GoodsPo;
-import com.xmu.discount.domain.PresaleRule;
+import com.xmu.discount.domain.*;
 import com.xmu.discount.mapper.PresaleRuleMapper;
 import com.xmu.discount.service.GoodsService;
 import com.xmu.discount.util.JacksonUtil;
@@ -15,6 +13,7 @@ import com.xmu.discount.vo.PresaleRuleVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -198,5 +197,37 @@ public class PresaleRuleDao {
     public PresaleRule findPresaleRuleById(Integer id) {
         PresaleRule presaleRule = presaleRuleMapper.findPresaleRuleById(id);
         return  presaleRule;
+    }
+
+    public PresaleRule getPresaleRuleByGoodsId(Integer id) {
+        return presaleRuleMapper.getPresaleRuleByGoodsId(id);
+    }
+
+    public List<Payment> presaleRulePayment(Order order, PresaleRule presaleRule) {
+        BigDecimal prePay = BigDecimal.ZERO;
+        BigDecimal finalPay = BigDecimal.ZERO;
+        LocalDateTime now = LocalDateTime.now();
+
+        for (OrderItem item: order.getOrderItemList()){
+            prePay = prePay.add(presaleRule.getDeposit());
+            finalPay = finalPay.add(presaleRule.getFinalPayment());
+        }
+
+        Payment prePayment = new Payment();
+        prePayment.setActualPrice(prePay);
+        //默认最大付款间隔是30min
+        prePayment.setEndTime(now.plusMinutes(30));
+        prePayment.setOrderId(order.getId());
+
+        Payment finalPayment = new Payment();
+        finalPayment.setActualPrice(finalPay);
+        finalPayment.setBeginTime(presaleRule.getFinalStartTime());
+        finalPayment.setEndTime(prePayment.getEndTime());
+        finalPayment.setOrderId(order.getId());
+
+        List<Payment> ret = new ArrayList<>(2);
+        ret.add(prePayment);
+        ret.add(finalPayment);
+        return ret;
     }
 }

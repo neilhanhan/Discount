@@ -85,4 +85,12 @@ public interface PresaleRuleMapper {
      * @return Boolean
      */
     Boolean downPresaleRuleById(Integer id, LocalDateTime time);
+
+    /**
+     * 返回上架的预售活动
+     *
+     * @param id GoodsId
+     * @return PresaleRule
+     */
+    PresaleRule getPresaleRuleByGoodsId(Integer id);
 }

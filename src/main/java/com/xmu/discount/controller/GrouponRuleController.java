@@ -198,8 +198,8 @@ public class GrouponRuleController {
      * @param id 团购规则ID
      * @return Object
      */
-    @GetMapping("/grouponRule/{id}")
-    public GrouponRule getGrouponRuleOnshelve(@PathVariable Integer id){
+    @GetMapping("/grouponRule")
+    public GrouponRule getGrouponRuleOnshelve(@RequestParam Integer id){
         return grouponRuleService.getGrouponRuleOnshelve(id);
     }
 }

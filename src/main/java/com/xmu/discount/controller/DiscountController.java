@@ -1,16 +1,15 @@
 package com.xmu.discount.controller;
 
-import com.xmu.discount.domain.CartItem;
-import com.xmu.discount.domain.Coupon;
-import com.xmu.discount.domain.CouponPo;
-import com.xmu.discount.domain.CouponRulePo;
+import com.xmu.discount.domain.*;
 import com.xmu.discount.service.CouponRuleService;
 import com.xmu.discount.service.CouponService;
 import com.xmu.discount.service.GrouponRuleService;
+import com.xmu.discount.service.PresaleRuleService;
 import com.xmu.discount.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,11 +22,51 @@ public class DiscountController {
     @Autowired
     GrouponRuleService grouponRuleService;
     @Autowired
+    PresaleRuleService presaleRuleService;
+    @Autowired
     public CouponService couponService;
     @Autowired
     public CouponRuleService couponRuleService;
 
 
+    @GetMapping("/orders")
+    public Object discountOrder(@RequestBody Order order){
+        Integer couponId = order.getCouponId();
+        List<OrderItem> orderItemList = order.getOrderItemList();
+        if(couponId==null){//使用优惠券
+
+        }else {
+
+            if(orderItemList.size()!=1){
+                for(OrderItem item:orderItemList){
+                    //都是普通商品
+                    item.setItemType(0);
+                }
+                order.setOrderItemList(orderItemList);
+            }else {//预售或团购订单或只有一个item的普通订单
+                List<OrderItem> newOrderItemList = new ArrayList<>();
+                OrderItem item = orderItemList.get(0);
+                Integer goodsId = item.getGoodsId();
+                if(grouponRuleService.getGrouponRuleOnshelve(goodsId)!=null){
+                    item.setItemType(2);
+                    newOrderItemList.add(item);
+                    order.setOrderItemList(newOrderItemList);
+                }else if(presaleRuleService.getPresaleRuleByGoodsId(goodsId)!=null){
+                    item.setItemType(1);
+                    newOrderItemList.add(item);
+                    order.setOrderItemList(newOrderItemList);
+                    PresaleRule rule = presaleRuleService.getPresaleRuleByGoodsId(goodsId);
+                    List<Payment> payments = presaleRuleService.presaleRulePayment(order,rule);
+                    order.setPaymentList(payments);
+                }else {
+                    item.setItemType(0);
+                    newOrderItemList.add(item);
+                    order.setOrderItemList(newOrderItemList);
+                }
+            }
+        }
+        return ResponseUtil.ok(order);
+    }
 
     /**
      * 管理员查看部分优惠券规则列表
@@ -62,7 +101,6 @@ public class DiscountController {
         }
         return ResponseUtil.ok(couponRulePos);
     }
-
 
     /**
      * 添加优惠券规则
