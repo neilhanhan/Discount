@@ -70,5 +70,10 @@
         where id = #{id} and is_deleted!=true and status = true;
     </select>
 
+    <select id="getPresaleRuleByGoodsId" resultType="com.xmu.discount.domain.PresaleRule">
+        select * from oomall_presale_rule
+        where goods_id=#{id} and is_deleted!=true and status = true;
+    </select>
+
 
 </mapper>

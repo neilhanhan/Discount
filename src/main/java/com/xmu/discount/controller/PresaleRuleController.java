@@ -20,6 +20,16 @@ public class PresaleRuleController {
     PresaleRuleService presaleRuleService;
 
     /**
+     * 内部接口！！！
+     * @param goodsId
+     * @return
+     */
+    @GetMapping("/presaleRule")
+    public PresaleRule getPresaleRuleByGoodsId(@RequestParam Integer goodsId){
+        return presaleRuleService.getPresaleRuleByGoodsId(goodsId);
+    }
+
+    /**
      * 1下架预售规则
      *
      * @param id 预售规则ID

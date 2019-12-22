@@ -3,9 +3,7 @@ package com.xmu.discount.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xmu.discount.dao.PresaleRuleDao;
-import com.xmu.discount.domain.Goods;
-import com.xmu.discount.domain.GoodsPo;
-import com.xmu.discount.domain.PresaleRule;
+import com.xmu.discount.domain.*;
 import com.xmu.discount.service.GoodsService;
 import com.xmu.discount.service.PresaleRuleService;
 import com.xmu.discount.util.JacksonUtil;
@@ -27,6 +25,18 @@ public class PresaleRuleServiceImpl implements PresaleRuleService {
 
     @Autowired
     GoodsService goodsService;
+
+    /**
+     * 为order创建定金和尾款的两个payment
+     *
+     * @param order
+     * @param presaleRule
+     * @return
+     */
+    @Override
+    public List<Payment> presaleRulePayment(Order order, PresaleRule presaleRule) {
+        return presaleRuleDao.presaleRulePayment(order,presaleRule);
+    }
 
     @Override
     public Object adminGetPresaleRule(Integer page, Integer limit) {
@@ -151,6 +161,11 @@ public class PresaleRuleServiceImpl implements PresaleRuleService {
         presaleRuleVo.setGoodsPo(goodsPo);
         presaleRuleVo.setPresaleRule(presaleRuleById);
         return presaleRuleVo;
+    }
+
+    @Override
+    public PresaleRule getPresaleRuleByGoodsId(Integer id) {
+        return presaleRuleDao.getPresaleRuleByGoodsId(id);
     }
 
     /**

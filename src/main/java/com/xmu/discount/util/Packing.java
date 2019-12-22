@@ -32,7 +32,7 @@ public class Packing {
             String data = map.get("data").toString();
             GoodsPo goodsPo=new GoodsPo();
             try{
-                goodsPo=(GoodsPo) new ObjectMapper().readValue(data, Goods.class);
+                goodsPo=new ObjectMapper().readValue(data, Goods.class);
             }catch(Exception e){
                 e.printStackTrace();
             }

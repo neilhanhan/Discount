@@ -4,6 +4,7 @@ import com.xmu.discount.domain.*;
 import com.xmu.discount.service.CouponRuleService;
 import com.xmu.discount.service.CouponService;
 import com.xmu.discount.service.GrouponRuleService;
+import com.xmu.discount.service.PresaleRuleService;
 import com.xmu.discount.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,10 +22,70 @@ public class DiscountController {
     @Autowired
     GrouponRuleService grouponRuleService;
     @Autowired
+    PresaleRuleService presaleRuleService;
+    @Autowired
     public CouponService couponService;
     @Autowired
     public CouponRuleService couponRuleService;
 
+
+    @GetMapping("/orders")
+    public Object discountOrder(@RequestBody Order order){
+        Integer couponId = order.getCouponId();
+        List<OrderItem> orderItemList = order.getOrderItemList();
+        if(couponId==null){
+            /**
+             * 仅使用优惠券
+             */
+            List<OrderItem> oldOrderItems = order.getOrderItemList();
+            Integer userId = order.getUserId();
+            List<OrderItem> newOrderItems = couponService.calcDiscount(oldOrderItems, couponId);
+            /**
+             * 优惠券状态设置为已经使用
+             */
+            couponService.updateUserCouponStatus(userId, couponId);
+
+            //修改订单中的明细
+            order.setOrderItemList(newOrderItems);
+            //使用优惠券的List<Payment>为空
+            order.setPaymentList(null);
+            for (OrderItem item : newOrderItems) {
+                //都是普通商品
+                item.setItemType(0);
+            }
+            order.setOrderItemList(newOrderItems);
+        }else {
+
+            if(orderItemList.size()!=1){
+                for(OrderItem item:orderItemList){
+                    //都是普通商品
+                    item.setItemType(0);
+                }
+                order.setOrderItemList(orderItemList);
+            }else {//预售或团购订单或只有一个item的普通订单
+                List<OrderItem> newOrderItemList = new ArrayList<>();
+                OrderItem item = orderItemList.get(0);
+                Integer goodsId = item.getGoodsId();
+                if(grouponRuleService.getGrouponRuleOnshelve(goodsId)!=null){
+                    item.setItemType(2);
+                    newOrderItemList.add(item);
+                    order.setOrderItemList(newOrderItemList);
+                }else if(presaleRuleService.getPresaleRuleByGoodsId(goodsId)!=null){
+                    item.setItemType(1);
+                    newOrderItemList.add(item);
+                    order.setOrderItemList(newOrderItemList);
+                    PresaleRule rule = presaleRuleService.getPresaleRuleByGoodsId(goodsId);
+                    List<Payment> payments = presaleRuleService.presaleRulePayment(order,rule);
+                    order.setPaymentList(payments);
+                }else {
+                    item.setItemType(0);
+                    newOrderItemList.add(item);
+                    order.setOrderItemList(newOrderItemList);
+                }
+            }
+        }
+        return ResponseUtil.ok(order);
+    }
 
     /**
      * 管理员查看部分优惠券规则列表
@@ -35,11 +96,11 @@ public class DiscountController {
      */
     @GetMapping("/admin/couponRules")
     public Object adminGetAllCouponRulePos(@RequestParam("page") Integer page, @RequestParam("limit") Integer limit) {
-        if (page <= 0 || limit < 0) {
+        if(page<=0||limit<0){
             return ResponseUtil.invaildParameter();
         }
         List<CouponRulePo> couponRulePos = couponRuleService.adminGetAllCouponRulePos(page, limit);
-        if (couponRulePos.size() == 0) {
+        if (couponRulePos.size()==0) {
             return ResponseUtil.checkCouponRuleFail();
         }
         return ResponseUtil.ok(couponRulePos);
@@ -50,16 +111,15 @@ public class DiscountController {
      */
     @GetMapping("/couponRules")
     public Object userGetAllCouponRulePos(@RequestParam("page") Integer page, @RequestParam("limit") Integer limit) {
-        if (page <= 0 || limit < 0) {
+        if(page<=0||limit<0){
             return ResponseUtil.invaildParameter();
         }
         List<CouponRulePo> couponRulePos = couponRuleService.userGetAllCouponRulePos(page, limit);
-        if (couponRulePos.size() == 0) {
+        if (couponRulePos.size()==0) {
             return ResponseUtil.checkCouponRuleFail();
         }
         return ResponseUtil.ok(couponRulePos);
     }
-
 
     /**
      * 添加优惠券规则
@@ -120,7 +180,7 @@ public class DiscountController {
      */
     @GetMapping("/coupons")
     public Object getAllCoupons(@RequestParam("page") Integer page, @RequestParam("limit") Integer limit, @RequestParam("showType") Integer showType) throws Exception {
-        if (page <= 0 || limit < 0) {
+        if(page<=0||limit<0){
             return ResponseUtil.invaildParameter();
         }
         List<Coupon> coupons = couponService.getAllStatusCoupons(page, limit, showType);
@@ -129,8 +189,7 @@ public class DiscountController {
 
 
     /**
-     * 增加优惠券
-     *
+     *增加优惠券
      * @param couponPo
      * @return
      */
@@ -152,7 +211,7 @@ public class DiscountController {
     @PostMapping("/coupons/availableCoupons")
     public Object getAvailableCoupons(@RequestBody List<CartItem> cartItemList) throws Exception {
         List<Coupon> availableCoupons = couponService.getAvailableCoupons(cartItemList);
-        if (availableCoupons.size() == 0) {
+        if(availableCoupons.size()==0) {
             return ResponseUtil.checkCouponRuleFail();
         }
         return ResponseUtil.ok(availableCoupons);
@@ -172,36 +231,4 @@ public class DiscountController {
         }
         return ResponseUtil.ok();
     }
-
-
-    @PostMapping("/discount/orders")
-    public Object discountOrder(@RequestBody Order order) {
-        Integer couponId = order.getCouponId();
-        if (couponId != null) {
-            /**
-             * 仅使用优惠券
-             */
-            List<OrderItem> oldOrderItems = order.getOrderItemList();
-            Integer userId = order.getUserId();
-            List<OrderItem> newOrderItems = couponService.calcDiscount(oldOrderItems, couponId);
-            /**
-             * 优惠券状态设置为已经使用
-             */
-            couponService.updateUserCouponStatus(userId, couponId);
-
-            //修改订单中的明细
-            order.setOrderItemList(newOrderItems);
-            //使用优惠券的List<Payment>为空
-            order.setPaymentList(null);
-            for (OrderItem item : newOrderItems) {
-                //都是普通商品
-                item.setItemType(0);
-            }
-            order.setOrderItemList(newOrderItems);
-        } else {
-
-        }
-        return ResponseUtil.ok(order);
-    }
-
 }
