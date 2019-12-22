@@ -30,7 +30,7 @@ eureka:
     service-url:
       defaultZone: http://172.81.212.62:7001/eureka/
   instance:
-    prefer-ip-address: true
+    ip-address: 10.30.21.230
 ribbon:
   eureka:
     enabled: true
