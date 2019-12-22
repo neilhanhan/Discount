@@ -64,14 +64,6 @@ public final class CashOffStrategy extends AbstractCouponStrategy {
     }
 
 
-    @Override
-    public String toString() {
-        return "CashOffStrategy{" +
-                "threshold=" + threshold +
-                ", offCash=" + offCash +
-                '}';
-    }
-
     public CashOffStrategy() {
     }
 
