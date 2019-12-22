@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  * @author Liuwenhan
  */
 @Component
-@FeignClient(value = "orderService")
+@FeignClient(name = "orderService")
 public interface OrderService {
 
     /**
