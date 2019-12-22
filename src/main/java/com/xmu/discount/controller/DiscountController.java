@@ -1,9 +1,6 @@
 package com.xmu.discount.controller;
 
-import com.xmu.discount.domain.CartItem;
-import com.xmu.discount.domain.Coupon;
-import com.xmu.discount.domain.CouponPo;
-import com.xmu.discount.domain.CouponRulePo;
+import com.xmu.discount.domain.*;
 import com.xmu.discount.service.CouponRuleService;
 import com.xmu.discount.service.CouponService;
 import com.xmu.discount.service.GrouponRuleService;
@@ -11,6 +8,7 @@ import com.xmu.discount.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,7 +26,6 @@ public class DiscountController {
     public CouponRuleService couponRuleService;
 
 
-
     /**
      * 管理员查看部分优惠券规则列表
      *
@@ -38,11 +35,11 @@ public class DiscountController {
      */
     @GetMapping("/admin/couponRules")
     public Object adminGetAllCouponRulePos(@RequestParam("page") Integer page, @RequestParam("limit") Integer limit) {
-        if(page<=0||limit<0){
+        if (page <= 0 || limit < 0) {
             return ResponseUtil.invaildParameter();
         }
         List<CouponRulePo> couponRulePos = couponRuleService.adminGetAllCouponRulePos(page, limit);
-        if (couponRulePos.size()==0) {
+        if (couponRulePos.size() == 0) {
             return ResponseUtil.checkCouponRuleFail();
         }
         return ResponseUtil.ok(couponRulePos);
@@ -53,11 +50,11 @@ public class DiscountController {
      */
     @GetMapping("/couponRules")
     public Object userGetAllCouponRulePos(@RequestParam("page") Integer page, @RequestParam("limit") Integer limit) {
-        if(page<=0||limit<0){
+        if (page <= 0 || limit < 0) {
             return ResponseUtil.invaildParameter();
         }
         List<CouponRulePo> couponRulePos = couponRuleService.userGetAllCouponRulePos(page, limit);
-        if (couponRulePos.size()==0) {
+        if (couponRulePos.size() == 0) {
             return ResponseUtil.checkCouponRuleFail();
         }
         return ResponseUtil.ok(couponRulePos);
@@ -123,7 +120,7 @@ public class DiscountController {
      */
     @GetMapping("/coupons")
     public Object getAllCoupons(@RequestParam("page") Integer page, @RequestParam("limit") Integer limit, @RequestParam("showType") Integer showType) throws Exception {
-        if(page<=0||limit<0){
+        if (page <= 0 || limit < 0) {
             return ResponseUtil.invaildParameter();
         }
         List<Coupon> coupons = couponService.getAllStatusCoupons(page, limit, showType);
@@ -132,7 +129,8 @@ public class DiscountController {
 
 
     /**
-     *增加优惠券
+     * 增加优惠券
+     *
      * @param couponPo
      * @return
      */
@@ -154,7 +152,7 @@ public class DiscountController {
     @PostMapping("/coupons/availableCoupons")
     public Object getAvailableCoupons(@RequestBody List<CartItem> cartItemList) throws Exception {
         List<Coupon> availableCoupons = couponService.getAvailableCoupons(cartItemList);
-        if(availableCoupons.size()==0) {
+        if (availableCoupons.size() == 0) {
             return ResponseUtil.checkCouponRuleFail();
         }
         return ResponseUtil.ok(availableCoupons);
@@ -174,4 +172,36 @@ public class DiscountController {
         }
         return ResponseUtil.ok();
     }
+
+
+    @PostMapping("/discount/orders")
+    public Object discountOrder(@RequestBody Order order) {
+        Integer couponId = order.getCouponId();
+        if (couponId != null) {
+            /**
+             * 仅使用优惠券
+             */
+            List<OrderItem> oldOrderItems = order.getOrderItemList();
+            Integer userId = order.getUserId();
+            List<OrderItem> newOrderItems = couponService.calcDiscount(oldOrderItems, couponId);
+            /**
+             * 优惠券状态设置为已经使用
+             */
+            couponService.updateUserCouponStatus(userId, couponId);
+
+            //修改订单中的明细
+            order.setOrderItemList(newOrderItems);
+            //使用优惠券的List<Payment>为空
+            order.setPaymentList(null);
+            for (OrderItem item : newOrderItems) {
+                //都是普通商品
+                item.setItemType(0);
+            }
+            order.setOrderItemList(newOrderItems);
+        } else {
+
+        }
+        return ResponseUtil.ok(order);
+    }
+
 }

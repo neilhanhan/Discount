@@ -56,5 +56,20 @@
         update oomall_coupon set status=2 where coupon_rule_id=#{couponRuleId} and is_deleted=0
     </update>
 
+    <update id="updateUserCouponStatus" parameterType="couponPo">
+        update oomall_coupon
+        <trim prefix="set" suffixOverrides=",">
+            <if test="statusCode!= null">
+                status = #{statusCode},
+            </if>
+            <if test="usedTime != null">
+                used_time = #{usedTime},
+            </if>
+            <if test="gmtModified != null">
+                gmt_modified = #{gmtModified},
+            </if>
+        </trim>
+        where id=#{id} and user_id=#{userId}
+    </update>
 
 </mapper>
