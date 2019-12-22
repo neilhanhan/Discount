@@ -32,9 +32,9 @@ public class CouponServiceImpl implements CouponService {
      * @return
      */
     @Override
-    public Coupon findCouponById(Integer id) {
-        Coupon coupon = couponDao.findCouponById(id);
-        return coupon;
+    public CouponPo findCouponById(Integer id) {
+        CouponPo couponPo = couponDao.findCouponById(id);
+        return couponPo;
     }
 
     /**

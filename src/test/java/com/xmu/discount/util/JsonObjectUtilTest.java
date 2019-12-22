@@ -1,5 +1,6 @@
 package com.xmu.discount.util;
 
+import com.xmu.discount.util.couponstrategy.abstractcouponstrategy.AbstractCouponStrategy;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,8 +16,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class JsonObjectUtilTest {
     @Test
     public void JsonObjectTest() {
+
         String json = "{\"name\":\"PercentageStrategy\", \"obj\":{\"threshold\":1.99, \"percentage\":0.31}}";
-        Object strategy = JsonObjectUtil.getCouponStrategy(json);
-        System.out.println(strategy);
+        AbstractCouponStrategy couponStrategy = (AbstractCouponStrategy) JsonObjectUtil.getCouponStrategy(json);
+        System.out.println(couponStrategy);
     }
 }

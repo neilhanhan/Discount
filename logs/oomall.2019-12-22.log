@@ -1,66 +1,784 @@
-2019-12-22 21:47:03.452 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-12-22 21:47:05.133 [main] INFO  com.xmu.discount.DiscountApplication - No active profile set, falling back to default profiles: default
-2019-12-22 21:47:06.725 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
-2019-12-22 21:47:06.729 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
-2019-12-22 21:47:06.822 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 74ms. Found 0 repository interfaces.
-2019-12-22 21:47:06.984 [main] WARN  o.s.boot.actuate.endpoint.EndpointId - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
-2019-12-22 21:47:07.218 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=89e33a72-c213-39ac-95e4-b23a36cf06d1
-2019-12-22 21:47:07.415 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-12-22 21:47:07.467 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-12-22 21:47:07.867 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8060 (http)
-2019-12-22 21:47:07.879 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8060"]
-2019-12-22 21:47:07.879 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2019-12-22 21:47:07.880 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.27]
-2019-12-22 21:47:08.124 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2019-12-22 21:47:08.124 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2970 ms
-2019-12-22 21:47:08.219 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
-2019-12-22 21:47:08.219 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2019-12-22 21:47:08.231 [main] INFO  c.n.config.DynamicPropertyFactory - DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@3a894088
-2019-12-22 21:47:10.811 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
-2019-12-22 21:47:10.811 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2019-12-22 21:47:10.951 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
-2019-12-22 21:47:11.431 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
-2019-12-22 21:47:14.352 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
-2019-12-22 21:47:14.388 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with default default cache. You can switch to using Caffeine cache, by adding it to the classpath.
-2019-12-22 21:47:14.400 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
-2019-12-22 21:47:14.470 [main] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
-2019-12-22 21:47:14.506 [main] INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
-2019-12-22 21:47:15.648 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON encoding codec LegacyJacksonJson
-2019-12-22 21:47:15.648 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON decoding codec LegacyJacksonJson
-2019-12-22 21:47:15.758 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML encoding codec XStreamXml
-2019-12-22 21:47:15.758 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML decoding codec XStreamXml
-2019-12-22 21:47:15.970 [main] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
-2019-12-22 21:47:16.934 [main] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
-2019-12-22 21:47:16.934 [main] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
-2019-12-22 21:47:16.934 [main] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
-2019-12-22 21:47:16.934 [main] INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
-2019-12-22 21:47:16.934 [main] INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
-2019-12-22 21:47:16.934 [main] INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
-2019-12-22 21:47:16.934 [main] INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
-2019-12-22 21:47:17.169 [main] INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
-2019-12-22 21:47:17.171 [main] INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
-2019-12-22 21:47:17.173 [main] INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
-2019-12-22 21:47:17.176 [main] INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1577022437175 with initial instances count: 0
-2019-12-22 21:47:17.180 [main] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application DISCOUNTSERVICE with eureka with status UP
-2019-12-22 21:47:17.180 [main] INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1577022437180, current=UP, previous=STARTING]
-2019-12-22 21:47:17.183 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_DISCOUNTSERVICE/10.30.21.230:discountService:8060: registering service...
-2019-12-22 21:47:17.206 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8060"]
-2019-12-22 21:47:17.258 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8060 (http) with context path ''
-2019-12-22 21:47:17.259 [main] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8060
-2019-12-22 21:47:17.341 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_DISCOUNTSERVICE/10.30.21.230:discountService:8060 - registration status: 204
-2019-12-22 21:47:18.692 [main] INFO  com.xmu.discount.DiscountApplication - Started DiscountApplication in 17.591 seconds (JVM running for 20.156)
-2019-12-22 21:47:19.864 [RMI TCP Connection(4)-192.168.88.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2019-12-22 21:47:19.864 [RMI TCP Connection(4)-192.168.88.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2019-12-22 21:47:19.869 [RMI TCP Connection(3)-192.168.88.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2019-12-22 21:47:19.874 [RMI TCP Connection(4)-192.168.88.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 10 ms
-2019-12-22 21:47:20.137 [RMI TCP Connection(3)-192.168.88.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2019-12-22 21:47:20.334 [RMI TCP Connection(3)-192.168.88.1] INFO  io.lettuce.core.EpollProvider - Starting without optional epoll library
-2019-12-22 21:47:20.336 [RMI TCP Connection(3)-192.168.88.1] INFO  io.lettuce.core.KqueueProvider - Starting without optional kqueue library
-2019-12-22 21:47:47.172 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
-2019-12-22 21:47:47.173 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
-2019-12-22 21:47:47.173 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
-2019-12-22 21:47:47.173 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
-2019-12-22 21:47:47.173 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
-2019-12-22 21:47:47.173 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: false
-2019-12-22 21:47:47.173 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
-2019-12-22 21:47:47.270 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2019-12-22 00:03:25.291 [http-nio-8060-exec-6] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+java.lang.NullPointerException: null
+	at com.xmu.discount.util.Packing.grouponRulePoPacking(Packing.java:28)
+	at com.xmu.discount.service.impl.GrouponRuleServiceImpl.getGrouponRuleByGoodsId(GrouponRuleServiceImpl.java:42)
+	at com.xmu.discount.controller.GrouponRuleController.getGrouponRuleByGoodsId(GrouponRuleController.java:66)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:526)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1579)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-12-22 00:03:29.864 [http-nio-8060-exec-8] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+java.lang.NullPointerException: null
+	at com.xmu.discount.util.Packing.grouponRulePoPacking(Packing.java:28)
+	at com.xmu.discount.service.impl.GrouponRuleServiceImpl.getGrouponRuleByGoodsId(GrouponRuleServiceImpl.java:42)
+	at com.xmu.discount.controller.GrouponRuleController.getGrouponRuleByGoodsId(GrouponRuleController.java:66)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:526)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1579)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-12-22 00:03:56.326 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2019-12-22 00:18:22.944 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 00:18:24.561 [main] INFO  com.xmu.discount.DiscountApplication - No active profile set, falling back to default profiles: default
+2019-12-22 00:18:25.472 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 00:18:25.474 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-22 00:18:25.555 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 60ms. Found 0 repository interfaces.
+2019-12-22 00:18:25.661 [main] WARN  o.s.boot.actuate.endpoint.EndpointId - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2019-12-22 00:18:25.815 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=d196bbe9-1738-3a4a-a460-a1cc879c4002
+2019-12-22 00:18:25.959 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 00:18:25.995 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 00:18:26.283 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8060 (http)
+2019-12-22 00:18:26.292 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8060"]
+2019-12-22 00:18:26.293 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-12-22 00:18:26.293 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-22 00:18:26.503 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-12-22 00:18:26.503 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1923 ms
+2019-12-22 00:18:26.578 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 00:18:26.579 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 00:18:26.589 [main] INFO  c.n.config.DynamicPropertyFactory - DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@4ba6ec50
+2019-12-22 00:18:29.118 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 00:18:29.119 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 00:18:29.261 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 00:18:29.710 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2019-12-22 00:18:32.662 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2019-12-22 00:18:32.699 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with default default cache. You can switch to using Caffeine cache, by adding it to the classpath.
+2019-12-22 00:18:32.712 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 00:18:32.785 [main] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2019-12-22 00:18:32.819 [main] INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2019-12-22 00:18:34.035 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON encoding codec LegacyJacksonJson
+2019-12-22 00:18:34.035 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON decoding codec LegacyJacksonJson
+2019-12-22 00:18:34.156 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML encoding codec XStreamXml
+2019-12-22 00:18:34.156 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML decoding codec XStreamXml
+2019-12-22 00:18:34.386 [main] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2019-12-22 00:18:35.479 [main] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2019-12-22 00:18:35.479 [main] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2019-12-22 00:18:35.480 [main] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2019-12-22 00:18:35.480 [main] INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+2019-12-22 00:18:35.480 [main] INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2019-12-22 00:18:35.480 [main] INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2019-12-22 00:18:35.480 [main] INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2019-12-22 00:18:35.726 [main] INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2019-12-22 00:18:35.728 [main] INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2019-12-22 00:18:35.730 [main] INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2019-12-22 00:18:35.735 [main] INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1576945115734 with initial instances count: 0
+2019-12-22 00:18:35.738 [main] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application DISCOUNTSERVICE with eureka with status UP
+2019-12-22 00:18:35.739 [main] INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1576945115739, current=UP, previous=STARTING]
+2019-12-22 00:18:35.742 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_DISCOUNTSERVICE/10.30.30.226:discountService:8060: registering service...
+2019-12-22 00:18:35.767 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8060"]
+2019-12-22 00:18:35.808 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8060 (http) with context path ''
+2019-12-22 00:18:35.810 [main] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8060
+2019-12-22 00:18:36.067 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_DISCOUNTSERVICE/10.30.30.226:discountService:8060 - registration status: 204
+2019-12-22 00:18:37.707 [main] INFO  com.xmu.discount.DiscountApplication - Started DiscountApplication in 17.092 seconds (JVM running for 19.446)
+2019-12-22 00:18:40.141 [RMI TCP Connection(5)-192.168.88.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 00:18:40.141 [RMI TCP Connection(5)-192.168.88.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-12-22 00:18:40.147 [RMI TCP Connection(4)-192.168.88.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-12-22 00:18:40.150 [RMI TCP Connection(5)-192.168.88.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2019-12-22 00:18:40.390 [RMI TCP Connection(4)-192.168.88.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-12-22 00:18:40.559 [RMI TCP Connection(4)-192.168.88.1] INFO  io.lettuce.core.EpollProvider - Starting without optional epoll library
+2019-12-22 00:18:40.561 [RMI TCP Connection(4)-192.168.88.1] INFO  io.lettuce.core.KqueueProvider - Starting without optional kqueue library
+2019-12-22 00:19:05.730 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2019-12-22 00:19:05.730 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2019-12-22 00:19:05.730 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2019-12-22 00:19:05.730 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+2019-12-22 00:19:05.730 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2019-12-22 00:19:05.730 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: false
+2019-12-22 00:19:05.730 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2019-12-22 00:19:05.821 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2019-12-22 00:23:35.484 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2019-12-22 00:28:35.485 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2019-12-22 00:33:35.487 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2019-12-22 00:38:35.487 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2019-12-22 00:43:35.490 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2019-12-22 00:48:35.491 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2019-12-22 00:53:35.494 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2019-12-22 03:24:40.649 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 03:24:42.269 [main] INFO  com.xmu.discount.DiscountApplication - No active profile set, falling back to default profiles: default
+2019-12-22 03:24:43.287 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 03:24:43.289 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-22 03:24:43.362 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 57ms. Found 0 repository interfaces.
+2019-12-22 03:24:43.472 [main] WARN  o.s.boot.actuate.endpoint.EndpointId - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2019-12-22 03:24:43.636 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=925eb5c9-6f06-3555-993e-78bc993b0a1e
+2019-12-22 03:24:43.784 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 03:24:43.822 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 03:24:44.124 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8060 (http)
+2019-12-22 03:24:44.134 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8060"]
+2019-12-22 03:24:44.134 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-12-22 03:24:44.135 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-22 03:24:44.359 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-12-22 03:24:44.359 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2067 ms
+2019-12-22 03:24:44.447 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 03:24:44.447 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 03:24:44.460 [main] INFO  c.n.config.DynamicPropertyFactory - DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@3206174f
+2019-12-22 03:24:46.971 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 03:24:46.971 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 03:24:47.126 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 03:24:47.567 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2019-12-22 03:24:50.427 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2019-12-22 03:24:50.480 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with default default cache. You can switch to using Caffeine cache, by adding it to the classpath.
+2019-12-22 03:24:50.494 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 03:24:50.568 [main] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2019-12-22 03:24:50.623 [main] INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2019-12-22 03:24:52.094 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON encoding codec LegacyJacksonJson
+2019-12-22 03:24:52.094 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON decoding codec LegacyJacksonJson
+2019-12-22 03:24:52.235 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML encoding codec XStreamXml
+2019-12-22 03:24:52.236 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML decoding codec XStreamXml
+2019-12-22 03:24:52.472 [main] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2019-12-22 03:24:53.458 [main] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2019-12-22 03:24:53.459 [main] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2019-12-22 03:24:53.459 [main] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2019-12-22 03:24:53.459 [main] INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+2019-12-22 03:24:53.459 [main] INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2019-12-22 03:24:53.459 [main] INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2019-12-22 03:24:53.459 [main] INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2019-12-22 03:24:53.646 [main] INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2019-12-22 03:24:53.648 [main] INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2019-12-22 03:24:53.650 [main] INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2019-12-22 03:24:53.653 [main] INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1576956293652 with initial instances count: 0
+2019-12-22 03:24:53.655 [main] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application DISCOUNTSERVICE with eureka with status UP
+2019-12-22 03:24:53.656 [main] INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1576956293656, current=UP, previous=STARTING]
+2019-12-22 03:24:53.659 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_DISCOUNTSERVICE/DESKTOP-EJIDL9D:discountService:8060: registering service...
+2019-12-22 03:24:53.681 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8060"]
+2019-12-22 03:24:53.720 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8060 (http) with context path ''
+2019-12-22 03:24:53.721 [main] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8060
+2019-12-22 03:24:53.768 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_DISCOUNTSERVICE/DESKTOP-EJIDL9D:discountService:8060 - registration status: 204
+2019-12-22 03:24:55.361 [main] INFO  com.xmu.discount.DiscountApplication - Started DiscountApplication in 17.054 seconds (JVM running for 19.446)
+2019-12-22 03:24:55.927 [RMI TCP Connection(1)-192.168.88.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 03:24:55.927 [RMI TCP Connection(1)-192.168.88.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-12-22 03:24:55.934 [RMI TCP Connection(2)-192.168.88.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-12-22 03:24:55.937 [RMI TCP Connection(1)-192.168.88.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 10 ms
+2019-12-22 03:24:56.194 [RMI TCP Connection(2)-192.168.88.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-12-22 03:24:56.329 [RMI TCP Connection(2)-192.168.88.1] INFO  io.lettuce.core.EpollProvider - Starting without optional epoll library
+2019-12-22 03:24:56.331 [RMI TCP Connection(2)-192.168.88.1] INFO  io.lettuce.core.KqueueProvider - Starting without optional kqueue library
+2019-12-22 15:15:25.997 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 15:15:27.598 [main] INFO  com.xmu.discount.DiscountApplication - No active profile set, falling back to default profiles: default
+2019-12-22 15:15:28.644 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 15:15:28.648 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-22 15:15:28.723 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 57ms. Found 0 repository interfaces.
+2019-12-22 15:15:28.826 [main] WARN  o.s.boot.actuate.endpoint.EndpointId - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2019-12-22 15:15:28.989 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=d196bbe9-1738-3a4a-a460-a1cc879c4002
+2019-12-22 15:15:29.137 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 15:15:29.173 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 15:15:29.474 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8060 (http)
+2019-12-22 15:15:29.483 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8060"]
+2019-12-22 15:15:29.484 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-12-22 15:15:29.484 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-22 15:15:29.707 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-12-22 15:15:29.707 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2083 ms
+2019-12-22 15:15:29.811 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 15:15:29.811 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 15:15:29.825 [main] INFO  c.n.config.DynamicPropertyFactory - DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@b112b13
+2019-12-22 15:15:32.356 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 15:15:32.356 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 15:15:32.502 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 15:15:32.953 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2019-12-22 15:15:35.863 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2019-12-22 15:15:35.905 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with default default cache. You can switch to using Caffeine cache, by adding it to the classpath.
+2019-12-22 15:15:35.919 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 15:15:35.995 [main] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2019-12-22 15:15:36.038 [main] INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2019-12-22 15:15:37.395 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON encoding codec LegacyJacksonJson
+2019-12-22 15:15:37.396 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON decoding codec LegacyJacksonJson
+2019-12-22 15:15:37.527 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML encoding codec XStreamXml
+2019-12-22 15:15:37.527 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML decoding codec XStreamXml
+2019-12-22 15:15:37.758 [main] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2019-12-22 15:15:38.684 [main] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2019-12-22 15:15:38.684 [main] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2019-12-22 15:15:38.684 [main] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2019-12-22 15:15:38.684 [main] INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+2019-12-22 15:15:38.684 [main] INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2019-12-22 15:15:38.684 [main] INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2019-12-22 15:15:38.685 [main] INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2019-12-22 15:15:38.960 [main] INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2019-12-22 15:15:38.962 [main] INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2019-12-22 15:15:38.965 [main] INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2019-12-22 15:15:38.968 [main] INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1576998938967 with initial instances count: 0
+2019-12-22 15:15:38.971 [main] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application DISCOUNTSERVICE with eureka with status UP
+2019-12-22 15:15:38.972 [main] INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1576998938971, current=UP, previous=STARTING]
+2019-12-22 15:15:38.975 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_DISCOUNTSERVICE/10.30.21.230:discountService:8060: registering service...
+2019-12-22 15:15:38.998 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8060"]
+2019-12-22 15:15:39.033 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8060 (http) with context path ''
+2019-12-22 15:15:39.034 [main] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8060
+2019-12-22 15:15:39.115 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_DISCOUNTSERVICE/10.30.21.230:discountService:8060 - registration status: 204
+2019-12-22 15:15:40.477 [main] INFO  com.xmu.discount.DiscountApplication - Started DiscountApplication in 16.773 seconds (JVM running for 19.293)
+2019-12-22 15:15:40.753 [RMI TCP Connection(3)-192.168.88.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-12-22 15:15:41.320 [RMI TCP Connection(3)-192.168.88.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-12-22 15:15:41.462 [RMI TCP Connection(3)-192.168.88.1] INFO  io.lettuce.core.EpollProvider - Starting without optional epoll library
+2019-12-22 15:15:41.464 [RMI TCP Connection(3)-192.168.88.1] INFO  io.lettuce.core.KqueueProvider - Starting without optional kqueue library
+2019-12-22 15:15:42.764 [RMI TCP Connection(5)-192.168.88.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 15:15:42.765 [RMI TCP Connection(5)-192.168.88.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-12-22 15:15:42.772 [RMI TCP Connection(5)-192.168.88.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 7 ms
+2019-12-22 15:16:08.965 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2019-12-22 15:16:08.965 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2019-12-22 15:16:08.965 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2019-12-22 15:16:08.965 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+2019-12-22 15:16:08.965 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2019-12-22 15:16:08.965 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: false
+2019-12-22 15:16:08.965 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2019-12-22 15:16:09.066 [DiscoveryClient-CacheRefreshExecutor-0] INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2019-12-22 15:20:38.688 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2019-12-22 15:25:38.690 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2019-12-22 15:30:38.692 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2019-12-22 20:38:51.469 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 20:38:53.305 [main] INFO  com.xmu.discount.DiscountApplication - No active profile set, falling back to default profiles: default
+2019-12-22 20:38:54.501 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 20:38:54.504 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-22 20:38:54.550 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24ms. Found 0 repository interfaces.
+2019-12-22 20:38:54.700 [main] WARN  o.s.boot.actuate.endpoint.EndpointId - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2019-12-22 20:38:54.930 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=d196bbe9-1738-3a4a-a460-a1cc879c4002
+2019-12-22 20:38:55.122 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 20:38:55.181 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 20:38:55.556 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8010 (http)
+2019-12-22 20:38:55.566 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8010"]
+2019-12-22 20:38:55.567 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2019-12-22 20:38:55.567 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-22 20:38:55.771 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-12-22 20:38:55.771 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2431 ms
+2019-12-22 20:38:55.886 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 20:38:55.886 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 20:38:55.900 [main] INFO  c.n.config.DynamicPropertyFactory - DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@656922a0
+2019-12-22 20:38:58.041 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 20:38:58.934 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 20:38:58.934 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 20:38:59.123 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 20:38:59.694 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2019-12-22 20:39:01.375 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 20:39:03.020 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 20:39:03.056 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2019-12-22 20:39:03.105 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with default default cache. You can switch to using Caffeine cache, by adding it to the classpath.
+2019-12-22 20:39:03.120 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 20:39:03.219 [main] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2019-12-22 20:39:03.274 [main] INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2019-12-22 20:39:03.986 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON encoding codec LegacyJacksonJson
+2019-12-22 20:39:03.987 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON decoding codec LegacyJacksonJson
+2019-12-22 20:39:04.145 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML encoding codec XStreamXml
+2019-12-22 20:39:04.145 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML decoding codec XStreamXml
+2019-12-22 20:39:04.458 [main] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2019-12-22 20:39:04.894 [main] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2019-12-22 20:39:04.894 [main] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2019-12-22 20:39:04.894 [main] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2019-12-22 20:39:04.894 [main] INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+2019-12-22 20:39:04.894 [main] INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2019-12-22 20:39:04.895 [main] INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2019-12-22 20:39:04.895 [main] INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2019-12-22 20:39:05.262 [main] INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2019-12-22 20:39:05.265 [main] INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+2019-12-22 20:39:05.267 [main] INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2019-12-22 20:39:05.271 [main] INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1577018345270 with initial instances count: 2
+2019-12-22 20:39:05.274 [main] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application DISCOUNTSERVICE with eureka with status UP
+2019-12-22 20:39:05.275 [main] INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1577018345275, current=UP, previous=STARTING]
+2019-12-22 20:39:05.278 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_DISCOUNTSERVICE/localhost:discountService:8010: registering service...
+2019-12-22 20:39:05.299 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8010"]
+2019-12-22 20:39:05.536 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8010 (http) with context path ''
+2019-12-22 20:39:05.537 [main] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8010
+2019-12-22 20:39:05.593 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_DISCOUNTSERVICE/localhost:discountService:8010 - registration status: 204
+2019-12-22 20:39:07.241 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 20:39:07.243 [main] INFO  com.xmu.discount.DiscountApplication - Started DiscountApplication in 18.505 seconds (JVM running for 20.227)
+2019-12-22 20:39:08.067 [RMI TCP Connection(1)-192.168.81.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-12-22 20:39:08.067 [RMI TCP Connection(1)-192.168.81.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2019-12-22 20:39:08.070 [RMI TCP Connection(2)-192.168.81.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-12-22 20:39:08.077 [RMI TCP Connection(1)-192.168.81.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 10 ms
+2019-12-22 20:39:08.252 [RMI TCP Connection(2)-192.168.81.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-12-22 20:39:08.451 [RMI TCP Connection(2)-192.168.81.1] INFO  io.lettuce.core.EpollProvider - Starting without optional epoll library
+2019-12-22 20:39:08.453 [RMI TCP Connection(2)-192.168.81.1] INFO  io.lettuce.core.KqueueProvider - Starting without optional kqueue library
+2019-12-22 21:11:29.490 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:11:31.458 [main] INFO  c.x.discount.util.JsonObjectUtilTest - No active profile set, falling back to default profiles: default
+2019-12-22 21:11:32.884 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 21:11:32.889 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-22 21:11:32.943 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 30ms. Found 0 repository interfaces.
+2019-12-22 21:11:33.170 [main] WARN  o.s.boot.actuate.endpoint.EndpointId - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2019-12-22 21:11:33.505 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=6bf2b728-1b4c-34d4-a2f8-769a1fdfe792
+2019-12-22 21:11:34.151 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:11:34.448 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:11:35.603 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 21:11:35.603 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 21:11:35.653 [main] INFO  c.n.config.DynamicPropertyFactory - DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@729c8063
+2019-12-22 21:11:36.357 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 21:11:36.358 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 21:11:36.842 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 21:11:39.923 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:11:40.754 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2019-12-22 21:11:42.700 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:11:44.336 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:11:44.428 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2019-12-22 21:11:44.580 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with default default cache. You can switch to using Caffeine cache, by adding it to the classpath.
+2019-12-22 21:11:44.661 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 21:11:44.776 [main] INFO  c.x.discount.util.JsonObjectUtilTest - Started JsonObjectUtilTest in 18.175 seconds (JVM running for 20.0)
+2019-12-22 21:11:45.525 [SpringContextShutdownHook] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2019-12-22 21:11:45.530 [SpringContextShutdownHook] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application DISCOUNTSERVICE with eureka with status DOWN
+2019-12-22 21:11:45.533 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2019-12-22 21:11:45.568 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 21:14:22.509 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:14:24.401 [main] INFO  c.x.d.c.DiscountControllerTest - No active profile set, falling back to default profiles: default
+2019-12-22 21:14:25.700 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 21:14:25.705 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-22 21:14:25.774 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 35ms. Found 0 repository interfaces.
+2019-12-22 21:14:25.977 [main] WARN  o.s.boot.actuate.endpoint.EndpointId - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2019-12-22 21:14:26.372 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=6bf2b728-1b4c-34d4-a2f8-769a1fdfe792
+2019-12-22 21:14:26.926 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:14:27.205 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:14:28.326 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 21:14:28.326 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 21:14:28.358 [main] INFO  c.n.config.DynamicPropertyFactory - DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@6b2dd3df
+2019-12-22 21:14:29.022 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 21:14:29.022 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 21:14:29.480 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 21:14:32.499 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:14:33.379 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2019-12-22 21:14:35.181 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:14:36.874 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:14:36.949 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2019-12-22 21:14:37.110 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with default default cache. You can switch to using Caffeine cache, by adding it to the classpath.
+2019-12-22 21:14:37.164 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 21:14:37.276 [main] INFO  c.x.d.c.DiscountControllerTest - Started DiscountControllerTest in 17.533 seconds (JVM running for 19.2)
+2019-12-22 21:14:37.738 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-12-22 21:14:38.211 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-12-22 21:14:38.334 [SpringContextShutdownHook] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2019-12-22 21:14:38.340 [SpringContextShutdownHook] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application DISCOUNTSERVICE with eureka with status DOWN
+2019-12-22 21:14:38.346 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2019-12-22 21:14:38.384 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 21:14:38.395 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-12-22 21:14:38.419 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-12-22 21:19:11.007 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:19:12.869 [main] INFO  c.x.d.c.DiscountControllerTest - No active profile set, falling back to default profiles: default
+2019-12-22 21:19:14.135 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 21:19:14.139 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-22 21:19:14.196 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 34ms. Found 0 repository interfaces.
+2019-12-22 21:19:14.414 [main] WARN  o.s.boot.actuate.endpoint.EndpointId - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2019-12-22 21:19:14.750 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=6bf2b728-1b4c-34d4-a2f8-769a1fdfe792
+2019-12-22 21:19:15.271 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:19:15.469 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:19:16.557 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 21:19:16.558 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 21:19:16.591 [main] INFO  c.n.config.DynamicPropertyFactory - DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@6b2dd3df
+2019-12-22 21:19:17.290 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 21:19:17.291 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 21:19:17.726 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 21:19:20.755 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:19:21.535 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2019-12-22 21:19:23.437 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:19:25.089 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:19:25.181 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2019-12-22 21:19:25.303 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with default default cache. You can switch to using Caffeine cache, by adding it to the classpath.
+2019-12-22 21:19:25.353 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 21:19:25.474 [main] INFO  c.x.d.c.DiscountControllerTest - Started DiscountControllerTest in 17.242 seconds (JVM running for 18.864)
+2019-12-22 21:19:25.914 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-12-22 21:19:26.348 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-12-22 21:19:26.453 [main] ERROR com.xmu.discount.util.JacksonUtil - Unexpected character (',' (code 44)): Expected space separating root-level values
+ at [Source: (String)"1,2,3,4,7,8,9"; line: 1, column: 3]
+com.fasterxml.jackson.core.JsonParseException: Unexpected character (',' (code 44)): Expected space separating root-level values
+ at [Source: (String)"1,2,3,4,7,8,9"; line: 1, column: 3]
+	at com.fasterxml.jackson.core.JsonParser._constructError(JsonParser.java:1840)
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportError(ParserMinimalBase.java:712)
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportUnexpectedChar(ParserMinimalBase.java:637)
+	at com.fasterxml.jackson.core.base.ParserMinimalBase._reportMissingRootWS(ParserMinimalBase.java:684)
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser._verifyRootSpace(ReaderBasedJsonParser.java:1678)
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser._parsePosNumber(ReaderBasedJsonParser.java:1321)
+	at com.fasterxml.jackson.core.json.ReaderBasedJsonParser.nextToken(ReaderBasedJsonParser.java:769)
+	at com.fasterxml.jackson.databind.ObjectMapper._readTreeAndClose(ObjectMapper.java:4231)
+	at com.fasterxml.jackson.databind.ObjectMapper.readTree(ObjectMapper.java:2711)
+	at com.xmu.discount.util.JacksonUtil.parseIntegerList(JacksonUtil.java:87)
+	at com.xmu.discount.dao.CouponDao.getGoodsIdsInCouponRule(CouponDao.java:235)
+	at com.xmu.discount.dao.CouponDao.isUsedOnGoods(CouponDao.java:212)
+	at com.xmu.discount.dao.CouponDao.getValidItems(CouponDao.java:193)
+	at com.xmu.discount.dao.CouponDao.calcDiscount(CouponDao.java:160)
+	at com.xmu.discount.dao.CouponDao$$FastClassBySpringCGLIB$$9f7fba3e.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:769)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:747)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:747)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:689)
+	at com.xmu.discount.dao.CouponDao$$EnhancerBySpringCGLIB$$4e333b38.calcDiscount(<generated>)
+	at com.xmu.discount.service.impl.CouponServiceImpl.calcDiscount(CouponServiceImpl.java:302)
+	at com.xmu.discount.service.impl.CouponServiceImpl$$FastClassBySpringCGLIB$$dbb422ec.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:685)
+	at com.xmu.discount.service.impl.CouponServiceImpl$$EnhancerBySpringCGLIB$$a6e45fce.calcDiscount(<generated>)
+	at com.xmu.discount.controller.DiscountController.discountOrder(DiscountController.java:42)
+	at com.xmu.discount.controller.DiscountControllerTest.discountOrder(DiscountControllerTest.java:143)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:74)
+	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
+	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
+	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:251)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:190)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)
+2019-12-22 21:19:26.497 [SpringContextShutdownHook] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2019-12-22 21:19:26.502 [SpringContextShutdownHook] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application DISCOUNTSERVICE with eureka with status DOWN
+2019-12-22 21:19:26.505 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2019-12-22 21:19:26.534 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 21:19:26.541 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-12-22 21:19:26.556 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-12-22 21:38:03.132 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:38:05.054 [main] INFO  c.x.d.c.DiscountControllerTest - No active profile set, falling back to default profiles: default
+2019-12-22 21:38:06.325 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 21:38:06.329 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-22 21:38:06.394 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 39ms. Found 0 repository interfaces.
+2019-12-22 21:38:06.640 [main] WARN  o.s.boot.actuate.endpoint.EndpointId - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2019-12-22 21:38:06.965 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=6bf2b728-1b4c-34d4-a2f8-769a1fdfe792
+2019-12-22 21:38:07.501 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:38:07.697 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:38:08.772 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 21:38:08.773 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 21:38:08.819 [main] INFO  c.n.config.DynamicPropertyFactory - DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@6b2dd3df
+2019-12-22 21:38:09.513 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 21:38:09.513 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 21:38:09.961 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 21:38:12.953 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:38:13.805 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2019-12-22 21:38:15.624 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:38:17.342 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:38:17.423 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2019-12-22 21:38:17.538 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with default default cache. You can switch to using Caffeine cache, by adding it to the classpath.
+2019-12-22 21:38:17.589 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 21:38:17.718 [main] INFO  c.x.d.c.DiscountControllerTest - Started DiscountControllerTest in 17.348 seconds (JVM running for 19.038)
+2019-12-22 21:38:18.115 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-12-22 21:38:18.575 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-12-22 21:38:18.766 [SpringContextShutdownHook] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2019-12-22 21:38:18.771 [SpringContextShutdownHook] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application DISCOUNTSERVICE with eureka with status DOWN
+2019-12-22 21:38:18.774 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2019-12-22 21:38:18.807 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 21:38:18.817 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-12-22 21:38:18.833 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-12-22 21:42:04.154 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:42:06.050 [main] INFO  c.x.d.c.DiscountControllerTest - No active profile set, falling back to default profiles: default
+2019-12-22 21:42:07.331 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 21:42:07.337 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-22 21:42:07.406 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 42ms. Found 0 repository interfaces.
+2019-12-22 21:42:07.609 [main] WARN  o.s.boot.actuate.endpoint.EndpointId - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2019-12-22 21:42:07.939 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=6bf2b728-1b4c-34d4-a2f8-769a1fdfe792
+2019-12-22 21:42:08.475 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:42:08.683 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:42:09.814 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 21:42:09.814 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 21:42:09.845 [main] INFO  c.n.config.DynamicPropertyFactory - DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@6b2dd3df
+2019-12-22 21:42:10.587 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 21:42:10.587 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 21:42:11.014 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 21:42:13.989 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:42:14.805 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2019-12-22 21:42:16.585 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:42:18.282 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:42:18.354 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2019-12-22 21:42:18.496 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with default default cache. You can switch to using Caffeine cache, by adding it to the classpath.
+2019-12-22 21:42:18.552 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 21:42:18.686 [main] INFO  c.x.d.c.DiscountControllerTest - Started DiscountControllerTest in 17.529 seconds (JVM running for 19.108)
+2019-12-22 21:42:19.117 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-12-22 21:42:19.541 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-12-22 21:42:19.721 [SpringContextShutdownHook] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2019-12-22 21:42:19.725 [SpringContextShutdownHook] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application DISCOUNTSERVICE with eureka with status DOWN
+2019-12-22 21:42:19.728 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2019-12-22 21:42:19.756 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 21:42:19.763 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-12-22 21:42:19.778 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-12-22 21:48:40.547 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:48:42.432 [main] INFO  c.x.d.c.DiscountControllerTest - No active profile set, falling back to default profiles: default
+2019-12-22 21:48:43.707 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 21:48:43.711 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-22 21:48:43.768 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 34ms. Found 0 repository interfaces.
+2019-12-22 21:48:44.000 [main] WARN  o.s.boot.actuate.endpoint.EndpointId - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2019-12-22 21:48:44.358 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=6bf2b728-1b4c-34d4-a2f8-769a1fdfe792
+2019-12-22 21:48:44.872 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:48:45.082 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:48:46.256 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 21:48:46.256 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 21:48:46.289 [main] INFO  c.n.config.DynamicPropertyFactory - DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@6909f6be
+2019-12-22 21:48:46.996 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 21:48:46.996 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 21:48:47.461 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 21:48:50.400 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:48:51.227 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2019-12-22 21:48:53.152 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:48:54.780 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:48:54.856 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2019-12-22 21:48:55.000 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with default default cache. You can switch to using Caffeine cache, by adding it to the classpath.
+2019-12-22 21:48:55.051 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 21:48:55.189 [main] INFO  c.x.d.c.DiscountControllerTest - Started DiscountControllerTest in 17.355 seconds (JVM running for 19.065)
+2019-12-22 21:48:55.636 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-12-22 21:48:56.079 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-12-22 21:48:56.256 [SpringContextShutdownHook] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2019-12-22 21:48:56.262 [SpringContextShutdownHook] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application DISCOUNTSERVICE with eureka with status DOWN
+2019-12-22 21:48:56.268 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2019-12-22 21:48:56.310 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 21:48:56.320 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-12-22 21:48:56.345 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-12-22 21:50:02.586 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:50:04.493 [main] INFO  c.x.d.c.DiscountControllerTest - No active profile set, falling back to default profiles: default
+2019-12-22 21:50:05.816 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 21:50:05.821 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-22 21:50:05.878 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 33ms. Found 0 repository interfaces.
+2019-12-22 21:50:06.090 [main] WARN  o.s.boot.actuate.endpoint.EndpointId - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2019-12-22 21:50:06.463 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=6bf2b728-1b4c-34d4-a2f8-769a1fdfe792
+2019-12-22 21:50:07.027 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:50:07.224 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:50:08.376 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 21:50:08.377 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 21:50:08.410 [main] INFO  c.n.config.DynamicPropertyFactory - DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@6b2dd3df
+2019-12-22 21:50:09.127 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 21:50:09.127 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 21:50:09.614 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 21:50:12.568 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:50:13.395 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2019-12-22 21:50:15.158 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:50:16.838 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:50:16.920 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2019-12-22 21:50:17.053 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with default default cache. You can switch to using Caffeine cache, by adding it to the classpath.
+2019-12-22 21:50:17.105 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 21:50:17.244 [main] INFO  c.x.d.c.DiscountControllerTest - Started DiscountControllerTest in 17.484 seconds (JVM running for 19.164)
+2019-12-22 21:50:17.647 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-12-22 21:50:18.067 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-12-22 21:50:18.222 [SpringContextShutdownHook] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2019-12-22 21:50:18.228 [SpringContextShutdownHook] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application DISCOUNTSERVICE with eureka with status DOWN
+2019-12-22 21:50:18.231 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2019-12-22 21:50:18.256 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 21:50:18.264 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-12-22 21:50:18.281 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-12-22 21:52:44.932 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:52:46.929 [main] INFO  c.x.d.c.DiscountControllerTest - No active profile set, falling back to default profiles: default
+2019-12-22 21:52:48.701 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 21:52:48.707 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-22 21:52:48.777 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 42ms. Found 0 repository interfaces.
+2019-12-22 21:52:49.053 [main] WARN  o.s.boot.actuate.endpoint.EndpointId - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2019-12-22 21:52:49.484 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=6bf2b728-1b4c-34d4-a2f8-769a1fdfe792
+2019-12-22 21:52:50.279 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:52:50.598 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:52:52.026 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 21:52:52.027 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 21:52:52.085 [main] INFO  c.n.config.DynamicPropertyFactory - DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@6b2dd3df
+2019-12-22 21:52:53.045 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 21:52:53.046 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 21:52:53.656 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 21:52:57.502 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:52:58.598 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2019-12-22 21:53:00.800 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:53:02.897 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:53:03.050 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2019-12-22 21:53:03.264 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with default default cache. You can switch to using Caffeine cache, by adding it to the classpath.
+2019-12-22 21:53:03.336 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 21:53:03.484 [main] INFO  c.x.d.c.DiscountControllerTest - Started DiscountControllerTest in 21.368 seconds (JVM running for 22.939)
+2019-12-22 21:53:04.033 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-12-22 21:53:04.593 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-12-22 21:53:04.786 [SpringContextShutdownHook] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2019-12-22 21:53:04.792 [SpringContextShutdownHook] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application DISCOUNTSERVICE with eureka with status DOWN
+2019-12-22 21:53:04.795 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2019-12-22 21:53:04.833 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 21:53:04.846 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-12-22 21:53:04.867 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-12-22 21:54:01.188 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:54:03.667 [main] INFO  c.x.d.c.DiscountControllerTest - No active profile set, falling back to default profiles: default
+2019-12-22 21:54:05.379 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 21:54:05.386 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-22 21:54:05.473 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 50ms. Found 0 repository interfaces.
+2019-12-22 21:54:05.735 [main] WARN  o.s.boot.actuate.endpoint.EndpointId - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2019-12-22 21:54:06.176 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=6bf2b728-1b4c-34d4-a2f8-769a1fdfe792
+2019-12-22 21:54:06.858 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:54:07.167 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 21:54:08.659 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 21:54:08.660 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 21:54:08.708 [main] INFO  c.n.config.DynamicPropertyFactory - DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@4db77402
+2019-12-22 21:54:09.738 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 21:54:09.739 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 21:54:10.294 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 21:54:14.113 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:54:15.236 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2019-12-22 21:54:17.409 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:54:19.644 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 21:54:19.789 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2019-12-22 21:54:19.976 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with default default cache. You can switch to using Caffeine cache, by adding it to the classpath.
+2019-12-22 21:54:20.073 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 21:54:20.214 [main] INFO  c.x.d.c.DiscountControllerTest - Started DiscountControllerTest in 22.344 seconds (JVM running for 24.555)
+2019-12-22 21:54:20.698 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-12-22 21:54:21.335 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-12-22 21:54:21.836 [SpringContextShutdownHook] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2019-12-22 21:54:21.840 [SpringContextShutdownHook] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application DISCOUNTSERVICE with eureka with status DOWN
+2019-12-22 21:54:21.845 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2019-12-22 21:54:21.882 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 21:54:21.892 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-12-22 21:54:21.917 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-12-22 22:04:15.285 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:04:17.824 [main] INFO  c.x.d.c.DiscountControllerTest - No active profile set, falling back to default profiles: default
+2019-12-22 22:04:19.559 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 22:04:19.565 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-22 22:04:19.662 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 65ms. Found 0 repository interfaces.
+2019-12-22 22:04:19.950 [main] WARN  o.s.boot.actuate.endpoint.EndpointId - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2019-12-22 22:04:20.409 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=6bf2b728-1b4c-34d4-a2f8-769a1fdfe792
+2019-12-22 22:04:21.231 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:04:21.633 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:04:23.191 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 22:04:23.192 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 22:04:23.246 [main] INFO  c.n.config.DynamicPropertyFactory - DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@6b2dd3df
+2019-12-22 22:04:24.221 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 22:04:24.222 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 22:04:24.907 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 22:04:28.731 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 22:04:29.930 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2019-12-22 22:04:32.057 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 22:04:34.193 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 22:04:34.332 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2019-12-22 22:04:34.489 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with default default cache. You can switch to using Caffeine cache, by adding it to the classpath.
+2019-12-22 22:04:34.561 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 22:04:34.772 [main] INFO  c.x.d.c.DiscountControllerTest - Started DiscountControllerTest in 23.024 seconds (JVM running for 25.144)
+2019-12-22 22:04:35.325 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-12-22 22:04:35.919 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-12-22 22:04:36.348 [SpringContextShutdownHook] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2019-12-22 22:04:36.354 [SpringContextShutdownHook] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application DISCOUNTSERVICE with eureka with status DOWN
+2019-12-22 22:04:36.360 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2019-12-22 22:04:36.401 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 22:04:36.411 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-12-22 22:04:36.432 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-12-22 22:08:32.491 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:08:35.106 [main] INFO  c.x.d.c.DiscountControllerTest - No active profile set, falling back to default profiles: default
+2019-12-22 22:08:36.964 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-12-22 22:08:36.969 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-22 22:08:37.043 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 46ms. Found 0 repository interfaces.
+2019-12-22 22:08:37.339 [main] WARN  o.s.boot.actuate.endpoint.EndpointId - Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2019-12-22 22:08:37.761 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=6bf2b728-1b4c-34d4-a2f8-769a1fdfe792
+2019-12-22 22:08:38.481 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:08:38.853 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-22 22:08:40.358 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 22:08:40.359 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 22:08:40.404 [main] INFO  c.n.config.DynamicPropertyFactory - DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@6b2dd3df
+2019-12-22 22:08:41.297 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources.
+2019-12-22 22:08:41.297 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-12-22 22:08:41.964 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-22 22:08:45.823 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 22:08:46.945 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler'
+2019-12-22 22:08:49.120 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 22:08:51.197 [main] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2019-12-22 22:08:51.342 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project.
+2019-12-22 22:08:51.518 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with default default cache. You can switch to using Caffeine cache, by adding it to the classpath.
+2019-12-22 22:08:51.580 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-12-22 22:08:51.748 [main] INFO  c.x.d.c.DiscountControllerTest - Started DiscountControllerTest in 22.746 seconds (JVM running for 24.993)
+2019-12-22 22:08:52.280 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-12-22 22:08:52.845 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-12-22 22:08:53.267 [SpringContextShutdownHook] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2019-12-22 22:08:53.273 [SpringContextShutdownHook] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application DISCOUNTSERVICE with eureka with status DOWN
+2019-12-22 22:08:53.278 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler'
+2019-12-22 22:08:53.332 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-12-22 22:08:53.345 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-12-22 22:08:53.372 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
