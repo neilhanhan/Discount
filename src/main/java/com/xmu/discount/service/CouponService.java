@@ -19,7 +19,7 @@ public interface CouponService {
      * @param id
      * @return
      */
-    public Coupon findCouponById(Integer id);
+    public CouponPo findCouponById(Integer id);
 
     /**
      * 增加Coupon对象
