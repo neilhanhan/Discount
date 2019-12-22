@@ -33,8 +33,27 @@ public class DiscountController {
     public Object discountOrder(@RequestBody Order order){
         Integer couponId = order.getCouponId();
         List<OrderItem> orderItemList = order.getOrderItemList();
-        if(couponId==null){//使用优惠券
+        if(couponId==null){
+            /**
+             * 仅使用优惠券
+             */
+            List<OrderItem> oldOrderItems = order.getOrderItemList();
+            Integer userId = order.getUserId();
+            List<OrderItem> newOrderItems = couponService.calcDiscount(oldOrderItems, couponId);
+            /**
+             * 优惠券状态设置为已经使用
+             */
+            couponService.updateUserCouponStatus(userId, couponId);
 
+            //修改订单中的明细
+            order.setOrderItemList(newOrderItems);
+            //使用优惠券的List<Payment>为空
+            order.setPaymentList(null);
+            for (OrderItem item : newOrderItems) {
+                //都是普通商品
+                item.setItemType(0);
+            }
+            order.setOrderItemList(newOrderItems);
         }else {
 
             if(orderItemList.size()!=1){

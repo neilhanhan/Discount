@@ -3,6 +3,7 @@ package com.xmu.discount.service;
 import com.xmu.discount.domain.CartItem;
 import com.xmu.discount.domain.Coupon;
 import com.xmu.discount.domain.CouponPo;
+import com.xmu.discount.domain.OrderItem;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -60,4 +61,21 @@ public interface CouponService {
      * @throws Exception
      */
     public List<Coupon> getAvailableCoupons(List<CartItem> cartItemList) throws Exception;
+
+
+    /**
+     * 计算每个OrderItem的价格
+     * @param orderItems
+     * @param couponId
+     * @return
+     */
+    public List<OrderItem> calcDiscount(List<OrderItem> orderItems, Integer couponId);
+
+    /**
+     * 优惠券被使用后更新
+     * @param userId
+     * @param couponId
+     * @return
+     */
+    public Integer updateUserCouponStatus(Integer userId, Integer couponId);
 }

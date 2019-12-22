@@ -290,4 +290,31 @@ public class CouponServiceImpl implements CouponService {
         }
         return coupons;
     }
+
+    /**
+     * 计算每个OrderItem的价格
+     * @param orderItems
+     * @param couponId
+     * @return
+     */
+    @Override
+    public List<OrderItem> calcDiscount(List<OrderItem> orderItems, Integer couponId) {
+        List<OrderItem> newItems=couponDao.calcDiscount(orderItems,couponId);
+        return newItems;
+    }
+
+    /**
+     * 优惠券被使用后更新
+     * @param userId
+     * @param couponId
+     * @return
+     */
+    @Override
+    public Integer updateUserCouponStatus(Integer userId, Integer couponId) {
+        return couponDao.updateUserCouponStatus(userId, couponId);
+    }
+
+
+
+
 }

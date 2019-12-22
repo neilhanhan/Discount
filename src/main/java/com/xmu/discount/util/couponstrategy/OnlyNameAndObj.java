@@ -12,7 +12,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class OnlyNameAndObj {
+public class OnlyNameAndObj  {
     String name;
     String obj;
+
 }

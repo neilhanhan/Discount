@@ -59,4 +59,12 @@ public interface CouponMapper {
      * @return
      */
     public Boolean adminUnShelveCoupons(Integer couponRuleId);
+
+    /**
+     * 更新优惠券被使用
+     * @param couponPo
+     * @return
+     */
+    public Integer updateUserCouponStatus(CouponPo couponPo);
+
 }
