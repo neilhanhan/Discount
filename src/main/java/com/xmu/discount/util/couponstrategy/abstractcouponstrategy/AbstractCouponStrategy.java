@@ -88,6 +88,7 @@ public abstract class AbstractCouponStrategy {
                 BigDecimal dealPrice = this.getDealPrice(item.getPrice(), totalPrice);
                 System.out.println("优惠价格 dealPrice=" + dealPrice);
                 item.setDealPrice(dealPrice);
+                System.out.println("OrderItemId:"+item.getId()+" price"+dealPrice);
 
                 System.out.println("订单明细数量为："+item.getNumber());
                 dealTotalPrice = dealTotalPrice.add(dealPrice.multiply(BigDecimal.valueOf(item.getNumber())));
@@ -96,6 +97,7 @@ public abstract class AbstractCouponStrategy {
 
                 newItems.add(item);
             }
+
             BigDecimal error = this.getError(totalPrice, dealTotalPrice);
             System.out.println("误差 error=" + error);
 
@@ -135,6 +137,7 @@ public abstract class AbstractCouponStrategy {
                     }
                 }
             }
+
             return newItems;
         }
         else {

@@ -165,6 +165,7 @@ public class CouponDao {
 
         if (validItems.size() != 0) {
             AbstractCouponStrategy couponStrategy = (AbstractCouponStrategy) JsonObjectUtil.getCouponStrategy(couponRule.getStrategy());
+            System.out.println("使用优惠券"+couponStrategy);
             List<OrderItem> newItems=couponStrategy.cacuDiscount(orderItems,couponId);
             return newItems;
         } else {
@@ -190,9 +191,13 @@ public class CouponDao {
 
         for (OrderItem item : items) {
             Integer goodsId = item.getProduct().getGoodsId();
+            System.out.println("goodsId"+goodsId);
             if (isUsedOnGoods(goodsId, couponRule)) {
                 validItems.add(item);
             }
+        }
+        if(validItems.size()==0) {
+            System.out.println("使用优惠券的item数=0");
         }
         return validItems;
     }
@@ -231,12 +236,12 @@ public class CouponDao {
 
         List<Integer> goodsId1 = new ArrayList<>();
         List<Integer> goodsId2 = new ArrayList<>();
-        if (jsonString1 != null) {
-            goodsId1 = JacksonUtil.parseIntegerList(jsonString1, "goodsIds");
+        if (jsonString1 != null&&!"".equals(jsonString1)) {
+            goodsId1 = stringToInts(jsonString1);
             System.out.println("goodsId1参数" + goodsId1);
         }
-        if (jsonString2 != null) {
-            goodsId2 = JacksonUtil.parseIntegerList(jsonString2, "goodsIds");
+        if (jsonString2 != null&&!"".equals(jsonString2)) {
+            goodsId2 = stringToInts(jsonString2);
             System.out.println("goodsId2参数" + goodsId2);
         }
 
@@ -245,5 +250,15 @@ public class CouponDao {
         }
         System.out.println(goodsId1);
         return goodsId1;
+    }
+
+
+    public List<Integer> stringToInts(String string) {
+        String[] split = string.split(",");
+        ArrayList<Integer> integers = new ArrayList<>();
+        for (int i = 0; i < split.length; i++) {
+            integers.add(Integer.valueOf(split[i]));
+        }
+        return integers;
     }
 }

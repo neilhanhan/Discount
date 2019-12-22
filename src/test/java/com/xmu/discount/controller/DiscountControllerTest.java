@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -132,14 +133,16 @@ public class DiscountControllerTest {
         Goods goods=new Goods();
         goods.setId(1);
         product.setGoods(goods);
+        product.setGoodsId(1);
         orderItem.setProduct(product);
+        orderItem.setNumber(10);
+        orderItem.setPrice(BigDecimal.TEN);
         orderItems.add(orderItem);
         order.setOrderItemList(orderItems);
         order.setCouponId(42);
         User user =new User();
         user.setId(123);
         order.setUser(user);
-
         Object o = discountController.discountOrder(order);
         System.out.println(o);
     }
