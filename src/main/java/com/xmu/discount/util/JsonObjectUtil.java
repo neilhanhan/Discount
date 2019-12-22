@@ -29,18 +29,18 @@ public class JsonObjectUtil {
         /**
          * 根据名字创建对象
          */
-        if (StrategyName.CashOffStrategy.equals(name)) {
+        if (StrategyName.CashOffStrategy.toString().equals(name)) {
             CashOffStrategyName cashOffStrategyName = JSONObject.toJavaObject(jsonObject, CashOffStrategyName.class);
             strategy = cashOffStrategyName.getObj();
 
-        } else if (StrategyName.NumberStrategy.equals(name)) {
+        } else if (StrategyName.NumberStrategy.toString().equals(name)) {
             NumberStrategyName numberStrategyName = JSONObject.toJavaObject(jsonObject, NumberStrategyName.class);
             strategy = numberStrategyName.getObj();
-        } else if (StrategyName.PercentageStrategy.equals(name)) {
+        } else if (StrategyName.PercentageStrategy.toString().equals(name)) {
             PercentageStrategyName percentageStrategyName = JSONObject.toJavaObject(jsonObject, PercentageStrategyName.class);
             strategy = percentageStrategyName.getObj();
         } else {
-            System.out.println("json解析错误");
+            System.out.println("json解析错误,name:"+name+"  json:"+json);
         }
         return strategy;
     }
