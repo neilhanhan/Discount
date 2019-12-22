@@ -37,7 +37,7 @@ public class GrouponRuleController {
     }
 
     /**
-     *
+     * 测试成功
      * 下架团购活动
      *
      * @param id 团购规则ID
@@ -195,11 +195,11 @@ public class GrouponRuleController {
      *
      * 给Goods模块调用的接口
      *
-     * @param id 团购规则ID
+     * @param goodsId 团购规则ID
      * @return Object
      */
     @GetMapping("/grouponRule")
-    public GrouponRule getGrouponRuleOnshelve(@RequestParam Integer id){
-        return grouponRuleService.getGrouponRuleOnshelve(id);
+    public GrouponRule getGrouponRuleOnshelve(@RequestParam Integer goodsId){
+        return grouponRuleService.getGrouponRuleOnshelve(goodsId);
     }
 }
