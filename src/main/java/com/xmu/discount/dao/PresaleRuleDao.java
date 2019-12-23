@@ -6,7 +6,6 @@ import com.xmu.discount.domain.*;
 import com.xmu.discount.mapper.PresaleRuleMapper;
 import com.xmu.discount.service.GoodsService;
 import com.xmu.discount.util.JacksonUtil;
-import com.xmu.discount.util.Packing;
 import com.xmu.discount.util.PageUtil;
 import com.xmu.discount.util.ResponseUtil;
 import com.xmu.discount.vo.PresaleRuleVo;
@@ -59,7 +58,26 @@ public class PresaleRuleDao {
         if (presaleRuleList.size()==0) {
             return ResponseUtil.presaleRuleUnknown();
         }
-        List<PresaleRuleVo> presaleRuleVoList = Packing.presaleRulePacking(presaleRuleList);
+        List<PresaleRuleVo> presaleRuleVoList = new ArrayList<>();
+        for (PresaleRule presaleRule : presaleRuleList) {
+            Integer goodsId = presaleRule.getGoodsId();
+            String str = JacksonUtil.toJson(goodsService.getGoodsPoById(goodsId));
+            Map map = (Map) JSON.parse(str);
+            String data = map.get("data").toString();
+            GoodsPo goodsPo=new GoodsPo();
+            try{
+                goodsPo=new ObjectMapper().readValue(data, Goods.class);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            if (goodsPo == null) {
+                continue;
+            }
+            PresaleRuleVo presaleRuleVo = new PresaleRuleVo();
+            presaleRuleVo.setPresaleRule(presaleRule);
+            presaleRuleVo.setGoodsPo(goodsPo);
+            presaleRuleVoList.add(presaleRuleVo);
+        }
         int pagecount=presaleRuleVoList.size()/limit;
         int remain=presaleRuleVoList.size()%limit;
         if(remain>0){
@@ -87,7 +105,26 @@ public class PresaleRuleDao {
         if (presaleRuleList.size()==0) {
             return ResponseUtil.presaleRuleUnknown();
         }
-        List<PresaleRuleVo> presaleRuleVoList = Packing.presaleRulePacking(presaleRuleList);
+        List<PresaleRuleVo> presaleRuleVoList = new ArrayList<>();
+        for (PresaleRule presaleRule : presaleRuleList) {
+            Integer goodsId = presaleRule.getGoodsId();
+            String str = JacksonUtil.toJson(goodsService.getGoodsPoById(goodsId));
+            Map map = (Map) JSON.parse(str);
+            String data = map.get("data").toString();
+            GoodsPo goodsPo=new GoodsPo();
+            try{
+                goodsPo=new ObjectMapper().readValue(data, Goods.class);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            if (goodsPo == null) {
+                continue;
+            }
+            PresaleRuleVo presaleRuleVo = new PresaleRuleVo();
+            presaleRuleVo.setPresaleRule(presaleRule);
+            presaleRuleVo.setGoodsPo(goodsPo);
+            presaleRuleVoList.add(presaleRuleVo);
+        }
         int pagecount=presaleRuleVoList.size()/limit;
         int remain=presaleRuleVoList.size()%limit;
         if(remain>0){
@@ -117,7 +154,7 @@ public class PresaleRuleDao {
         }else {
             PresaleRuleVo presaleRuleVo = new PresaleRuleVo();
             Integer goodsId = presaleRule.getGoodsId();
-            String str = JacksonUtil.toJson(goodsService.getGoodsById(goodsId));
+            String str = JacksonUtil.toJson(goodsService.getGoodsPoById(goodsId));
             Map map = (Map) JSON.parse(str);
             String data = map.get("data").toString();
             GoodsPo goodsPo=new GoodsPo();

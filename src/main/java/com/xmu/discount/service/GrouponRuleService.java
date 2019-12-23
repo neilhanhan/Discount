@@ -1,6 +1,5 @@
 package com.xmu.discount.service;
 
-import com.xmu.discount.domain.GrouponRule;
 import com.xmu.discount.domain.GrouponRulePo;
 
 
@@ -83,5 +82,5 @@ public interface GrouponRuleService {
      */
     void checkFinishedGrouponRule();
 
-    GrouponRule getGrouponRuleOnshelve(Integer goodsId);
+    GrouponRulePo getGrouponRuleOnshelve(Integer goodsId);
 }

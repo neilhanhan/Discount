@@ -1,6 +1,5 @@
 package com.xmu.discount.controller;
 
-import com.xmu.discount.domain.GrouponRule;
 import com.xmu.discount.domain.GrouponRulePo;
 import com.xmu.discount.service.GrouponRuleService;
 import com.xmu.discount.util.ResponseUtil;
@@ -198,8 +197,8 @@ public class GrouponRuleController {
      * @param goodsId 团购规则ID
      * @return Object
      */
-    @GetMapping("/grouponRule")
-    public GrouponRule getGrouponRuleOnshelve(@RequestParam Integer goodsId){
+    @GetMapping("/grouponRule/{id}")
+    public GrouponRulePo getGrouponRuleOnshelve(@PathVariable("id") Integer goodsId){
         return grouponRuleService.getGrouponRuleOnshelve(goodsId);
     }
 }

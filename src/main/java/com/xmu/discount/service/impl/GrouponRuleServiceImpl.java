@@ -1,7 +1,6 @@
 package com.xmu.discount.service.impl;
 
 import com.xmu.discount.dao.GrouponRuleDao;
-import com.xmu.discount.domain.GrouponRule;
 import com.xmu.discount.domain.GrouponRulePo;
 import com.xmu.discount.service.GrouponRuleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +67,7 @@ public class GrouponRuleServiceImpl implements GrouponRuleService {
     }
 
     @Override
-    public GrouponRule getGrouponRuleOnshelve(Integer goodsId) {
+    public GrouponRulePo getGrouponRuleOnshelve(Integer goodsId) {
         return grouponRuleDao.getGrouponRuleOnshelve(goodsId);
     }
 

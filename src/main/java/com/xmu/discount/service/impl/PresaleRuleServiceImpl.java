@@ -59,7 +59,7 @@ public class PresaleRuleServiceImpl implements PresaleRuleService {
 //        PresaleRule presaleRule = presaleRuleDao.getPresaleRuleById(id);
 //        PresaleRuleVo presaleRuleVo = new PresaleRuleVo();
 //        Integer goodsId = presaleRule.getGoodsId();
-//        String str = JacksonUtil.toJson(goodsService.getGoodsById(goodsId));
+//        String str = JacksonUtil.toJson(goodsService.getGoodsPoById(goodsId));
 //        Map map = (Map) JSON.parse(str);
 //        String data = map.get("data").toString();
 //        GoodsPo goodsPo=new GoodsPo();
@@ -103,7 +103,7 @@ public class PresaleRuleServiceImpl implements PresaleRuleService {
         if (presaleRules.size()==0) {
             return new ArrayList<PresaleRuleVo>();
         }
-        String str = JacksonUtil.toJson(goodsService.getGoodsById(goodsId));
+        String str = JacksonUtil.toJson(goodsService.getGoodsPoById(goodsId));
         Map map = (Map) JSON.parse(str);
         String data = map.get("data").toString();
         GoodsPo goodsPo=new GoodsPo();
@@ -146,7 +146,7 @@ public class PresaleRuleServiceImpl implements PresaleRuleService {
         PresaleRuleVo presaleRuleVo = new PresaleRuleVo();
         PresaleRule presaleRuleById = presaleRuleDao.findPresaleRuleById(id);
         Integer goodsId = presaleRuleById.getGoodsId();
-        String str = JacksonUtil.toJson(goodsService.getGoodsById(goodsId));
+        String str = JacksonUtil.toJson(goodsService.getGoodsPoById(goodsId));
         Map map = (Map) JSON.parse(str);
         String data = map.get("data").toString();
         GoodsPo goodsPo=new GoodsPo();

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @author Liuwenhan
  */
 @Component
-@FeignClient(name = "goodsInfo")
+@FeignClient("goods")
 public interface GoodsService {
 
     /**
@@ -17,6 +17,6 @@ public interface GoodsService {
      * @param id
      * @return
      */
-    @GetMapping("/goods/{id}")
-    public Object getGoodsById(@PathVariable("id") Integer id);
+    @GetMapping("/inner/goods/{id}")
+    Object getGoodsPoById(@PathVariable("id") Integer id);
 }
