@@ -23,6 +23,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://172.81.212.62:7001/eureka/
+      #http://122.51.215.246:8761/eureka/
   instance:
     prefer-ip-address: true
 ribbon:

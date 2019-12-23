@@ -46,7 +46,8 @@ public class PresaleRuleDao {
     }
 
     public Object deletePresaleRule(Integer id) {
-        if(presaleRuleMapper.deletePresaleRule(id)){
+        LocalDateTime time = LocalDateTime.now();
+        if(presaleRuleMapper.deletePresaleRule(id,time)){
             return ResponseUtil.ok();
         }else {
             return ResponseUtil.grouponDeleteFail();

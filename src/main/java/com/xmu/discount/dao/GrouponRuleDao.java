@@ -39,6 +39,7 @@ public class GrouponRuleDao{
         List<GrouponRuleVo> grouponRuleVoList = new ArrayList<>();
         for (GrouponRulePo grouponRulePo : grouponRulePoList) {
             Integer goodsId = grouponRulePo.getGoodsId();
+            System.out.println(goodsId);
             String str = JacksonUtil.toJson(goodsService.getGoodsPoById(goodsId));
             Map map = (Map) JSON.parse(str);
             String data = map.get("data").toString();
@@ -54,6 +55,7 @@ public class GrouponRuleDao{
             GrouponRuleVo grouponRuleVo = new GrouponRuleVo();
             grouponRuleVo.setGrouponRulePo(grouponRulePo);
             grouponRuleVo.setGoodsPo(goodsPo);
+            System.out.println(grouponRuleVo);
             grouponRuleVoList.add(grouponRuleVo);
         }
         int pagecount=grouponRuleVoList.size()/limit;
@@ -258,7 +260,7 @@ public class GrouponRuleDao{
 
     public Object downGrouponRuleById(Integer id) {
         LocalDateTime modifiedTime = LocalDateTime.now();
-        if(grouponRuleMapper.adminGetGrouponRuleById(id) == null){
+        if(grouponRuleMapper.getGrouponRuleById(id) == null){
             return ResponseUtil.grouponRuleUnknown();
         }else if(grouponRuleMapper.downGrouponRuleById(id,modifiedTime)){
             return ResponseUtil.ok();

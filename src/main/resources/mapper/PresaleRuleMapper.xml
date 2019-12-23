@@ -26,7 +26,19 @@
     </select>
 
     <select id="findPresaleRuleById" parameterType="Integer" resultMap="presaleRule">
-        select * from oomall_presale_rule where id=#{id} and is_deleted=0;
+        select id,
+               gmt_modified,
+               gmt_create,
+               is_deleted as beDeleted,
+               start_time,
+               end_time,
+               status as statusCode,
+               ad_end_time,
+               final_start_time,
+               goods_id,
+               deposit,
+               final_payment
+        from oomall_presale_rule where id=#{id} and is_deleted=0;
     </select>
 
     <update id="updatePresaleRuleById" parameterType="presaleRule">
@@ -46,7 +58,7 @@
     </update>
 
     <update id="deletePresaleRule" parameterType="Integer">
-        update oomall_presale_rule set is_deleted = true
+        update oomall_presale_rule set is_deleted = true and gmt_modified=#{time}
         where id=#{id} and is_deleted!=true and status!=true;
     </update>
 
@@ -56,22 +68,70 @@
     </update>
 
     <select id="adminGetPresaleRule" resultType="com.xmu.discount.domain.PresaleRule">
-        select * from oomall_presale_rule
+        select id,
+               gmt_modified,
+               gmt_create,
+               is_deleted as beDeleted,
+               start_time,
+               end_time,
+               status as statusCode,
+               ad_end_time,
+               final_start_time,
+               goods_id,
+               deposit,
+               final_payment
+        from oomall_presale_rule
         where is_deleted!=true;
     </select>
 
     <select id="customerGetPresaleRule" resultType="com.xmu.discount.domain.PresaleRule">
-        select * from oomall_presale_rule
+        select id,
+               gmt_modified,
+               gmt_create,
+               is_deleted as beDeleted,
+               start_time,
+               end_time,
+               status as statusCode,
+               ad_end_time,
+               final_start_time,
+               goods_id,
+               deposit,
+               final_payment
+        from oomall_presale_rule
         where is_deleted!=true and status = true;
     </select>
 
     <select id="getPresaleRuleById" resultType="com.xmu.discount.domain.PresaleRule">
-        select * from oomall_presale_rule
+        select id,
+               gmt_modified,
+               gmt_create,
+               is_deleted as beDeleted,
+               start_time,
+               end_time,
+               status as statusCode,
+               ad_end_time,
+               final_start_time,
+               goods_id,
+               deposit,
+               final_payment
+        from oomall_presale_rule
         where id = #{id} and is_deleted!=true and status = true;
     </select>
 
     <select id="getPresaleRuleByGoodsId" resultType="com.xmu.discount.domain.PresaleRule">
-        select * from oomall_presale_rule
+        select id,
+               gmt_modified,
+               gmt_create,
+               is_deleted as beDeleted,
+               start_time,
+               end_time,
+               status as statusCode,
+               ad_end_time,
+               final_start_time,
+               goods_id,
+               deposit,
+               final_payment
+        from oomall_presale_rule
         where goods_id=#{id} and is_deleted!=true and status = true;
     </select>
 

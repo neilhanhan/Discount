@@ -82,5 +82,9 @@ public interface GrouponRuleService {
      */
     void checkFinishedGrouponRule();
 
+    /**
+     * @param goodsId
+     * @return
+     */
     GrouponRulePo getGrouponRuleOnshelve(Integer goodsId);
 }

@@ -20,7 +20,7 @@ public interface PresaleRuleMapper {
      * @param id 预售规则ID
      * @return Boolean
      */
-    boolean deletePresaleRule(Integer id);
+    boolean deletePresaleRule(Integer id,LocalDateTime time);
 
 
     /**

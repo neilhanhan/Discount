@@ -81,6 +81,7 @@ public interface GrouponRuleMapper {
 
     /**
      * 检查完成的团购活动并退款
+     *
      * @param today
      * @param yesterday
      * @return List<GrouponRulePo>

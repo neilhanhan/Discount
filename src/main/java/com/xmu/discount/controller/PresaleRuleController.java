@@ -13,7 +13,7 @@ import java.util.List;
  * @author Liuwenhan & Zhang Bingyuan
  */
 @RestController
-@RequestMapping(value = "/discountService")
+@RequestMapping("/discountService")
 public class PresaleRuleController {
 
     @Autowired

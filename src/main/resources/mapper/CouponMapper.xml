@@ -24,7 +24,7 @@
         values (#{userId},#{couponRuleId},#{couponSn},#{beginTime},#{endTime},#{usedTime},#{name}, #{picUrl}, #{gmtCreate}, #{gmtModified},#{statusCode})
     </insert>
     <delete id="deleteCouponById" parameterType="Integer">
-        update oomall_coupon setis_delete=#{beDeleted} where id=1
+        update oomall_coupon set is_deleted=#{beDeleted} where id=1
     </delete>
     <update id="updateCoupon" parameterType="couponPo">
         update oomall_coupon
