@@ -155,7 +155,9 @@ public class GrouponRuleDao{
 
     public Object deleteGrouponRule(Integer id){
         LocalDateTime modifiedTime= LocalDateTime.now();
-        if(grouponRuleMapper.deleteGrouponRule(id,modifiedTime)){
+        if(grouponRuleMapper.adminGetGrouponRuleById(id) == null){
+            return ResponseUtil.grouponRuleUnknown();
+        }else if(grouponRuleMapper.deleteGrouponRule(id,modifiedTime)){
             return ResponseUtil.ok();
         }else {
             return ResponseUtil.grouponDeleteFail();
@@ -260,7 +262,7 @@ public class GrouponRuleDao{
 
     public Object downGrouponRuleById(Integer id) {
         LocalDateTime modifiedTime = LocalDateTime.now();
-        if(grouponRuleMapper.getGrouponRuleById(id) == null){
+        if(grouponRuleMapper.adminGetGrouponRuleById(id) == null){
             return ResponseUtil.grouponRuleUnknown();
         }else if(grouponRuleMapper.downGrouponRuleById(id,modifiedTime)){
             return ResponseUtil.ok();

@@ -25,7 +25,7 @@ public class GrouponRuleController {
      private GrouponRuleService grouponRuleService;
 
     /**
-     *
+     * 测试成功
      * 定时任务：每天晚上12点检查前一天完成的团购活动并退款
      *
      */
