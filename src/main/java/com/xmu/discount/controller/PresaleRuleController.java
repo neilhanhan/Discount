@@ -135,7 +135,7 @@ public class PresaleRuleController {
     @PostMapping("/presaleRules")
     public Object addPresaleRule(@RequestBody PresaleRule presaleRule) {
         PresaleRule presaleRule1 = presaleRuleService.addPresaleRule(presaleRule);
-        if (presaleRule1.equals(null)) {
+        if (presaleRule1==null ) {
             ResponseUtil.presaleInsertFail();
         }
         return ResponseUtil.ok(presaleRule1);
@@ -152,7 +152,7 @@ public class PresaleRuleController {
     public Object updatePresaleRuleById(@PathVariable Integer id, @RequestBody PresaleRule presaleRule) {
 
         PresaleRule presaleRule1 = presaleRuleService.updatePresaleRuleById(id, presaleRule);
-        if (presaleRule1.equals(null)) {
+        if (presaleRule1==null) {
             ResponseUtil.presaleUpdateFail();
         }
         return ResponseUtil.ok(presaleRule1);
@@ -167,7 +167,7 @@ public class PresaleRuleController {
     @GetMapping("/admin/presaleRules/{id}")
     public Object getPresaleRuleVoById(@PathVariable Integer id) {
         PresaleRuleVo presaleRuleVoById = presaleRuleService.findPresaleRuleVoById(id);
-        if (presaleRuleVoById.equals(null)) {
+        if (presaleRuleVoById==null) {
             ResponseUtil.presaleRuleUnknown();
         }
         return ResponseUtil.ok(presaleRuleVoById);

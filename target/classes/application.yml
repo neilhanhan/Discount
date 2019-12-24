@@ -3,10 +3,10 @@ server:
 
 spring:
   datasource:
-    username: root
-    password: 991002
-    url: jdbc:mysql://localhost:3306/oomall?serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.52.88.176:3306/DB1_1?serverTimezone=Asia/Shanghai
+    username: user1_1
+    password: ooad1
   application:
     name: discountService
 
@@ -23,7 +23,6 @@ eureka:
   client:
     service-url:
       defaultZone: http://172.81.212.62:7001/eureka/
-      #http://122.51.215.246:8761/eureka/
   instance:
     prefer-ip-address: true
 ribbon:
