@@ -4,9 +4,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.52.88.176:3306/DB1_1?serverTimezone=Asia/Shanghai
-    username: user1_1
-    password: ooad1
+    url: jdbc:mysql://localhost:3306/oomall?serverTimezone=Asia/Shanghai
+    username: root
+    password: 991002
   application:
     name: discountService
 
@@ -25,6 +25,7 @@ eureka:
       defaultZone: http://172.81.212.62:7001/eureka/
   instance:
     prefer-ip-address: true
+    ip-address: 47.96.138.2
 ribbon:
   eureka:
     enabled: true

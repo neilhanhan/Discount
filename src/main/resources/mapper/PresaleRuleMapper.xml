@@ -119,20 +119,8 @@
     </select>
 
     <select id="getPresaleRuleByGoodsId" resultType="com.xmu.discount.domain.PresaleRule">
-        select id,
-               gmt_modified,
-               gmt_create,
-               is_deleted as beDeleted,
-               start_time,
-               end_time,
-               status as statusCode,
-               ad_end_time,
-               final_start_time,
-               goods_id,
-               deposit,
-               final_payment
-        from oomall_presale_rule
-        where goods_id=#{id} and is_deleted!=true and status = true;
+        select * from oomall_presale_rule
+        where goods_id=#{id} and is_deleted=0 and status = 1;
     </select>
 
 

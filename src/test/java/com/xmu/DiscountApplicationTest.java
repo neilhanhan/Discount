@@ -1,11 +1,13 @@
-package com.xmu;
-
+//package com.xmu;
+//
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
 //@SpringBootTest
 //public class DiscountApplicationTest
 //{
 //    @Test
-//    public void shouldAnswerWithTrue()
-//    {
-//        assertTrue( true );
+//    public void tc_Groupon_001(){
+//
 //    }
 //}

@@ -84,6 +84,29 @@ public class GrouponRuleDao{
     }
 
     public Object addGrouponRule(GrouponRulePo grouponRulePo){
+        LocalDateTime startTime=grouponRulePo.getStartTime();
+        LocalDateTime endTime=grouponRulePo.getEndTime();
+        if(startTime.isAfter(endTime)){
+            return ResponseUtil.fail(722,"起止时间不合法");
+        }
+        if(grouponRulePo.getBeDeleted()!=null||grouponRulePo.getStatusCode()!=null||grouponRulePo.getId()!=null){
+            return ResponseUtil.fail(722,"输入数据不合法");
+        }
+        if(endTime.isBefore(LocalDateTime.now())){
+            return ResponseUtil.fail(722,"结束时间不合法");
+        }
+        List<GrouponRulePo> grouponRulePoList = grouponRuleMapper.getGrouponRuleByGoodsId(grouponRulePo.getGoodsId());
+        for(GrouponRulePo grouponRulePo1:grouponRulePoList){
+            if(startTime.isAfter(grouponRulePo1.getStartTime())&&startTime.isBefore(grouponRulePo1.getEndTime())){
+                return ResponseUtil.fail(722,"起止时间重复");
+            }
+            if(endTime.isAfter(grouponRulePo1.getStartTime())&&endTime.isBefore(grouponRulePo1.getEndTime())){
+                return ResponseUtil.fail(722,"起止时间重复");
+            }
+        }
+        if(JacksonUtil.getGrouponRuleStrategy(grouponRulePo.getGrouponLevelStrategy())==null){
+            return ResponseUtil.fail(722,"策略不合法");
+        }
         grouponRulePo.setGmtCreate(LocalDateTime.now());
         grouponRulePo.setGmtModified(LocalDateTime.now());
         grouponRulePo.setBeDeleted(false);

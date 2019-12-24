@@ -47,9 +47,8 @@ public class JacksonUtil {
             }
             return dataList;
         }catch (JSONException e) {
-            e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
     private static final Log logger = LogFactory.getLog(JacksonUtil.class);
