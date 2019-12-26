@@ -31,14 +31,17 @@ public class PresaleRuleDao {
     GoodsService goodsService;
 
 //    @Autowired
-//    OrderService orderService;
+//    OrdersService ordersService;
 
     public Object downPresaleRuleById(Integer id) {
+        PresaleRule presaleRule = presaleRuleMapper.getPresaleRuleById(id);
         LocalDateTime modifiedTime= LocalDateTime.now();
         if(presaleRuleMapper.findPresaleRuleById(id) == null){
             return ResponseUtil.presaleRuleUnknown();
+        }else if(presaleRule==null){
+            return ResponseUtil.fail(736,"预售活动下架失败");
         }else if(presaleRuleMapper.downPresaleRuleById(id,modifiedTime)){
-//            orderService.refundOfPresaleRule(presaleRule);
+//            ordersService.refundOfPresaleRule(presaleRule);
             return ResponseUtil.ok();
         }else {
             return ResponseUtil.fail(736,"预售活动下架失败");
@@ -98,7 +101,7 @@ public class PresaleRuleDao {
                 subList=presaleRuleVoList.subList((page-1)*limit,page*limit);
             }
         }
-        return ResponseUtil.ok(subList);
+        return ResponseUtil.okList(subList);
     }
 
     public Object customerGetPresaleRule(Integer page, Integer limit) {
@@ -145,7 +148,7 @@ public class PresaleRuleDao {
                 subList=presaleRuleVoList.subList((page-1)*limit,page*limit);
             }
         }
-        return ResponseUtil.ok(subList);
+        return ResponseUtil.okList(subList);
     }
 
     public Object getPresaleRuleById(Integer id) {
@@ -160,7 +163,7 @@ public class PresaleRuleDao {
             String data = map.get("data").toString();
             GoodsPo goodsPo=new GoodsPo();
             try{
-                goodsPo=(GoodsPo) new ObjectMapper().readValue(data, Goods.class);
+                goodsPo = new ObjectMapper().readValue(data, Goods.class);
             }catch(Exception e){
                 e.printStackTrace();
             }

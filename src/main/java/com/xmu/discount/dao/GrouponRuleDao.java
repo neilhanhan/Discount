@@ -2,7 +2,10 @@ package com.xmu.discount.dao;
 
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.xmu.discount.domain.*;
+import com.xmu.discount.domain.Goods;
+import com.xmu.discount.domain.GoodsPo;
+import com.xmu.discount.domain.GrouponRule;
+import com.xmu.discount.domain.GrouponRulePo;
 import com.xmu.discount.mapper.GrouponRuleMapper;
 import com.xmu.discount.service.GoodsService;
 import com.xmu.discount.util.JacksonUtil;
@@ -32,7 +35,7 @@ public class GrouponRuleDao{
     GoodsService goodsService;
 
 //    @Autowired
-//    OrderService orderService;
+//    OrdersService ordersService;
 
     public Object getGrouponRuleByGoodsId(Integer id, Integer page, Integer limit){
         List<GrouponRulePo> grouponRulePoList = grouponRuleMapper.getGrouponRuleByGoodsId(id);
@@ -80,7 +83,7 @@ public class GrouponRuleDao{
                 subList=grouponRuleVoList.subList((page-1)*limit,page*limit);
             }
         }
-        return ResponseUtil.ok(subList);
+        return ResponseUtil.okList(subList);
     }
 
     public Object addGrouponRule(GrouponRulePo grouponRulePo){
@@ -232,7 +235,7 @@ public class GrouponRuleDao{
                 subList=grouponRuleVoList.subList((page-1)*limit,page*limit);
             }
         }
-        return ResponseUtil.ok(subList);
+        return ResponseUtil.okList(subList);
     }
 
     public Object adminGetGrouponRule(Integer page, Integer limit) {
@@ -280,7 +283,7 @@ public class GrouponRuleDao{
                 subList=grouponRuleVoList.subList((page-1)*limit,page*limit);
             }
         }
-        return ResponseUtil.ok(subList);
+        return ResponseUtil.okList(subList);
     }
 
     public Object downGrouponRuleById(Integer id) {
@@ -299,21 +302,22 @@ public class GrouponRuleDao{
         LocalDateTime yesterday = today.minusHours(24);
         List<GrouponRulePo> grouponRulePoList = grouponRuleMapper.checkFinishedGrouponRule(today,yesterday);
         List<GrouponRule> grouponRuleList = getGrouponRuleList(grouponRulePoList);
-//        for(int i=0;i<grouponRulePoList.size();i++){
-//            List<GrouponRule.Strategy> strategyList = grouponRuleList.get(i).getStrategyList();
-//            //调用orderService模块获取完成的订单数
-//            Integer num = orderService.getGrouponOrders(grouponRulePoList.get(i));
+        for(int i=0;i<grouponRulePoList.size();i++){
+            List<GrouponRule.Strategy> strategyList = grouponRuleList.get(i).getStrategyList();
+//            Integer num = ordersService.getGrouponOrders(grouponRulePoList.get(i));
 //            for(GrouponRule.Strategy strategy:strategyList){
 //                if(num>=strategy.getLowerBound()) {
 //                    if (num <= strategy.getUpperBound() || strategy.getUpperBound() == null) {
 //                        BigDecimal rate = strategy.getDiscountRate();
-//                        //调用orderService模块进行退款
-//                        orderService.refundOfGrouponRule(grouponRulePoList.get(i), rate);
+//                        ordersService.refundOfGrouponRule(grouponRulePoList.get(i), rate);
 //                        break;
 //                    }
+//                }else{
+//                    BigDecimal rate = new BigDecimal("1");
+//                    ordersService.refundOfGrouponRule(grouponRulePoList.get(i),rate);
 //                }
 //            }
-//        }
+        }
     }
 
     public List<GrouponRule> getGrouponRuleList(List<GrouponRulePo> grouponRulePoList) {

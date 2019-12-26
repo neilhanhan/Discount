@@ -15,12 +15,14 @@ import java.util.List;
 @Repository
 public interface PresaleRuleMapper {
 
+
     /**
      * 删除预售规则
      * @param id 预售规则ID
+     * @param time 更新时间
      * @return Boolean
      */
-    boolean deletePresaleRule(Integer id,LocalDateTime time);
+    Boolean deletePresaleRule(Integer id,LocalDateTime time);
 
 
     /**

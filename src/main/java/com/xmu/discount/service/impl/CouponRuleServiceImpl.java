@@ -121,9 +121,11 @@ public class CouponRuleServiceImpl implements CouponRuleService {
     public Boolean adminUnShelveCouponRules(Integer id) {
         Boolean bool = couponDao.adminUnShelveCoupons(id);
         Integer integer = couponRuleDao.adminUnShelveCouponRules(id);
-         if (bool&&(integer.equals(1))) {
-             return true;
-         }
-         return false;
+         return calBool(bool, integer);
     }
+    public Boolean calBool(Boolean bool, Integer integer) {
+        return bool&&(integer.equals(1));
+    }
+
+
 }

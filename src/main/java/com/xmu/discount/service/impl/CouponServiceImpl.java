@@ -6,6 +6,7 @@ import com.xmu.discount.discountdo.CouponRuleDo;
 import com.xmu.discount.domain.*;
 import com.xmu.discount.service.CouponService;
 import com.xmu.discount.util.FatherChildUtil;
+import com.xmu.discount.util.JacksonUtil;
 import com.xmu.discount.util.JsonObjectUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -87,7 +88,7 @@ public class CouponServiceImpl implements CouponService {
     /**
      * getAllStatusCoupons调用，获得CouponRulePos通过id
      */
-    public List<CouponRulePo> getCouponRulePosByCouponPos(List<CouponPo> couponPos) {
+    private List<CouponRulePo> getCouponRulePosByCouponPos(List<CouponPo> couponPos) {
         List<Integer> couponRuleIds = new ArrayList<>();
         for (CouponPo couponPo : couponPos) {
             couponRuleIds.add(couponPo.getCouponRuleId());
@@ -152,28 +153,35 @@ public class CouponServiceImpl implements CouponService {
      * @param allCouponRuleDos
      * @return
      */
-    public HashMap<Integer, List<Integer>> getCouponRuleGoodIds(List<CouponRuleDo> allCouponRuleDos) {
+    private HashMap<Integer, List<Integer>> getCouponRuleGoodIds(List<CouponRuleDo> allCouponRuleDos) {
         HashMap<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>(allCouponRuleDos.size());
+
         for (CouponRuleDo allCouponRuleDo : allCouponRuleDos) {
-            String goodsIdList1 = allCouponRuleDo.getGoodsList1();
-            String goodsIdList2 = allCouponRuleDo.getGoodsList2();
-            List<Integer> goodIdList = new ArrayList<Integer>();
-            String[] array = new String[5000];
-            array = goodsIdList1.split(",");
-            for (String s : array) {
-                if ("".equals(s)) {
-                    continue;
-                }
-                goodIdList.add(Integer.valueOf(s));
+            String jsonString1 = allCouponRuleDo.getGoodsList1();
+            String jsonString2=allCouponRuleDo.getGoodsList2();
+            jsonString1 = org.apache.commons.text.StringEscapeUtils.unescapeJson(jsonString1);
+            jsonString2 = org.apache.commons.text.StringEscapeUtils.unescapeJson(jsonString2);
+            System.out.println("jsonString1="+jsonString1);
+            System.out.println("jsonString2="+jsonString2);
+
+            List<Integer> goodsId1=new ArrayList<>();
+            List<Integer> goodsId2=new ArrayList<>();
+            if(jsonString1!=null) {
+                goodsId1 = JacksonUtil.parseIntegerList(jsonString1, "gIDs");
+                System.out.println("goodsId1参数" + goodsId1);
             }
-            array = goodsIdList2.split(",");
-            for (String s : array) {
-                if ("".equals(s)) {
-                    continue;
-                }
-                goodIdList.add(Integer.valueOf(s));
+            if(jsonString2!=null){
+                goodsId2=JacksonUtil.parseIntegerList(jsonString2, "gIDs");
+                System.out.println("goodsId2参数"+goodsId2);
             }
-            map.put(allCouponRuleDo.getId(), goodIdList);
+
+            if(goodsId2!=null) {
+                for (Integer goodsId : goodsId2) {
+                    goodsId1.add(goodsId);
+                }
+            }
+            System.out.println(goodsId1);
+            map.put(allCouponRuleDo.getId(), goodsId1);
         }
         return map;
     }
@@ -184,7 +192,7 @@ public class CouponServiceImpl implements CouponService {
      * @param couponRuleIds
      * @return
      */
-    public List<CouponPo> getCouponPosByCouponRuleIds(List<Integer> couponRuleIds) {
+    private List<CouponPo> getCouponPosByCouponRuleIds(List<Integer> couponRuleIds) {
         List<CouponPo> couponPos = new ArrayList<>();
         for (Integer couponRuleId : couponRuleIds) {
             List<CouponPo> couponPoList = couponDao.getCouponPoByCouponRuleId(couponRuleId);
@@ -201,15 +209,8 @@ public class CouponServiceImpl implements CouponService {
         return couponPos;
     }
 
-    /**
-     * 获取可用的优惠券
-     *
-     * @param cartItemList
-     * @return
-     */
-    @Override
-    public List<Coupon> getAvailableCoupons(List<CartItem> cartItemList) throws Exception {
-        List<Coupon> coupons = new ArrayList<>();
+
+    public List<Integer> selectCouponRuleId(List<CouponRuleDo> allCouponRuleDos, List<CartItem> cartItemList) {
         /**
          *获得所有的good的id
          */
@@ -226,7 +227,7 @@ public class CouponServiceImpl implements CouponService {
         /**
          *获取所有的couponRule的id和goodIdList
          */
-        List<CouponRuleDo> allCouponRuleDos = couponRuleDao.getAllCouponRuleDos();
+
         HashMap<Integer, List<Integer>> map = getCouponRuleGoodIds(allCouponRuleDos);
         /**
          * map中已经装有couponRule的id和对应的goodsIds
@@ -249,6 +250,21 @@ public class CouponServiceImpl implements CouponService {
                 }
             }
         }
+        return couponRuleIds;
+    }
+
+    /**
+     * 获取可用的优惠券
+     *
+     * @param cartItemList
+     * @return
+     */
+    @Override
+    public List<Coupon> getAvailableCoupons(List<CartItem> cartItemList) throws Exception {
+        List<Coupon> coupons = new ArrayList<>();
+        List<CouponRuleDo> allCouponRuleDos = couponRuleDao.getAllCouponRuleDos();
+        List<Integer> couponRuleIds = selectCouponRuleId(allCouponRuleDos, cartItemList);
+
         /**
          * 说明没有可获得的coupon
          */

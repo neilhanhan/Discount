@@ -42,14 +42,14 @@ import java.util.Map;
  */
 public class ResponseUtil {
     public static Object ok() {
-        Map<String, Object> obj = new HashMap<String, Object>();
+        Map<String, Object> obj = new HashMap<String, Object>(16);
         obj.put("errno", 0);
         obj.put("errmsg", "成功");
         return obj;
     }
 
     public static Object ok(Object data) {
-        Map<String, Object> obj = new HashMap<String, Object>();
+        Map<String, Object> obj = new HashMap<String, Object>(16);
         obj.put("errno", 0);
         obj.put("errmsg", "成功");
         obj.put("data", data);
@@ -57,7 +57,7 @@ public class ResponseUtil {
     }
 
     public static Object okList(List list) {
-        Map<String, Object> data = new HashMap<String, Object>();
+        Map<String, Object> data = new HashMap<String, Object>(16);
         data.put("list", list);
 
         if (list instanceof Page) {
@@ -77,7 +77,7 @@ public class ResponseUtil {
     }
 
     public static Object okList(List list, List pagedList) {
-        Map<String, Object> data = new HashMap<String, Object>();
+        Map<String, Object> data = new HashMap<String, Object>(16);
         data.put("list", list);
 
         if (pagedList instanceof Page) {
@@ -96,14 +96,14 @@ public class ResponseUtil {
     }
 
     public static Object fail() {
-        Map<String, Object> obj = new HashMap<String, Object>();
+        Map<String, Object> obj = new HashMap<String, Object>(16);
         obj.put("errno", -1);
         obj.put("errmsg", "错误");
         return obj;
     }
 
     public static Object fail(int errno, String errmsg) {
-        Map<String, Object> obj = new HashMap<String, Object>();
+        Map<String, Object> obj = new HashMap<String, Object>(16);
         obj.put("errno", errno);
         obj.put("errmsg", errmsg);
         return obj;

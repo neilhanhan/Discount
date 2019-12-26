@@ -89,8 +89,9 @@ public interface GrouponRuleMapper {
     List<GrouponRulePo> checkFinishedGrouponRule(LocalDateTime today, LocalDateTime yesterday);
 
     /**
-     * @param goodsId
-     * @return
+     * 获取上架中的团购活动
+     * @param goodsId 商品ID
+     * @return GrouponRulePo
      */
     GrouponRulePo getGrouponRuleOnshelve(Integer goodsId);
 }

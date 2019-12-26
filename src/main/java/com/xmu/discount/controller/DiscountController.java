@@ -5,10 +5,12 @@ import com.xmu.discount.service.CouponRuleService;
 import com.xmu.discount.service.CouponService;
 import com.xmu.discount.service.GrouponRuleService;
 import com.xmu.discount.service.PresaleRuleService;
+import com.xmu.discount.util.JsonObjectUtil;
 import com.xmu.discount.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +31,63 @@ public class DiscountController {
     public CouponRuleService couponRuleService;
 
 
+    /**
+     * 判断优惠券规则是否有效
+     */
+
+    private Boolean validateCouponRule(CouponRulePo couponRule) {
+        Integer id=couponRule.getId();
+        String name = couponRule.getName();
+        LocalDateTime beginTime=couponRule.getBeginTime();
+        LocalDateTime endTime=couponRule.getEndTime();
+        Boolean status=couponRule.getStatusCode();
+        Integer total=couponRule.getTotal();
+        Integer collectedNum=couponRule.getCollectedNum();
+
+        if(name==null||beginTime==null||endTime==null)
+        {
+            return false;
+        }
+        if(status==null||total==null||collectedNum==null)
+        {
+            return false;
+        }
+        if(beginTime.isAfter(endTime))
+        {
+            return false;
+        }
+        return true;
+    }
+    /**
+     * 判断优惠券是否有效
+     */
+
+    private Boolean validateCoupon(CouponPo coupon) {
+        Integer id=coupon.getId();
+        Integer userId=coupon.getUserId();
+        Integer couponRuleId=coupon.getCouponRuleId();
+        LocalDateTime beginTime=coupon.getBeginTime();
+        LocalDateTime endTime=coupon.getEndTime();
+        Integer status=coupon.getStatusCode();
+        if(id==null||userId==null||couponRuleId==null)
+        {
+            return false;
+        }
+        if( beginTime==null||endTime==null||status==null)
+        {
+            return false;
+        }
+        if(beginTime.isAfter(endTime))
+        {
+            return false;
+        }
+        return true;
+    }
+    /**
+     * order内部接口！！！
+     * @param order
+     * @return
+     */
     @GetMapping("/orders")
     public Object discountOrder(@RequestBody Order order){
         Integer couponId = order.getCouponId();
@@ -126,6 +185,15 @@ public class DiscountController {
      */
     @PostMapping("/couponRules")
     public Object addCouponRulePo(@RequestBody CouponRulePo couponRulePo) {
+        if (!JsonObjectUtil.validateStrategy(couponRulePo.getStrategy()))
+        {
+            System.out.println("Strategy不符合规范");
+            return ResponseUtil.couponRuleAddFail();
+        }
+        if (!validateCouponRule(couponRulePo)) {
+            System.out.println("couponRule不符合规范");
+            return ResponseUtil.couponRuleAddFail();
+        }
         if (couponRulePo == null) {
             return ResponseUtil.couponRuleAddFail();
         }
@@ -154,6 +222,13 @@ public class DiscountController {
      */
     @PutMapping("/couponRules/{id}")
     public Object updateCouponRule(@PathVariable Integer id, @RequestBody CouponRulePo couponRulePo) {
+        if (!JsonObjectUtil.validateStrategy(couponRulePo.getStrategy()))
+        {
+            return ResponseUtil.couponRuleAddFail();
+        }
+        if (!validateCouponRule(couponRulePo)) {
+            return ResponseUtil.couponRuleUpdateFail();
+        }
         CouponRulePo couponRulePo1 = couponRuleService.updateCouponRulePo(id, couponRulePo);
         if (couponRulePo1.equals(null)) {
             return ResponseUtil.couponRuleUpdateFail();
@@ -189,12 +264,15 @@ public class DiscountController {
 
 
     /**
-     *增加优惠券
+     *增加优惠券！！！
      * @param couponPo
      * @return
      */
     @PostMapping("/coupons")
     public Object addCoupon(@RequestBody CouponPo couponPo) {
+        if (!validateCoupon(couponPo)) {
+            return ResponseUtil.getCouponFail();
+        }
         CouponPo couponPo1 = couponService.addCouponPo(couponPo);
         if (couponPo1.equals(null)) {
             return ResponseUtil.getCouponFail();
@@ -203,7 +281,7 @@ public class DiscountController {
     }
 
     /**
-     * 获取可用的优惠券
+     * 获取可用的优惠券 ！！！
      *
      * @param cartItemList
      * @return
@@ -218,7 +296,7 @@ public class DiscountController {
     }
 
     /**
-     * 下架优惠券规则
+     * 下架优惠券规则 ！！！
      *
      * @param id
      * @return

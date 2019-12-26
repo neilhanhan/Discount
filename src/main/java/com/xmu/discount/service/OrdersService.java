@@ -4,6 +4,7 @@ import com.xmu.discount.domain.GrouponRulePo;
 import com.xmu.discount.domain.PresaleRule;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.math.BigDecimal;
 
@@ -11,15 +12,15 @@ import java.math.BigDecimal;
  * @author Liuwenhan
  */
 @Component
-@FeignClient(name = "orderService")
-public interface OrderService {
+@FeignClient("orderService")
+public interface OrdersService {
 
     /**
      * 获取团购订单数量
      * @param grouponRulePo
      * @return
      */
-
+    @GetMapping("")
     Integer getGrouponOrders(GrouponRulePo grouponRulePo);
 
     /**
@@ -28,7 +29,7 @@ public interface OrderService {
      * @param rate
      * @return
      */
-
+    @GetMapping("")
     Boolean refundOfGrouponRule(GrouponRulePo grouponRulePo, BigDecimal rate);
 
     /**
@@ -36,6 +37,6 @@ public interface OrderService {
      * @param presaleRule
      * @return
      */
-
+    @GetMapping("")
     Boolean refundOfPresaleRule(PresaleRule presaleRule);
 }

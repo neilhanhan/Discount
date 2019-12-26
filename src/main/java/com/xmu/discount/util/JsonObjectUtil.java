@@ -1,11 +1,12 @@
 package com.xmu.discount.util;
 
 import com.alibaba.fastjson.JSONObject;
-import com.xmu.discount.util.couponstrategy.OnlyNameAndObj;
-import com.xmu.discount.util.couponstrategy.StrategyName;
+import com.xmu.discount.util.couponstrategy.*;
 import com.xmu.discount.util.couponstrategy.includename.CashOffStrategyName;
 import com.xmu.discount.util.couponstrategy.includename.NumberStrategyName;
 import com.xmu.discount.util.couponstrategy.includename.PercentageStrategyName;
+
+import java.math.BigDecimal;
 
 /**
  * @author Zhang Bingyuan
@@ -43,5 +44,45 @@ public class JsonObjectUtil {
             System.out.println("json解析错误,name:"+name+"  json:"+json);
         }
         return strategy;
+    }
+    public static Boolean validateStrategy(String strategy) {
+        String name = new String();
+
+        JSONObject jsonObject = JSONObject.parseObject(strategy);
+        OnlyNameAndObj onlyNameAndObj = JSONObject.toJavaObject(jsonObject, OnlyNameAndObj.class);
+
+        name = onlyNameAndObj.getName();
+
+
+        if (StrategyName.CashOffStrategy.toString().equals(name)) {
+            CashOffStrategyName cashOffStrategyName = JSONObject.toJavaObject(jsonObject, CashOffStrategyName.class);
+            CashOffStrategy data = (CashOffStrategy)cashOffStrategyName.getObj();
+            if (data.getOffCash().compareTo(BigDecimal.ZERO)==-1) {
+                System.out.println("offcash<0");
+                return false;
+            }
+
+        } else if (StrategyName.NumberStrategy.toString().equals(name)) {
+            NumberStrategyName numberStrategyName = JSONObject.toJavaObject(jsonObject, NumberStrategyName.class);
+            NumberStrategy data = (NumberStrategy)numberStrategyName.getObj();
+            if (data.getOffCash().compareTo(BigDecimal.ZERO)==-1) {
+                System.out.println("offcash<0");
+                return false;
+            }
+
+        } else if (StrategyName.PercentageStrategy.toString().equals(name)) {
+            PercentageStrategyName percentageStrategyName = JSONObject.toJavaObject(jsonObject, PercentageStrategyName.class);
+            PercentageStrategy data = (PercentageStrategy)percentageStrategyName.getObj();
+            if (data.getPercentage().compareTo(BigDecimal.ZERO)==-1) {
+                System.out.println("percentage<0");
+                return false;
+            }
+
+        } else {
+            System.out.println("json解析错误,name:"+name+"  json:"+strategy);
+            return false;
+        }
+
+        return true;
     }
 }

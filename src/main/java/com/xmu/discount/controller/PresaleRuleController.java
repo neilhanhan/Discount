@@ -20,7 +20,7 @@ public class PresaleRuleController {
     PresaleRuleService presaleRuleService;
 
     /**
-     * 内部接口！！！
+     * 内部接口！！！ 给Goods模块调用 返回预售规则
      * @param goodsId
      * @return
      */
